@@ -1,0 +1,28 @@
+POST /api/register
+
+POST /api/verify-otp
+
+response - jwt - payload should contains - user-id
+
+------------------------------
+GET /api/auth
+
+request - Header : authorization jwt token user-id
+
+response - user data
+
+-------------------
+POST /api/auth --(login)
+request:
+	mobile or email
+	password
+
+response:
+	jwt - payload should contains - user-id
+	
+------------------------------
+GET /api/auth
+
+request - Header :authorization jwt token
+
+response - user data
