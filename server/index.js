@@ -1,0 +1,41 @@
+'use strict';
+
+const connectDB = require('../config/db');
+const express = require('express');
+
+module.exports = function() {
+    let server = express(),
+        create,
+        start;
+
+    create = function(config) { console.log('server created');
+        let routes = require('./routes');
+
+        // Server settings
+        server.set('port', config.port);
+        server.set('hostname', config.hostname);
+
+        // Returns middleware that parses json
+        server.use(express.json({ extended: false }));
+
+        // Set up routes
+        routes.init(server);
+
+        // connect database
+        connectDB();
+    };
+
+    start = function() {
+        let hostname = server.get('hostname'),
+            port = server.get('port');
+
+        server.listen(port, function () {
+            console.log('Express server listening on - http://' + hostname + ':' + port);
+        });
+    };
+
+    return {
+        create: create,
+        start: start
+    };
+}();

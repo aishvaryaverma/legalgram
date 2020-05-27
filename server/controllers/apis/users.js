@@ -1,6 +1,3 @@
-const express = require('express');
-const router = express.Router();
-
 const { check, validationResult } = require('express-validator');
 const config = require('config');
 const bcrypt = require('bcryptjs');
@@ -8,13 +5,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 const otpGenerator = require('otp-generator');
 
-/**
- * @Route       POST api/users
- * @desc        Register user
- * @access      Public
- */
-router.post('/', async (req, res) => {
 
+const register = async (req, res) => {
 	// Validation
     await check('name', 'Please enter name').not().isEmpty().run(req);
     await check('email', 'Please enter a valid email address').isEmail().run(req);
@@ -87,6 +79,13 @@ router.post('/', async (req, res) => {
         console.error(err);
         res.status(500).send('Server Error');
     }
-});
+}
 
-module.exports = router;
+const login = (req, res) => {
+    return res.json(123);
+}
+
+module.exports = {
+    register,
+    login
+}
