@@ -1,5 +1,4 @@
 const { check, validationResult } = require('express-validator');
-const config = require('config');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const otpGenerator = require('otp-generator');
