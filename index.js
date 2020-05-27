@@ -1,15 +1,10 @@
 const server = require('./server');
-
-// // connect database
-// connectDB();
-
-// // server start
-// const PORT = 1337;
-// app.listen(PORT, '127.0.0.1', () => console.log(`Server started at port ${PORT}`));
+const config = require('config');
+const { hostname, port } = config.get('server');
 
 server.create({
-    hostname: 'localhost',
-    port: '1337'
+    hostname,
+    port
 });
 
 server.start();

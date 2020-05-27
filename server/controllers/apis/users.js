@@ -1,10 +1,9 @@
 const { check, validationResult } = require('express-validator');
 const config = require('config');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 const otpGenerator = require('otp-generator');
-
+const utils = require('../../shared/utils');
 
 const register = async (req, res) => {
 	// Validation
@@ -65,15 +64,10 @@ const register = async (req, res) => {
 		console.log(user)
 
         // Generating jsonwebtoken
-        jwt.sign(
-            payload, // This will contains user id we got back from database // auto generated user id from mongoDB
-            config.get('jwtSecret'), // This is our manual secret key
-            { expiresIn: (3600 * 24 * 3) }, // Valid for 3 days
-            function(err, token) { // Callback function
-                if(err) throw err;
-                res.json({ token })
-            }
-        );
+        token = await utils.getJWTToken(payload);
+
+        res.json({token});
+        
     } catch(err) {
         // Sending error response
         console.error(err);
