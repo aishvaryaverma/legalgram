@@ -1,39 +1,28 @@
 const { check, validationResult } = require('express-validator');
-const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const otpGenerator = require('otp-generator');
 const utils = require('../../shared/utils');
+const { ErrorHandler } = require('../../shared/error');
 
-const register = async (req, res) => {
-	// Validation
-    await check('name', 'Please enter name').not().isEmpty().run(req);
-    await check('email', 'Please enter a valid email address').isEmail().run(req);
-    await check('mobile', 'Please enter a mobile number').isLength({ min: 7, max: 15 }).run(req);
-    await check('password', 'Please enter min 6 characters').isLength({ min: 6 }).run(req);
-	
-	// Pushing validation result in errors const
-    const errors = validationResult(req);
-
-    // Checking is there is an error
-    if(!errors.isEmpty()) {
-        // Sending error response
-        return res.status(400).json({ errors: errors.array() })
-    }
-    
-    // Pulling data from request body
+const register = async (req, res, next) => {
     const { name, email, mobile, password } = req.body;
     
+    const errors = validationResult(req);
+
 	console.log(otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false }));
 	
     try {
+        if(!errors.isEmpty()) {
+            throw new ErrorHandler(400, errors.array());
+        } 
+
         // Searching for user in database based on email id we got from request body
         let u_mobile = await User.findOne({ mobile })
         let u_email = await User.findOne({ email })
         
         // Check if user is already registered
         if(u_mobile || u_email) {
-            // Sending error response
-            return res.status(400).json({ errors: [{ msg: 'User already exists.' }] })
+            throw new ErrorHandler(400, 'User already exists');
 		}
 		
         // Adding user into database using MODAL
@@ -43,14 +32,9 @@ const register = async (req, res) => {
 			mobile,
 			password
         });
-        // *************
-        //ENCRYPT PASSWORD
-        
-        // Creating a salt for password
-        const salt = await bcrypt.genSalt(10);
-
-        // Hash Password
-        user.password = await bcrypt.hash(password, salt);
+       
+        // encrpt password
+        user.password = await utils.encryptPassword(password);
 
         // Send and Save User to database using mongoose
         await user.save();
@@ -65,20 +49,70 @@ const register = async (req, res) => {
         // Generating jsonwebtoken
         token = await utils.getJWTToken(payload);
 
-        res.json({token});
+        res.json({token: token, status: 200});
         
     } catch(err) {
-        // Sending error response
-        console.error(err);
-        res.status(500).send('Server Error');
+        next(err);
     }
 }
 
-const login = (req, res) => {
-    return res.json(123);
+const login = async (req, res, next) => {
+    try {
+       
+        const errors = validationResult(req);
+    
+        if(!errors.isEmpty()) {
+            throw new ErrorHandler(400, errors.array());
+        }
+    
+        const { username, password } = req.body; console.log(username);
+        const user = await User.findOne({ $or: [{mobile: username}, {email: username}] });
+
+        if(!user) {
+            throw new ErrorHandler(400, 'Invalid user name');
+        }
+
+        const status =  await utils.comparePassword(password, user.password).catch((err) => {
+            throw new ErrorHandler(400, err);
+        })
+    
+        if(status) {
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+            const token = await  utils.getJWTToken(payload);
+            return res.json({ token });
+        }
+    }
+    catch(err) {
+        console.log(err);
+        next(err);
+    }
 }
+
+const validate = (method) => {
+    switch (method) {
+      case 'login': {
+       return [ 
+          check('username', 'Please enter name or email').notEmpty(),
+          check('password', 'Please enter password').notEmpty(),   
+         ]
+      }
+      case 'register': {
+        return [ 
+           check('name', 'Please enter name').not().isEmpty(),
+           check('email', 'Please enter a valid email').isEmail(),
+           check('password', 'Please enter min 6 characters').isLength({min: 6}),
+           check('mobile', 'Please enter a valid mobile').isLength({min: 7, max: 15}),
+          ]
+       }
+    }
+  }
 
 module.exports = {
     register,
-    login
+    login,
+    validate
 }

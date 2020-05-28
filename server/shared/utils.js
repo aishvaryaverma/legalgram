@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -15,5 +16,26 @@ module.exports = {
                 }
             );
         })
+    },
+    encryptPassword: async (password) => {
+        // Creating a salt for password
+        const salt = await bcrypt.genSalt(10);
+
+        // Hash Password
+        password = await bcrypt.hash(password, salt);
+
+        return password;
+    },
+    comparePassword: (password, userPassword) => {
+        return new Promise((resolve, reject) => {
+            return bcrypt.compare(password, userPassword).then((res) => {
+                if(res) {
+                    resolve(true);
+                }
+                else {
+                    reject('invalid password');
+                }
+            });
+        });
     }
 }

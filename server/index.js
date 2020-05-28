@@ -16,9 +16,6 @@ module.exports = (function () {
         server.set("port", config.port);
         server.set("hostname", config.hostname);
 
-        // Returns middleware that parses json
-        server.use(express.json({ extended: false }));
-
         // Set up routes
         routes.init(server);
 
