@@ -9,6 +9,12 @@ const UserTokenSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    tokenType: {
+        type: String,
+        required: true,
+        enum: ['mobileVerification', 'passwordReset', 'emailVerification'],
+        default: 'mobileVerification'
+    },
     active: {
         type: Boolean,
         default: true

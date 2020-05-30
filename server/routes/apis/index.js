@@ -4,11 +4,11 @@ const utils = require('../../shared/utils');
 
 
 const userRoute = require('./user');
-//const authRoute = require('./auth');
 const mobileRoute = require('./mobile');
+const passwordRoute = require('./password');
 
 router.use('/users', userRoute);
 router.use('/mobile', utils.verifyJWTToken, mobileRoute);
-//router.use('/', authRoute);
+router.use('/password', passwordRoute);
 
 module.exports = router

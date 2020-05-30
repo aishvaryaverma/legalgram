@@ -5,7 +5,7 @@ const otpGenerator = require('otp-generator');
 const UserToken = require('../models/userToken');
 const { ErrorHandler } = require('../shared/error');
 
-const send = async (userId, mobile) => {
+const send = async (userId, mobile, tokenType) => {
     try {
         const otpConfig = { digits: true, alphabets: false, upperCase: false, specialChars: false }
         const otp = otpGenerator.generate(6, otpConfig);
@@ -24,7 +24,8 @@ const send = async (userId, mobile) => {
         // save otp to db.
         const userToken = new UserToken({
             userId,
-            token: otp
+            token: otp,
+            tokenType
         });
     
         await userToken.save();
@@ -35,9 +36,9 @@ const send = async (userId, mobile) => {
     }
 }
 
-const verify = async (userId, otp) => {
+const verify = async (userId, otp, tokenType) => {
     try {
-        const tokenQuery = {userId, token: otp, active: true};
+        const tokenQuery = {userId, token: otp, active: true, tokenType};
         const userToken = await UserToken.find(tokenQuery);
         if(!userToken.length) {
             throw new ErrorHandler(400, 'invalid otp');
@@ -56,6 +57,7 @@ const verify = async (userId, otp) => {
         throw err;
     }
 }
+
 module.exports = {
     send,
     verify

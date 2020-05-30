@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator');
 const config = require('config');
 const User = require('../../models/User');
 const { ErrorHandler } = require('../../shared/error');
-const otpUtils = require('../../shared/otp');
+const userToken = require('../../shared/userToken');
 
 const sendOTP = async (req, res, next) => {
     try {
@@ -15,7 +15,7 @@ const sendOTP = async (req, res, next) => {
         // send otp.
         const userId = req.user.id;
         const user = await User.findById(userId);
-        const otp = await otpUtils.send(userId, user.mobile);
+        const otp = await userToken.send(userId, user.mobile, 'mobileVerification');
         console.log(otp);
 
         res.status(200).json({
@@ -38,7 +38,7 @@ const verifyOTP = async (req, res, next) => {
         // verify otp
         const { otp } = req.body;
         const userId = req.user.id;
-        await otpUtils.verify(userId, otp);
+        await userToken.verify(userId, otp, 'mobileVerification');
 
         // update the user mobile verification flag
         await User.findById(userId).update({ isMobileVerified: true });
