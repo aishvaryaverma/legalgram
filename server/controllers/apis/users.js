@@ -1,6 +1,5 @@
-const { check, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 const User = require('../../models/User');
-const otpGenerator = require('otp-generator');
 const utils = require('../../shared/utils');
 const { ErrorHandler } = require('../../shared/error');
 
@@ -9,7 +8,6 @@ const register = async (req, res, next) => {
     
     const errors = validationResult(req);
 
-	console.log(otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false }));
 	
     try {
         if(!errors.isEmpty()) {
@@ -92,27 +90,8 @@ const login = async (req, res, next) => {
     }
 }
 
-const validate = (method) => {
-    switch (method) {
-      case 'login': {
-       return [ 
-          check('username', 'Please enter name or email').notEmpty(),
-          check('password', 'Please enter password').notEmpty(),   
-         ]
-      }
-      case 'register': {
-        return [ 
-           check('name', 'Please enter name').not().isEmpty(),
-           check('email', 'Please enter a valid email').isEmail(),
-           check('password', 'Please enter min 6 characters').isLength({min: 6}),
-           check('mobile', 'Please enter a valid mobile').isLength({min: 7, max: 15}),
-          ]
-       }
-    }
-  }
 
 module.exports = {
     register,
-    login,
-    validate
+    login
 }

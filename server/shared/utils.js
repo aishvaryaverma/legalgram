@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { ErrorHandler } = require('../shared/error');
 const config = require('config');
 
 const { secret, expiresIn } = config.get('jwt');
@@ -16,6 +17,25 @@ module.exports = {
                 }
             );
         })
+    },
+    verifyJWTToken: (req, res, next) => {
+        try {
+            const header = req.headers['authorization'];
+
+            if(typeof header !== 'undefined') {
+                const bearer = header.split(' ');
+                const token = bearer[1];
+                const decodedToken = jwt.verify(token, secret);
+    
+                req.user = decodedToken.user;
+                next();
+            } else {
+                throw new ErrorHandler(403, 'invalid access token');
+            }
+        }
+        catch(err) {
+            next(err);
+        }
     },
     encryptPassword: async (password) => {
         // Creating a salt for password

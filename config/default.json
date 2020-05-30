@@ -3,6 +3,7 @@
         "hostname": "localhost",
         "port": 1337
     },
+    "otp_expires_in": 1,
     "mongoURI": "mongodb+srv://vsonu9020:vsonu9020@legalgram-xe4nm.mongodb.net/legalgram?retryWrites=true&w=majority",
     "jwt": {
         "secret": "mySecretToken",
