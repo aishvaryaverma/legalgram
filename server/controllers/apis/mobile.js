@@ -1,22 +1,20 @@
 const { validationResult } = require('express-validator');
-const config = require('config');
 const User = require('../../models/User');
 const { ErrorHandler } = require('../../shared/error');
 const userToken = require('../../shared/userToken');
+const { sendSMS, checkInputErrors } = require('../../shared/utils');
 
 const sendOTP = async (req, res, next) => {
     try {
-        const errors = validationResult(req);
-
-        if(!errors.isEmpty()) {
-            throw new ErrorHandler(400, errors.array());
-        }
+        checkInputErrors(req);
         
-        // send otp.
+        // create user otp token
         const userId = req.user.id;
         const user = await User.findById(userId);
-        const otp = await userToken.send(userId, user.mobile, 'mobileVerification');
-        console.log(otp);
+        const otp = await userToken.create(userId, user.mobile, 'mobileVerification');
+
+        // send sms to mobile
+        sendSMS(user.mobile, otp);
 
         res.status(200).json({
             status: 'success',
@@ -30,10 +28,7 @@ const sendOTP = async (req, res, next) => {
 
 const verifyOTP = async (req, res, next) => {
     try {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()) {
-            throw new ErrorHandler(400, errors.array());
-        }
+        checkInputErrors(req);
 
         // verify otp
         const { otp } = req.body;

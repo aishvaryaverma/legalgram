@@ -4,6 +4,7 @@
         "port": 1337
     },
     "otp_expires_in": 1,
+    "reset_password_token_expires_in": 1,
     "sms": {
         "api": "https://api.bizzsms.in/api/v2/SendSMS",
         "params": {

@@ -1,27 +1,29 @@
-const express = require('express');
-const router = express.Router();
-const { validationResult } = require('express-validator');
 const { ErrorHandler } = require('../../shared/error');
 const User = require('../../models/User');
 const userToken = require('../../shared/userToken');
-const utils = require('../../shared/utils');
-
+const crypto = require('crypto');
+const { checkInputErrors, encryptPassword, sendSMS } = require('../../shared/utils');
 
 const recover = async (req, res, next) => {
     try {
+        checkInputErrors(req);
+
         const { email } = req.body;
+        const user = await User.findOne({ $or: [{mobile: email}, {email}] });
 
-        if(!errors.isEmpty()) {
-            throw new ErrorHandler(400, errors.array());
-        }
-
-        const user = await User.find({ email, mobile: email });
-        if(!user.length) {
-            throw new ErrorHandler(400, `no user exist with ${email} email/mobile`);
+        if(!user) {
+            throw new ErrorHandler(400, `no user exist with this email or mobile`);
         }
         
         // send password reset token to user mobile.
-        await userToken.send(user.id, user.mobile, 'passwordReset');
+        const token = await userToken.create(user.id, user.mobile, 'passwordReset');
+        // send sms to mobile
+        sendSMS(user.mobile, token);
+
+        res.status(200).json({
+            status: 'success',
+            message: 'otp sent successfully to registered mobile'
+        });
     }
     catch(err) {
         next(err);
@@ -30,28 +32,29 @@ const recover = async (req, res, next) => {
 
 const resetToken = async (req, res, next) => {
     try {
-        const { email, token } = req.body;
+        checkInputErrors(req);
 
-        if(!errors.isEmpty()) {
-            throw new ErrorHandler(400, errors.array());
+        const { email, otp } = req.body;
+        const query = { $or: [{mobile: email}, {email}] };
+        const user = await User.findOne(query);
+        if(!user) {
+            throw new ErrorHandler(400, `no user exist with this email/mobile`);
         }
 
-        const user = await User.find({ email: emailOrMobile, mobile: emailOrMobile });
-        if(!user.length) {
-            throw new ErrorHandler(400, `no user exist with ${emailOrMobile} email/mobile`);
-        }
-        
         // send password reset token to user mobile.
-        await userToken.verify(user.id, token, 'passwordReset');
+        await userToken.verify(user.id, otp, 'passwordReset');
 
-        // send user jwt in response
-        const payload = {
-            user: {
-                id: user.id
-            }
-        }
-        const jwtToken = utils.getJWTToken(payload);
-        res.status(200).json(jwtToken)
+        // send user password reset token in response
+        const resetPasswordToken = crypto.randomBytes(20).toString('hex');
+        const resetPasswordExpires = Date.now() + 3600000; //expires in an hour
+
+        await User.find(query).updateOne({ resetPasswordToken, resetPasswordExpires });
+    
+        res.status(200).json({
+            status: 'success',
+            message: 'password reset otp verified successfully',
+            data: { token: resetPasswordToken }
+        })
     }
     catch(err) {
         next(err);
@@ -60,10 +63,23 @@ const resetToken = async (req, res, next) => {
 
 const reset = async (req, res, next) => {
     try {
-        const userId = req.user.id;
-        const { password } = req.body;
-        const hash = await utils.encryptPassword(password);
-        await User.findById(userId).update({ password: hash});
+        checkInputErrors(req);
+
+        const { password, token } = req.body;
+        const query = {resetPasswordToken: token, resetPasswordExpires: {$gt: Date.now()}};
+        const user = await User.findOne(query);
+        
+        if(!user) {
+            throw new ErrorHandler(400, 'Password reset token is invalid or has expired');
+        }
+        
+        const hash = await encryptPassword(password);
+        await User.find({resetPasswordToken: token}).updateOne({ password: hash, resetPasswordToken: null, resetPasswordExpires: null });
+        
+        res.status(200).json({
+            status: 'success',
+            message: 'password updated successfully'
+        })
     }
     catch(err) {
         next(err);

@@ -1,19 +1,18 @@
-const { validationResult } = require('express-validator');
 const User = require('../../models/User');
-const utils = require('../../shared/utils');
+const { 
+    checkInputErrors,
+    encryptPassword,
+    comparePassword, 
+    getJWTToken
+} = require('../../shared/utils');
 const { ErrorHandler } = require('../../shared/error');
 
 const register = async (req, res, next) => {
-    const { name, email, mobile, password } = req.body;
-    
-    const errors = validationResult(req);
-
-	
     try {
-        if(!errors.isEmpty()) {
-            throw new ErrorHandler(400, errors.array());
-        } 
+        checkErrors(req);
 
+        const { name, email, mobile, password } = req.body;
+        
         // Searching for user in database based on email id we got from request body
         let u_mobile = await User.findOne({ mobile })
         let u_email = await User.findOne({ email })
@@ -32,7 +31,7 @@ const register = async (req, res, next) => {
         });
        
         // encrpt password
-        user.password = await utils.encryptPassword(password);
+        user.password = await encryptPassword(password);
 
         // Send and Save User to database using mongoose
         await user.save();
@@ -45,9 +44,13 @@ const register = async (req, res, next) => {
 		console.log(user)
 
         // Generating jsonwebtoken
-        token = await utils.getJWTToken(payload);
-
-        res.json({token: token, status: 200});
+        const token = await getJWTToken(payload);
+        const result = { 
+            status: 'success', 
+            message: 'user registered successfully', 
+            data: { token }
+        };
+        res.status(200).json(result);
         
     } catch(err) {
         next(err);
@@ -56,13 +59,8 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     try {
-       
-        const errors = validationResult(req);
-    
-        if(!errors.isEmpty()) {
-            throw new ErrorHandler(400, errors.array());
-        }
-    
+        
+        checkInputErrors(req);
         const { username, password } = req.body; console.log(username);
         const user = await User.findOne({ $or: [{mobile: username}, {email: username}] });
 
@@ -70,7 +68,7 @@ const login = async (req, res, next) => {
             throw new ErrorHandler(400, 'Invalid user name');
         }
 
-        const status =  await utils.comparePassword(password, user.password).catch((err) => {
+        const status =  await comparePassword(password, user.password).catch((err) => {
             throw new ErrorHandler(400, err);
         })
     
@@ -80,8 +78,13 @@ const login = async (req, res, next) => {
                     id: user.id
                 }
             };
-            const token = await  utils.getJWTToken(payload);
-            return res.json({ token });
+            const token = await  getJWTToken(payload);
+            const result = { 
+                status: 'success', 
+                message: 'user login successfully', 
+                data: { token }
+            };
+            return res.status(200).json({ result });
         }
     }
     catch(err) {
@@ -89,7 +92,6 @@ const login = async (req, res, next) => {
         next(err);
     }
 }
-
 
 module.exports = {
     register,

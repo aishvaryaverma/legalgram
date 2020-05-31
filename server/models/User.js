@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
         unique: true
     },
     mobile: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
@@ -26,6 +26,14 @@ const UserSchema = new mongoose.Schema({
     isEmailVerified: {
         type: Boolean,
         default: false
+    },
+    resetPasswordToken: {
+        type: String,
+        required: false
+    },
+    resetPasswordExpires: {
+        type: Date,
+        required: false
     },
     date: {
         type: Date,
