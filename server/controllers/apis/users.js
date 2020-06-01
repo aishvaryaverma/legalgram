@@ -9,19 +9,19 @@ const { ErrorHandler } = require('../../shared/error');
 
 const register = async (req, res, next) => {
     try {
-        checkErrors(req);
+        checkInputErrors(req);
 
         const { name, email, mobile, password } = req.body;
         
         // Searching for user in database based on email id we got from request body
-        let u_mobile = await User.findOne({ mobile })
-        let u_email = await User.findOne({ email })
+        let u_mobile = await User.findOne({ mobile });
+        let u_email = await User.findOne({ email });
         
         // Check if user is already registered
         if(u_mobile || u_email) {
             throw new ErrorHandler(400, 'User already exists');
 		}
-		
+		console.log(u_mobile, u_email)
         // Adding user into database using MODAL
         user = new User({
             name,
@@ -41,19 +41,19 @@ const register = async (req, res, next) => {
                 id: user.id
             }
 		};
-		console.log(user)
 
         // Generating jsonwebtoken
         const token = await getJWTToken(payload);
         const result = { 
             status: 'success', 
-            message: 'user registered successfully', 
+            message: 'User registered successfully', 
             data: { token }
         };
         res.status(200).json(result);
         
     } catch(err) {
-        next(err);
+        console.log(err.message)
+        next(500, err);
     }
 }
 
@@ -61,11 +61,12 @@ const login = async (req, res, next) => {
     try {
         
         checkInputErrors(req);
-        const { username, password } = req.body; console.log(username);
+
+        const { username, password } = req.body;
         const user = await User.findOne({ $or: [{mobile: username}, {email: username}] });
 
         if(!user) {
-            throw new ErrorHandler(400, 'Invalid user name');
+            throw new ErrorHandler(400, 'Invalid credentials');
         }
 
         const status =  await comparePassword(password, user.password).catch((err) => {
@@ -81,7 +82,7 @@ const login = async (req, res, next) => {
             const token = await  getJWTToken(payload);
             const result = { 
                 status: 'success', 
-                message: 'user login successfully', 
+                message: 'User login successfully', 
                 data: { token }
             };
             return res.status(200).json({ result });
