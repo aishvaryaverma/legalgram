@@ -13,7 +13,7 @@ const validate = (method) => {
     }
 };
 
-router.use("/send-otp", sendOTP);
-router.use("/verify-otp", validate("verify-otp"), verifyOTP);
+router.post("/send-otp", sendOTP);
+router.post("/verify-otp", validate("verify-otp"), verifyOTP);
 
 module.exports = router;

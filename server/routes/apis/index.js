@@ -5,13 +5,14 @@ const router = express.Router();
 const userRoute = require('./auth/user');
 const mobileRoute = require('./auth/mobile');
 const passwordRoute = require('./auth/password');
-// utils
-const utils = require('../../shared/utils');
+const emailRoute = require('./auth/email');
+
 // middlewares
 const auth = require('../../middlewares/auth');
 
 router.use('/users', userRoute);
 router.use('/mobile', auth, mobileRoute);
 router.use('/password', passwordRoute);
+router.use('/email', emailRoute);
 
 module.exports = router;

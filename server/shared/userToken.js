@@ -5,7 +5,7 @@ const otpGenerator = require('otp-generator');
 const UserToken = require('../models/userToken');
 const { ErrorHandler } = require('../shared/error');
 
-const create = async (userId, mobile, tokenType) => {
+const create = async (userId, tokenType) => {
     try {
         const otpConfig = { digits: true, alphabets: false, upperCase: false, specialChars: false }
         const otp = otpGenerator.generate(6, otpConfig);

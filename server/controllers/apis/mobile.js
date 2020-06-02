@@ -1,5 +1,4 @@
-const { validationResult } = require('express-validator');
-const User = require('../../models/User');
+const User = require('../../models/user');
 const { ErrorHandler } = require('../../shared/error');
 const userToken = require('../../shared/userToken');
 const { sendSMS, checkInputErrors } = require('../../shared/utils');
@@ -11,7 +10,7 @@ const sendOTP = async (req, res, next) => {
         // create user otp token
         const userId = req.user.id;
         const user = await User.findById(userId);
-        const otp = await userToken.create(userId, user.mobile, 'mobileVerification');
+        const otp = await userToken.create(userId, 'mobileVerification');
 
         // send sms to mobile
         sendSMS(user.mobile, otp);

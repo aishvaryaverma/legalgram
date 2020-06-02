@@ -1,5 +1,5 @@
 const { ErrorHandler } = require("../../shared/error");
-const User = require("../../models/User");
+const User = require("../../models/user");
 const userToken = require("../../shared/userToken");
 const crypto = require("crypto");
 const { checkInputErrors, encryptPassword, sendSMS } = require("../../shared/utils");
@@ -16,7 +16,7 @@ const recover = async (req, res, next) => {
         }
 
         // send password reset token to user mobile.
-        const token = await userToken.create(user.id, user.mobile, "passwordReset");
+        const token = await userToken.create(user.id, 'passwordReset');
         // send sms to mobile
         sendSMS(user.mobile, token);
 

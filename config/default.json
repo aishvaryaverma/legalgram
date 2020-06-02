@@ -23,7 +23,9 @@
         "expiresIn": 3
     },
     "smtp": {
+        "host": "smtp.gmail.com",
         "username": "aashuclavax@gmail.com",
-        "password": "Verma@123"
+        "password": "Verma@123",
+        "port": "587"
     }
 }

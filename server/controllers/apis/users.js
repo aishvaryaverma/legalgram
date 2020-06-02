@@ -1,4 +1,4 @@
-const User = require('../../models/User');
+const User = require('../../models/user');
 const { 
     checkInputErrors,
     encryptPassword,
@@ -52,8 +52,7 @@ const register = async (req, res, next) => {
         res.status(200).json(result);
         
     } catch(err) {
-        console.log(err.message)
-        next(500, err);
+        next(err);
     }
 }
 

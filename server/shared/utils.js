@@ -3,8 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const request = require("request");
-
-const { ErrorHandler } = require("../shared/error");
+const { ErrorHandler } = require("./error");
 
 class Utils {
     getJWTToken(payload) {

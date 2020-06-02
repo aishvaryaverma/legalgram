@@ -1,6 +1,6 @@
 const express = require('express');
 const apiRoutes = require('./apis');
-const { handleError } = require('../shared/error');
+const handleError = require('../middlewares/error');
 
 module.exports = {
     init: function(server) {
