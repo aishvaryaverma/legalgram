@@ -6,6 +6,11 @@ module.exports = {
     init: function(server) {
         server.use(express.json({ extended: false }));
         
+        server.get('/', (req, res) => {
+            console.log('object')
+            res.send('Welcome to LegalGram - Legal is now Easy!!')
+        });
+
         // config routes.
         server.use('/api', apiRoutes);
     

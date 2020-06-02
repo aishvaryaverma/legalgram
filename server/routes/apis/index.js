@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
 // routes
 const userRoute = require('./auth/user');
 const mobileRoute = require('./auth/mobile');
 const passwordRoute = require('./auth/password');
-// utils
-const utils = require('../../shared/utils');
 // middlewares
 const auth = require('../../middlewares/auth');
 

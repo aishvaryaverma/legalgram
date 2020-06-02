@@ -20,8 +20,8 @@ const register = async (req, res, next) => {
         // Check if user is already registered
         if(u_mobile || u_email) {
             throw new ErrorHandler(400, 'User already exists');
-		}
-		console.log(u_mobile, u_email)
+        }
+        
         // Adding user into database using MODAL
         user = new User({
             name,
@@ -52,8 +52,8 @@ const register = async (req, res, next) => {
         res.status(200).json(result);
         
     } catch(err) {
-        console.log(err.message)
-        next(500, err);
+        console.error(err.message);
+        next(err);
     }
 }
 
