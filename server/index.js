@@ -1,7 +1,6 @@
-"use strict";
-
-const connectDB = require("../config/db");
 const express = require("express");
+const connectDB = require("../config/db");
+const routes = require("./routes");
 
 module.exports = (function () {
     let server = express(),
@@ -9,18 +8,18 @@ module.exports = (function () {
         start;
 
     create = function (config) {
-        console.log("server created");
-        let routes = require("./routes");
-
         // Server settings
-        server.set("port", config.port);
-        server.set("hostname", config.hostname);
-
-        // Set up routes
-        routes.init(server);
+        const { port, hostname } = config;
+        server.set("port", port);
+        server.set("hostname", hostname);
 
         // connect database
         connectDB();
+        
+        // Set up routes
+        routes.init(server);
+
+        console.log("server created");
     };
 
     start = function () {
@@ -34,6 +33,6 @@ module.exports = (function () {
 
     return {
         create,
-        start,
-    };
+        start
+    }
 })();
