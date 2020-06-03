@@ -1,7 +1,7 @@
 const { ErrorHandler } = require("../../shared/error");
 const User = require("../../models/user");
-const userToken = require("../../shared/userToken");
 const crypto = require("crypto");
+const userToken = require("../../shared/userToken");
 const { checkInputErrors, encryptPassword, sendSMS } = require("../../shared/utils");
 
 const recover = async (req, res, next) => {
