@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require("express");
 const connectDB = require("../config/db");
 const routes = require("./routes");
@@ -15,6 +16,13 @@ module.exports = (function () {
 
         // connect database
         connectDB();
+
+        // Serving static files
+        server.use(express.static(path.join(__dirname, 'public')));
+
+        // setup view
+        server.set('views', path.join(__dirname, 'views'));
+        server.set('view engine', 'pug');
         
         // Set up routes
         routes.init(server);

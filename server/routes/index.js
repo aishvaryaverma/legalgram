@@ -1,5 +1,6 @@
 const express = require('express');
 const apiRoutes = require('./apis');
+const adminRoutes = require('./admin');
 const handleError = require('../middlewares/error');
 
 module.exports = {
@@ -7,12 +8,14 @@ module.exports = {
         server.use(express.json({ extended: false }));
         
         server.get('/', (req, res) => {
-            console.log('object')
-            res.send('Welcome to LegalGram - Legal is now Easy!!')
+            res.render('login', { title: 'Legalgram', message: 'Legalgram!' })
         });
 
-        // config routes.
+        // configure routes for app front end.
         server.use('/api', apiRoutes);
+
+        // configure routes for the admin section of app
+        server.use('/admin', adminRoutes);
     
         // error handler
         server.use((err, req, res, next) => {
