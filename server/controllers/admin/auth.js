@@ -1,10 +1,21 @@
 const User = require('../../models/user');
-const { comparePassword } = require('../../shared/utils');
+const { comparePassword, checkInputErrors } = require('../../shared/utils');
 
-const login = async (req, res) => {
+const loginPage = (req, res) => {
     try {
+        res.render('login');
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
+const login = async (req, res, next) => {
+    try {console.log(req.body);
+        checkInputErrors(req);
+
         const { email, password } = req.body;
-        const user = await User.findOne({ userType: 'admin', $or: [ { email }, { email: mobile } ] });
+        const user = await User.findOne({ $or: [{ email }, { mobile: email }], userType: 'admin' });
 
         if(!user) {
             throw new Error('Invalid email or mobile number');
@@ -15,14 +26,25 @@ const login = async (req, res) => {
             throw new Error('Invalid password');
         });
 
+        res.redirect('dashboard');
+    }
+    catch(err) {
+        err.page = 'login';
+        next(err);
+    }
+}
+
+const dashboard = (req, res) => {
+    try {
         res.render('dashboard');
     }
     catch(err) {
         console.log(err);
-        res.status(400).render('login', { errorMsg: err.name });
     }
 }
 
 module.exports = {
-    login
+    login,
+    dashboard,
+    loginPage
 }

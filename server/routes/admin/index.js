@@ -1,8 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../../controllers/admin/auth');
-const { login } = authController;
+const handleError = require('../../middlewares/admin/error');
+const authRoute = require('./auth');
 
-router.post('/login', login);
+// add middleware to parse urlencoded input data for admin router
+router.use(express.urlencoded({ extended: false }));
+
+// routes
+router.use('/', authRoute);
+
+// error handler
+router.use((err, req, res, next) => {
+    handleError(err, res);
+});
 
 module.exports = router;

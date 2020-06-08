@@ -48,7 +48,13 @@ class Utils {
             const errors = validationResult(req);
 
             if (!errors.isEmpty()) {
-                throw new ErrorHandler(400, errors.array());
+                const inputErrors = {};
+
+                errors.array().forEach(error => {
+                    inputErrors[error.param] = error.msg;
+                });
+
+                throw new ErrorHandler(400, 'Input params validations failed', inputErrors);
             }
         } catch (err) {
             throw err;
