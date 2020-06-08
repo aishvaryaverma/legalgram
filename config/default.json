@@ -1,6 +1,31 @@
 {
+    "server": {
+        "hostname": "0.0.0.0",
+        "port": 1337
+    },
+    "otp_expires_in": 1,
+    "reset_password_token_expires_in": 1,
     "mongoURI": "mongodb+srv://vsonu9020:vsonu9020@legalgram-xe4nm.mongodb.net/legalgram?retryWrites=true&w=majority",
-    "jwtSecret": "mySecretToken",
-    "githubClientId": "6f91879734df01d87343",
-    "githubSecret": "d0370493e6aea845e59ba3c954606cb3e5befe08"
+    "sms": {
+        "api": "https://api.bizzsms.in/api/v2/SendSMS",
+        "params": {
+            "SenderId":"BIZZPA",
+            "Is_Unicode":"false",
+            "Is_Flash":"false",
+            "Message":"HELLOAPI",
+            "MobileNumbers":"919650130572",
+            "ApiKey": "DeP2ldNrI9Xesj1IlRDw2B6T8La7GaLlGxBj5lyFnXU",
+            "ClientId": "f1d90f68-789d-4b21-a0fc-25142135bc10"
+        }
+    },
+    "jwt": {
+        "secret": "mySecretToken",
+        "expiresIn": 3
+    },
+    "smtp": {
+        "host": "smtp.gmail.com",
+        "username": "aashuclavax@gmail.com",
+        "password": "Verma@123",
+        "port": "587"
+    }
 }
