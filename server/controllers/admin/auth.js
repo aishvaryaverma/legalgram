@@ -1,5 +1,5 @@
 const User = require('../../models/user');
-const { comparePassword, checkInputErrors } = require('../../shared/utils');
+const { comparePassword, checkInputErrors, getJWTToken } = require('../../shared/utils');
 
 const loginPage = (req, res) => {
     try {
@@ -26,7 +26,17 @@ const login = async (req, res, next) => {
             throw new Error('Invalid password');
         });
 
-        res.redirect('dashboard');
+        // create jwt token and save it in a cookie
+        const payload = {
+            user: {
+                id: user.id
+            }
+        };
+        const token = await  getJWTToken(payload);
+
+        res.status(200)
+        .cookie('token', token, { maxAge: 86400 })
+        .redirect('dashboard');
     }
     catch(err) {
         err.page = 'login';
@@ -34,9 +44,12 @@ const login = async (req, res, next) => {
     }
 }
 
-const dashboard = (req, res) => {
+const dashboard = async (req, res) => {
     try {
-        res.render('dashboard');
+        const user = await User.findById(req.user.id);
+        res.render('dashboard', {
+            name: user.name
+        });
     }
     catch(err) {
         console.log(err);

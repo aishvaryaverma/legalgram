@@ -11,13 +11,14 @@ const handleError = (err, res) => {
         page = 'error';
     }
 
-    console.log(err);
+    console.log(res.req.body);
     // render the page with errors
     res.status(statusCode).render(page, {
         status: 'error',
         statusCode,
-        message,
-        inputErrors
+        errorMsg: message,
+        inputErrors,
+        inputParams: res.req.body
     });
 }
 
