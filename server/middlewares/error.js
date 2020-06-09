@@ -1,5 +1,5 @@
 const handleError = (err, res) => {
-    let { statusCode, message } = err;
+    let { statusCode, message, inputErrors } = err;
 
     // when recieving a generic error make sure error code is not empty
     if (!statusCode) {
@@ -10,7 +10,7 @@ const handleError = (err, res) => {
         status: 'error',
         statusCode,
         message,
-        statck: err.stack
+        inputErrors
     });
 }
 
