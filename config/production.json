@@ -1,3 +1,3 @@
 {
-	"mongodburi": ""
+	"mongoURI": "mongodb+srv://vsonu9020:vsonu9020@legalgram-xe4nm.mongodb.net/legalgram-prod?retryWrites=true&w=majority"
 }

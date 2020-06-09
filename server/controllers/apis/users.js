@@ -65,7 +65,7 @@ const login = async (req, res, next) => {
         const user = await User.findOne({ $or: [{mobile: email}, {email}], userType: "user" });
 
         if(!user) {
-            throw new ErrorHandler(400, 'Invalid credentials');
+            throw new ErrorHandler(400, 'Email id or mobile is not registered');
         }
 
         const status =  await comparePassword(password, user.password).catch((err) => {
