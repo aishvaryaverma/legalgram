@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require('express-validator');
 const authenticate = require('../../../middlewares/admin/auth');
 const authController = require('../../../controllers/admin/auth');
-const { login, loginPage, dashboard } = authController;
+const { login, loginPage, dashboard, users } = authController;
 
 const validate = (method) => {
     switch (method) {
@@ -21,5 +21,6 @@ const validate = (method) => {
 router.get('/', loginPage);
 router.post('/login', validate('login'), login);
 router.get('/dashboard', authenticate, dashboard);
+router.get('/users', authenticate, users)
 
 module.exports = router;

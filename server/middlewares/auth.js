@@ -2,13 +2,13 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const { ErrorHandler } = require("../shared/error");
 
-module.exports = function (req, res, next) {
+module.exports = function (req, res, next) { console.log(config.get('mongoURI'));
     // Get Token from header
     const token = req.header("Authorization");
 
     // check if no Token
     if (!token) {
-        return res.status(401).json({ msg: "Authorization denied" });
+        throw new ErrorHandler(401, "Access denied");
     }
 
     // Verify Token
@@ -18,7 +18,6 @@ module.exports = function (req, res, next) {
 
         next();
     } catch (err) {
-        console.error(err);
-        throw new ErrorHandler(401, "Authorization denied");
+        next(err);
     }
 };

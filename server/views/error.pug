@@ -1,30 +1,7 @@
-doctype html
-//
-  Template Name: Midone - HTML Admin Dashboard Template
-  Author: Left4code
-  Website: http://www.left4code.com/
-  Contact: muhammadrizki@left4code.com
-  Purchase: https://themeforest.net/user/left4code/portfolio
-  Renew Support: https://themeforest.net/user/left4code/portfolio
-  License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
-html(lang="en")
-  // BEGIN: Head
-  head
-    meta(charset="utf-8")
-    link(href="/images/logo.svg" rel="shortcut icon")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.")
-    meta(name="keywords" content="admin template, Midone admin template, dashboard template, flat admin template, responsive admin template, web app")
-    meta(name="author" content="LEFT4CODE")
-    title Error Page - Midone - Tailwind HTML Admin Template
-    // BEGIN: CSS Assets
-    link(rel="stylesheet" href="/css/app.css")
-    // END: CSS Assets
-  // END: Head
-  body.app
-    .container
-      // BEGIN: Error Page
-      .error-page.flex.flex-col.items-center.justify-center.h-screen.text-center(class="lg:flex-row lg:text-left")
+extends base;
+
+block content
+    .error-page.flex.flex-col.items-center.justify-center.h-screen.text-center(class="lg:flex-row lg:text-left")
         .-intro-x(class="lg:mr-20")
           img.h-48(alt="Midone Tailwind HTML Admin Template" class="lg:h-auto" src="/images/error-illustration.svg")
         .text-white.mt-10(class="lg:mt-0")
@@ -32,9 +9,3 @@ html(lang="en")
           .intro-x.text-xl.font-medium(class="lg:text-3xl") OOps error occurred
           .intro-x.text-lg.mt-3 #{error}
           button.intro-x.button.button--lg.border.border-white.mt-10 Back to Home
-      // END: Error Page
-    // BEGIN: JS Assets
-    script(src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js")
-    script(src="https://maps.googleapis.com/maps/api/js?key=[")
-    script(src="/js/app.js")
-    // END: JS Assets
