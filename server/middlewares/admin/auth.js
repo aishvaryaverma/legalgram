@@ -22,6 +22,6 @@ module.exports = function (req, res, next) {
 
         next();
     } catch (err) {
-        clearCookieAndRedirect(res)
+        //clearCookieAndRedirect(res)
     }
 };
