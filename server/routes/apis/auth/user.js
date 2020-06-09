@@ -8,7 +8,7 @@ const validate = (method) => {
     switch (method) {
         case "login": {
             return [
-                check("username", "Please enter name or email").notEmpty(),
+                check("email", "Please enter name or email").notEmpty(),
                 check("password", "Please enter password").notEmpty(),
             ];
         }

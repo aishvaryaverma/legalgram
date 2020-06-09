@@ -61,8 +61,8 @@ const login = async (req, res, next) => {
         
         checkInputErrors(req);
 
-        const { username, password } = req.body;
-        const user = await User.findOne({ $or: [{mobile: username}, {email: username}] });
+        const { email, password } = req.body;
+        const user = await User.findOne({ $or: [{mobile: email}, {email}], userType: "user" });
 
         if(!user) {
             throw new ErrorHandler(400, 'Invalid credentials');
