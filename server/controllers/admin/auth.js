@@ -35,7 +35,7 @@ const login = async (req, res, next) => {
         const token = await  getJWTToken(payload);
 
         res.status(200)
-        .cookie('token', token, { maxAge: 86400 })
+        .cookie('token', token, { expiry: new Date() + 10000 })
         .redirect('dashboard');
     }
     catch(err) {
@@ -56,8 +56,20 @@ const dashboard = async (req, res) => {
     }
 }
 
+const users = async (req, res, next) => {
+    try {
+        const users = await User.find({ userType: 'user' });
+
+        res.render('users', { users });
+    }
+    catch(err) {
+        next(err);
+    }
+}
+
 module.exports = {
     login,
     dashboard,
-    loginPage
+    loginPage,
+    users
 }
