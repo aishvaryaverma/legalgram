@@ -11,25 +11,6 @@ block content
             th.border-b-2.text-center.whitespace-no-wrap STATUS
             th.border-b-2.text-center.whitespace-no-wrap ACTIONS
         tbody
-                each user in users
-                    tr
-                        td.border-b
-                            .font-medium.whitespace-no-wrap #{user.name}
-                        td.border-b
-                            .font-medium.whitespace-no-wrap #{user.email}
-                        td.border-b
-                            .font-medium.whitespace-no-wrap #{user.mobile}
-                        td.border-b.w-5
-                            .flex.items-center.text-theme-6(class="sm:justify-center")
-                                i.w-4.h-4.mr-2(data-feather="check-square")
-                                |  Inactive
-                        td.border-5
-                            .flex.items-center(class="sm:justify-center")
-                                a.flex.items-center.mr-3(href="")
-                                    i.w-4.h-4.mr-1(data-feather="check-square")
-                                    |  Edit
-                                a.flex.items-center.text-theme-6(href="")
-                                    i.w-4.h-4.mr-1(data-feather="trash-2")
-                                    |  Delete
 
-                        
+block pageScript
+    script(src="/js/users.js")   
