@@ -1,135 +1,13 @@
+mixin currentPage(path)
+  a.breadcrumb--active(href="") = path
+
 .top-bar
   // BEGIN: Breadcrumb
   .-intro-x.breadcrumb.mr-auto.hidden(class="sm:flex")
     a(href="") Application
     i.breadcrumb__icon(data-feather="chevron-right")
-    a.breadcrumb--active(href="") Dashboard
+    <a href="" class="breadcrumb--active">Dashboard</a>
   // END: Breadcrumb
-  // BEGIN: Search
-  .intro-x.relative.mr-3(class="sm:mr-6")
-    .search.hidden(class="sm:block")
-      input.search__input.input.placeholder-theme-13(type="text" placeholder="Search...")
-      i.search__icon(data-feather="search")
-    a.notification(class="sm:hidden" href="")
-      i.notification__icon(data-feather="search")
-    .search-result
-      .search-result__content
-        .search-result__content__title Pages
-        .mb-5
-          a.flex.items-center(href="")
-            .w-8.h-8.bg-theme-18.text-theme-9.flex.items-center.justify-center.rounded-full
-              i.w-4.h-4(data-feather="inbox")
-            .ml-3 Mail Settings
-          a.flex.items-center.mt-2(href="")
-            .w-8.h-8.bg-theme-17.text-theme-11.flex.items-center.justify-center.rounded-full
-              i.w-4.h-4(data-feather="users")
-            .ml-3 Users &amp; Permissions
-          a.flex.items-center.mt-2(href="")
-            .w-8.h-8.bg-theme-14.text-theme-10.flex.items-center.justify-center.rounded-full
-              i.w-4.h-4(data-feather="credit-card")
-            .ml-3 Transactions Report
-        .search-result__content__title Users
-        .mb-5
-          a.flex.items-center.mt-2(href="")
-            .w-8.h-8.image-fit
-              img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-15.jpg")
-            .ml-3 Robert De Niro
-            .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right robertdeniro@left4code.com
-          a.flex.items-center.mt-2(href="")
-            .w-8.h-8.image-fit
-              img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-5.jpg")
-            .ml-3 Johnny Depp
-            .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right johnnydepp@left4code.com
-          a.flex.items-center.mt-2(href="")
-            .w-8.h-8.image-fit
-              img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-12.jpg")
-            .ml-3 Johnny Depp
-            .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right johnnydepp@left4code.com
-          a.flex.items-center.mt-2(href="")
-            .w-8.h-8.image-fit
-              img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-12.jpg")
-            .ml-3 Kevin Spacey
-            .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right kevinspacey@left4code.com
-        .search-result__content__title Products
-        a.flex.items-center.mt-2(href="")
-          .w-8.h-8.image-fit
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/preview-1.jpg")
-          .ml-3 Oppo Find X2 Pro
-          .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right Smartphone &amp; Tablet
-        a.flex.items-center.mt-2(href="")
-          .w-8.h-8.image-fit
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/preview-1.jpg")
-          .ml-3 Nikon Z6
-          .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right Photography
-        a.flex.items-center.mt-2(href="")
-          .w-8.h-8.image-fit
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/preview-2.jpg")
-          .ml-3 Oppo Find X2 Pro
-          .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right Smartphone &amp; Tablet
-        a.flex.items-center.mt-2(href="")
-          .w-8.h-8.image-fit
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/preview-1.jpg")
-          .ml-3 Nikon Z6
-          .ml-auto.w-48.truncate.text-gray-600.text-xs.text-right Photography
-  // END: Search
-  // BEGIN: Notifications
-  .intro-x.dropdown.relative.mr-auto(class="sm:mr-6")
-    .dropdown-toggle.notification.notification--bullet.cursor-pointer
-      i.notification__icon(data-feather="bell")
-    .notification-content.dropdown-box.mt-8.absolute.top-0.left-0.z-20.-ml-10(class="sm:left-auto sm:right-0 sm:ml-0")
-      .notification-content__box.dropdown-box__content.box
-        .notification-content__title Notifications
-        .cursor-pointer.relative.flex.items-center
-          .w-12.h-12.flex-none.image-fit.mr-1
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-15.jpg")
-            .w-3.h-3.bg-theme-9.absolute.right-0.bottom-0.rounded-full.border-2.border-white
-          .ml-2.overflow-hidden
-            .flex.items-center
-              a.font-medium.truncate.mr-5(href="javascript:;") Robert De Niro
-              .text-xs.text-gray-500.ml-auto.whitespace-no-wrap 01:10 PM
-            .w-full.truncate.text-gray-600
-              | It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem
-        .cursor-pointer.relative.flex.items-center.mt-5
-          .w-12.h-12.flex-none.image-fit.mr-1
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-5.jpg")
-            .w-3.h-3.bg-theme-9.absolute.right-0.bottom-0.rounded-full.border-2.border-white
-          .ml-2.overflow-hidden
-            .flex.items-center
-              a.font-medium.truncate.mr-5(href="javascript:;") Johnny Depp
-              .text-xs.text-gray-500.ml-auto.whitespace-no-wrap 06:05 AM
-            .w-full.truncate.text-gray-600
-              | It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem
-        .cursor-pointer.relative.flex.items-center.mt-5
-          .w-12.h-12.flex-none.image-fit.mr-1
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-12.jpg")
-            .w-3.h-3.bg-theme-9.absolute.right-0.bottom-0.rounded-full.border-2.border-white
-          .ml-2.overflow-hidden
-            .flex.items-center
-              a.font-medium.truncate.mr-5(href="javascript:;") Johnny Depp
-              .text-xs.text-gray-500.ml-auto.whitespace-no-wrap 01:10 PM
-            .w-full.truncate.text-gray-600
-              | Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20
-        .cursor-pointer.relative.flex.items-center.mt-5
-          .w-12.h-12.flex-none.image-fit.mr-1
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-12.jpg")
-            .w-3.h-3.bg-theme-9.absolute.right-0.bottom-0.rounded-full.border-2.border-white
-          .ml-2.overflow-hidden
-            .flex.items-center
-              a.font-medium.truncate.mr-5(href="javascript:;") Kevin Spacey
-              .text-xs.text-gray-500.ml-auto.whitespace-no-wrap 06:05 AM
-            .w-full.truncate.text-gray-600
-              | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500
-        .cursor-pointer.relative.flex.items-center.mt-5
-          .w-12.h-12.flex-none.image-fit.mr-1
-            img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-14.jpg")
-            .w-3.h-3.bg-theme-9.absolute.right-0.bottom-0.rounded-full.border-2.border-white
-          .ml-2.overflow-hidden
-            .flex.items-center
-              a.font-medium.truncate.mr-5(href="javascript:;") Brad Pitt
-              .text-xs.text-gray-500.ml-auto.whitespace-no-wrap 06:05 AM
-            .w-full.truncate.text-gray-600
-              | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500
-  // END: Notifications
   // BEGIN: Account Menu
   .intro-x.dropdown.w-8.h-8.relative
     .dropdown-toggle.w-8.h-8.rounded-full.overflow-hidden.shadow-lg.image-fit.zoom-in
@@ -137,8 +15,7 @@
     .dropdown-box.mt-10.absolute.w-56.top-0.right-0.z-20
       .dropdown-box__content.box.bg-theme-38.text-white
         .p-4.border-b.border-theme-40
-          .font-medium Robert De Niro
-          .text-xs.text-theme-41 DevOps Engineer
+          .font-medium #{user.name}
         .p-2
           a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.rounded-md(href="" class="hover:bg-theme-1")
             i.w-4.h-4.mr-2(data-feather="user")
@@ -153,7 +30,7 @@
             i.w-4.h-4.mr-2(data-feather="help-circle")
             |  Help
         .p-2.border-t.border-theme-40
-          a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.rounded-md(href="" class="hover:bg-theme-1")
+          a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.rounded-md(href= baseUrl+'/logout' class="hover:bg-theme-1")
             i.w-4.h-4.mr-2(data-feather="toggle-right")
             |  Logout
   // END: Account Menu
