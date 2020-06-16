@@ -40,7 +40,7 @@ const resetToken = async (req, res, next) => {
             throw new ErrorHandler(400, `no user exist with this email/mobile`);
         }
 
-        // send password reset token to user mobile.
+        // very mobile otp
         await userToken.verify(user.id, otp, "passwordReset");
 
         // send user password reset token in response

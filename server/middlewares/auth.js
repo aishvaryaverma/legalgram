@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const { ErrorHandler } = require("../shared/error");
 
-module.exports = function (req, res, next) { console.log(config.get('mongoURI'));
+module.exports = function (req, res, next) {
     // Get Token from header
     const token = req.header("Authorization");
 
