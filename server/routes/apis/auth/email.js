@@ -13,7 +13,8 @@ const validate = (method) => {
     }
 };
 
-router.post("/verify", validate("verify"), verify);
-router.get("/confirm/:userId/:token", confirm);
+router
+    .post("/verify", validate("verify"), verify)
+    .get("/confirm/:userId/:token", confirm);
 
 module.exports = router;

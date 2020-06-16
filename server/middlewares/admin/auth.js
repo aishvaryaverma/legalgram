@@ -24,9 +24,6 @@ module.exports = function (req, res, next) {
 
         // set up request local variables to be accessed in pug later on
         res.locals.user = user;
-        res.locals.path = req.path;
-        const { hostname, port} = config.get('server');
-        res.locals.baseUrl = `http://${hostname}:${port}/admin`
 
         next();
     } catch (err) {
