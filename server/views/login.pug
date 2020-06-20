@@ -1,73 +1,45 @@
-doctype html
-//
-  Template Name: Midone - HTML Admin Dashboard Template
-  Author: Left4code
-  Website: http://www.left4code.com/
-  Contact: muhammadrizki@left4code.com
-  Purchase: https://themeforest.net/user/left4code/portfolio
-  Renew Support: https://themeforest.net/user/left4code/portfolio
-  License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
-html(lang="en")
-  // BEGIN: Head
-  head
-    meta(charset="utf-8")
-    link(href="/images/logo.svg" rel="shortcut icon")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.")
-    meta(name="keywords" content="admin template, Midone admin template, dashboard template, flat admin template, responsive admin template, web app")
-    meta(name="author" content="LEFT4CODE")
-    title Login - Midone - Tailwind HTML Admin Template
-    // BEGIN: CSS Assets
-    link(rel="stylesheet" href="/css/app.css")
-    // END: CSS Assets
-  // END: Head
+extend base
+
+block body
   body.login
     .container(class="sm:px-10")
       .block.grid-cols-2.gap-4(class="xl:grid")
-        // BEGIN: Login Info
         .hidden.flex-col.min-h-screen(class="xl:flex")
           a.-intro-x.flex.items-center.pt-5(href="")
-            img.w-6(alt="Midone Tailwind HTML Admin Template" src="/images/logo.svg")
+            img.w-6(alt="Legalgram" src="/images/logo.svg")
             span.text-white.text-lg.ml-3
-              | Mid
-              span.font-medium One
+              | Legalgram
           .my-auto
-            img.-intro-x.-mt-16(alt="Midone Tailwind HTML Admin Template" class="w-1/2" src="/images/illustration.svg")
+            img.-intro-x.-mt-16(alt="Legalgram" class="w-1/2" src="/images/illustration.svg")
             .-intro-x.text-white.font-medium.text-4xl.leading-tight.mt-10
               | A few more clicks to 
               br
               | sign in to your account.
-            .-intro-x.mt-5.text-lg.text-white Manage all your e-commerce accounts in one place
-        // END: Login Info
-        // BEGIN: Login Form
-        form(method='POST' action='http://localhost:1337/admin/login' encType='application/json')
-          span(style= {color: 'red'}) #{errorMsg}
+            .-intro-x.mt-5.text-lg.text-white Legalgram tag line
+        form(method='POST' action='http://localhost:1337/admin/login')
           .h-screen.flex.py-5.my-10(class="xl:h-auto xl:py-0 xl:my-0")
           .my-auto.mx-auto.bg-white.px-5.py-8.rounded-md.shadow-md.w-full(class="xl:ml-20 xl:bg-transparent sm:px-8 xl:p-0 xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto")
             h2.intro-x.font-bold.text-2xl.text-center(class="xl:text-3xl xl:text-left")
               | Sign In 
+            p.error  #{errorMsg}
             .intro-x.mt-2.text-gray-500.text-center(class="xl:hidden")
-              | A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place
+              | Legalgram tag line
             .intro-x.mt-8
               input.intro-x.login__input.input.input--lg.border.border-gray-300.block(type="text" placeholder="Email" name="email" value=inputParams && inputParams.email)
-              span(style = {color: 'red'})  #{inputErrors && inputErrors.email}
+              .text-theme-6.mt-2 #{inputErrors && inputErrors.email}
               input.intro-x.login__input.input.input--lg.border.border-gray-300.block.mt-4(type="password" placeholder="Password" name="password" value=inputParams && inputParams.password)
-              span(style = {color: 'red'})  #{inputErrors && inputErrors.password}
+              .text-theme-6.mt-2 #{inputErrors && inputErrors.password}
             .intro-x.flex.text-gray-700.text-xs.mt-4(class="sm:text-sm")
               .flex.items-center.mr-auto
                 input#remember-me.input.border.mr-2(type="checkbox")
                 label.cursor-pointer.select-none(for="remember-me") Remember me
-              a(href="") Forgot Password?
+              a(href= baseUrl+'/password/recover') Forgot Password?
             .intro-x.mt-5.text-center(class="xl:mt-8 xl:text-left")
               button.button.button--lg.w-full.text-white.bg-theme-1(class="xl:w-32 xl:mr-3") Login
-              button.button.button--lg.w-full.text-gray-700.border.border-gray-300.mt-3(class="xl:w-32 xl:mt-0") Sign up
             .intro-x.mt-10.text-gray-700.text-center(class="xl:mt-24 xl:text-left")
               | By signin up, you agree to our 
               br
               a.text-theme-1(href="") Terms and Conditions
               |  &amp; 
               a.text-theme-1(href="") Privacy Policy
-        // END: Login Form
-    // BEGIN: JS Assets
     script(src="/js/app.js")
-    // END: JS Assets

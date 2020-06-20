@@ -67,6 +67,9 @@ const login = async (req, res, next) => {
         if(!user) {
             throw new ErrorHandler(400, 'Email id or mobile is not registered');
         }
+        else if(!user.isActive) {
+            throw new ErrorHandler(400, 'Account is not active');
+        }
 
         const status =  await comparePassword(password, user.password).catch((err) => {
             throw new ErrorHandler(400, err);

@@ -1,0 +1,29 @@
+extend ../base
+
+block content
+    .intro-y.flex.items-center.mt-8
+        h2.text-lg.font-medium.mr-auto
+            | Edit User details
+    .grid.grid-cols-12.gap-6.mt-5
+        .intro-y.col-span-12(class="lg:col-span-6")
+            .intro-y.box
+                #vertical-form.p-5
+                    .preview
+                        form(action=baseUrl+path method='post')
+                            .mt-3
+                                label Set user status
+                                .flex.flex-col.mt-2(class="sm:flex-row")
+                                    .flex.items-center.text-gray-700.mr-2
+                                    input#horizontal-radio-chris-evans.input.border.mr-2(checked=user.isActive===true  type="radio" name="status" value="true")
+                                    label.cursor-pointer.select-none(for="horizontal-radio-chris-evans") Active
+                                    .flex.items-center.text-gray-700.mr-2.mt-2(class="sm:mt-0")
+                                    input#horizontal-radio-liam-neeson.input.border.mr-2(checked=user.isActive===false type="radio" name="status" value="false")
+                                    label.cursor-pointer.select-none(for="horizontal-radio-liam-neeson") In Active
+
+                            button.button.bg-theme-1.text-white.mt-5(type="submit") Update
+                    .source-code.hidden
+                        button.copy-code.button.button--sm.border.flex.items-center.text-gray-700(data-target="#copy-vertical-form")
+                            i.w-4.h-4.mr-2(data-feather="file")
+                            |  Copy code
+                        .overflow-y-auto.h-64.mt-3
+                            pre#copy-vertical-form.source-preview.

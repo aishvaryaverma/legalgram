@@ -10,15 +10,18 @@ html(lang="en")
     meta(name="author" content="LEFT4CODE")
     title Legalgram
     link(rel="stylesheet" href="/css/app.css")
+    link(rel="stylesheet" href="/css/style.css")
 
-  body.app
-    include _mobile-menu
-    .flex
-        include _side-menu
-        .content
-            include _top-bar
-            block content
-                page content placed here
-    script(src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js")
-    script(src="https://maps.googleapis.com/maps/api/js?key=[")
-    script(src="/js/app.js")
+  block body
+    body.app
+      include _mobile-menu
+      .flex
+          include _side-menu
+          .content
+              include _top-bar
+              block content
+                  page content placed here
+      script(src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js")
+      script(src="https://maps.googleapis.com/maps/api/js?key=[")
+      script(src="/js/app.js")
+      block pageScript

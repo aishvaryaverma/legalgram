@@ -12,6 +12,8 @@ const handleError = (err, res) => {
     }
 
     console.log(err);
+    console.log(res.req.body);
+
     // render the page with errors
     res.status(statusCode).render(page, {
         status: 'error',

@@ -36,8 +36,9 @@ const validate = (method) => {
     }
 };
 
-router.post("/recover", validate("recover"), recover);
-router.post("/verify-reset-token", validate("reset-token"), resetToken);
-router.post("/reset", validate("reset"), reset);
+router
+    .post("/recover", validate("recover"), recover)
+    .post("/verify-reset-token", validate("reset-token"), resetToken)
+    .post("/reset", validate("reset"), reset);
 
 module.exports = router;
