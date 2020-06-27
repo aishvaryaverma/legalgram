@@ -2,10 +2,10 @@ const User = require('../../models/user');
 const { 
     checkInputErrors,
     encryptPassword,
-    comparePassword, 
     getJWTToken
 } = require('../../shared/utils');
 const { ErrorHandler } = require('../../shared/error');
+const user = require('../../models/user');
 
 const register = async (req, res, next) => {
     try {
@@ -13,17 +13,11 @@ const register = async (req, res, next) => {
 
         const { name, email, mobile, password } = req.body;
         
-        // Searching for user in database based on email id we got from request body
-        let u_mobile = await User.findOne({ mobile });
-        let u_email = await User.findOne({ email });
-        
         // Check if user is already registered
-        if(u_mobile || u_email) {
-            throw new ErrorHandler(400, 'User already exists');
-        }
+        await User.checkIfAlreadyExist(email, mobile);
         
         // Adding user into database using MODAL
-        user = new User({
+        let user = new User({
             name,
 			email,
 			mobile,
@@ -62,33 +56,20 @@ const login = async (req, res, next) => {
         checkInputErrors(req);
 
         const { email, password } = req.body;
-        const user = await User.findOne({ $or: [{mobile: email}, {email}], userType: "user" });
+        const user = await User.login({ email, password });
+        const payload = {
+            user: {
+                id: user.id
+            }
+        };
+        const token = await getJWTToken(payload);
+        const result = { 
+            status: 'success', 
+            message: 'User login successfully', 
+            data: { token }
+        };
 
-        if(!user) {
-            throw new ErrorHandler(400, 'Email id or mobile is not registered');
-        }
-        else if(!user.isActive) {
-            throw new ErrorHandler(400, 'Account is not active');
-        }
-
-        const status =  await comparePassword(password, user.password).catch((err) => {
-            throw new ErrorHandler(400, err);
-        })
-    
-        if(status) {
-            const payload = {
-                user: {
-                    id: user.id
-                }
-            };
-            const token = await  getJWTToken(payload);
-            const result = { 
-                status: 'success', 
-                message: 'User login successfully', 
-                data: { token }
-            };
-            return res.status(200).json({ result });
-        }
+        return res.status(200).json({ result });
     }
     catch(err) {
         console.log(err);

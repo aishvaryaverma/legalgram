@@ -11,7 +11,12 @@ nav.side-nav
           i(data-feather="home")
         .side-menu__title  Dashboard
     li
-      a.side-menu(class= path ==='/users' && 'side-menu--active' href="/admin/users")
+      a.side-menu(class= /users/.test(path) && 'side-menu--active' href="/admin/users")
         .side-menu__icon
           i(data-feather="inbox")
         .side-menu__title  Users
+    li
+      a.side-menu(class= /articles/.test(path) && 'side-menu--active' href="/admin/articles")
+        .side-menu__icon
+          i(data-feather="inbox")
+        .side-menu__title  Articles

@@ -1,14 +1,14 @@
 const { check } = require("express-validator");
 const express = require("express");
 const router = express.Router();
-const { recover, resetToken, reset } = require("../../../controllers/apis/password");
+const { recover, verifyOtp, reset } = require("../../../controllers/apis/password");
 
 const validate = (method) => {
     switch (method) {
         case "recover": {
             return [check("email", "Please enter email or mobile").notEmpty()];
         }
-        case "reset-token": {
+        case "verify-otp": {
             return [
                 check("email", "Please enter email or mobile").notEmpty(),
                 check("otp", "Please enter otp").notEmpty(),
@@ -38,7 +38,7 @@ const validate = (method) => {
 
 router
     .post("/recover", validate("recover"), recover)
-    .post("/verify-reset-token", validate("reset-token"), resetToken)
+    .post("/verify-otp", validate("verify-otp"), verifyOtp)
     .post("/reset", validate("reset"), reset);
 
 module.exports = router;
