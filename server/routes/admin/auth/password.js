@@ -1,24 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
-const authController = require('../../../controllers/admin');
-const authenticate = require('../../../middlewares/admin/auth');
-const  { 
+const passwordController = require('../../../controllers/admin/forgot-password');
+const  {
     recoverPassword,
     resetPassword,
-    verifyOtp,
-    login,
-    logout
-} = authController;
+    verifyOtp
+} = passwordController;
 
 const validate = (method) => {
     switch (method) {
-        case "login": {
-            return [
-                check("email", "Please enter email or mobile").notEmpty(),
-                check("password", "Please enter password").notEmpty()
-            ];
-        }
         case "recoverPassword": {
             return [
                 check("email", "Please enter email or mobile").notEmpty()
@@ -50,19 +41,12 @@ const validate = (method) => {
     }
 };
 
-// login routes
 router
-    .get('/', login)
-    .post('/login', validate('login'), login)
-    .get('/logout', authenticate, logout)
-
-// forgot password routes
-router
-    .get('/password/recover', recoverPassword)
-    .post('/password/recover', validate('recoverPassword'), recoverPassword)
-    .get('/password/verify-otp/:email', verifyOtp)
-    .post('/password/verify-otp', validate('verifyOtp'), verifyOtp)
-    .get('/password/reset/:token', resetPassword)
-    .post('/password/reset', validate('resetPassword'), resetPassword)
+    .get('/recover', recoverPassword)
+    .post('/recover', validate('recoverPassword'), recoverPassword)
+    .get('/verify-otp/:email', verifyOtp)
+    .post('/verify-otp', validate('verifyOtp'), verifyOtp)
+    .get('/reset/:token', resetPassword)
+    .post('/reset', validate('resetPassword'), resetPassword)
 
 module.exports = router;

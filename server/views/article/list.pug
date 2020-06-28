@@ -1,0 +1,85 @@
+extends ../base
+
+block content
+    .intro-y.flex.flex-col.items-center.mt-8(class="sm:flex-row")
+        h2.text-lg.font-medium.mr-auto
+            | Articles
+        .w-full.flex.mt-4(class="sm:w-auto sm:mt-0")
+            a.button.text-white.bg-theme-1.shadow-md.mr-2(href=baseUrl+'/articles/new') Add New Post
+            
+    .intro-y.grid.grid-cols-12.gap-6.mt-5
+        each article in articles
+            // BEGIN: Blog Layout
+            .intro-y.col-span-12.box(class="md:col-span-6 xl:col-span-4")
+                .flex.items-center.border-b.border-gray-200.px-5.py-4
+                    .w-10.h-10.flex-none.image-fit
+                        img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-10.jpg")
+                    .ml-3.mr-auto
+                        a.font-medium(href="") Johnny Depp
+                        .flex.text-gray-600.truncate.text-xs.mt-1
+                            a.text-theme-1.inline-block.truncate(href="") #{article.category}
+                            span.mx-1 •
+                            |  30 minutes ago
+                    .dropdown.relative.ml-3
+                        a.dropdown-toggle.w-5.h-5.text-gray-500(href="javascript:;")
+                            i.w-4.h-4(data-feather="more-vertical")
+                        .dropdown-box.mt-6.absolute.w-40.top-0.right-0.z-20
+                            .dropdown-box__content.box.p-2
+                                a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.bg-white.rounded-md(href=baseUrl+'/articles/'+article.id class="hover:bg-gray-200")
+                                    i.w-4.h-4.mr-2(data-feather="edit-2")
+                                    |  Edit Post
+                                a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.bg-white.rounded-md(href="" class="hover:bg-gray-200")
+                                    i.w-4.h-4.mr-2(data-feather="trash")
+                                    |  Delete Post
+                .p-5
+                    .h-40.image-fit(class="xxl:h-56")
+                        img.rounded-md(alt="Midone Tailwind HTML Admin Template" src=article.imagePath ? "/uploads/"+article.imagePath : "/images/preview-11.jpg")
+                    a.block.font-medium.text-base.mt-5(href="") #{article.title}
+                    .text-gray-700.mt-2
+                        | !{article.desc}
+                
+                .px-5.pt-3.pb-5.border-t.border-gray-200
+                    .w-full.flex.text-gray-600.text-xs(class="sm:text-sm")
+                        .mr-2
+                            | Comments: 
+                            span.font-medium 39
+                        .mr-2
+                            | Views: 
+                            span.font-medium 68k
+                        .ml-auto
+                            | Likes: 
+                            span.font-medium #{article.likes}
+                      
+            // END: Blog Layout
+
+        // BEGIN: Pagination
+        .intro-y.col-span-12.flex.flex-wrap.items-center(class="sm:flex-row sm:flex-no-wrap")
+            ul.pagination
+                li
+                    a.pagination__link(href="")
+                        i.w-4.h-4(data-feather="chevrons-left")
+                li
+                    a.pagination__link(href="")
+                        i.w-4.h-4(data-feather="chevron-left")
+                li
+                    a.pagination__link(href="") ...
+                li
+                    a.pagination__link(href="") 1
+                li
+                    a.pagination__link.pagination__link--active(href="") 2
+                li
+                    a.pagination__link(href="") 3
+                li
+                    a.pagination__link(href="") ...
+                li
+                    a.pagination__link(href="")
+                        i.w-4.h-4(data-feather="chevron-right")
+                li
+                    a.pagination__link(href="")
+                        i.w-4.h-4(data-feather="chevrons-right")
+            select.w-20.input.box.mt-3(class="sm:mt-0")
+                option 10
+                option 25
+                option 35
+                option 50
+        // END: Pagination

@@ -1,0 +1,40 @@
+extend ../base
+
+block content
+
+    .intro-y.flex.items-center.mt-8
+        h2.text-lg.font-medium.mr-auto
+            | Add Article
+    .grid.grid-cols-12.gap-6.mt-5
+        .intro-y.col-span-12(class="lg:col-span-12")
+            form(action=baseUrl+'/articles/new' method='POST' enctype='multipart/form-data')
+                .intro-y.box.p-5
+                    div
+                        label Title
+                        input.input.w-full.border.mt-2(type="text" placeholder="Enter title" name='title')
+                    .mt-3
+                        label Description
+                        .mt-2
+                            textarea.summernote( name="desc")
+                    .mt-3
+                        label Category
+                        .mt-2
+                            select.select2.w-full(data-placeholder="Select category" name='category')
+                                each category in ["Sport & Outdoor", "PC & Laptop", "Smartphone & Tablet", "Photography"]
+                                    option(value=category) #{category}
+                    
+                    .mt-3
+                        label Active Status
+                        .mt-2
+                            input.input.input--switch.border(type="checkbox" name='activeStatus' value='true')
+    
+                    .mt-3
+                        label Upload image
+                        .mt-2
+                            input.input.border(type="file" name='avatar')
+                            
+
+                    .text-right.mt-5
+                        a.button.w-24.border.text-gray-700.mr-1(href=baseUrl+'/articles') Cancel
+                        button.button.w-24.bg-theme-1.text-white(type="submit") Save
+                // END: Form Layout
