@@ -2,8 +2,23 @@ const Article = require('../../models/article');
 
 const list = async (req, res, next) => {
     try {
-        const articles = await Article.find({});
-        res.status(200).render('article/list', { articles });
+        let { page, limit } = req.query;
+        page = parseInt(page);
+        limit = parseInt(limit);
+
+        if (!page || page < 0) {
+            page = 1;
+        }
+
+        if (!limit || limit < 0) {
+            limit = 10;
+        }
+        const offset = (page - 1) * limit;
+        const totalArticles = await Article.count();
+        const totalPages = Math.ceil(totalArticles / limit);
+        const articles = await Article.find(null, null, { skip: offset, limit }).populate('author'); console.log({ articles, totalPages, limit })
+        
+        res.status(200).render('article/list', { articles, totalPages, page, limit });
     }
     catch(err) {
         next(err);
