@@ -5,7 +5,7 @@ block content
         h2.text-lg.font-medium.mr-auto
             | Articles
         .w-full.flex.mt-4(class="sm:w-auto sm:mt-0")
-            a.button.text-white.bg-theme-1.shadow-md.mr-2(href=baseUrl+'/articles/new') Add New Post
+            a.button.text-white.bg-theme-1.shadow-md.mr-2(href=baseUrl+'/articles/new') Add New Article
             
     .intro-y.grid.grid-cols-12.gap-6.mt-5
         each article in articles
@@ -15,11 +15,11 @@ block content
                     .w-10.h-10.flex-none.image-fit
                         img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/images/profile-10.jpg")
                     .ml-3.mr-auto
-                        a.font-medium(href="") Johnny Depp
+                        a.font-medium(href="") #{article.author.name}
                         .flex.text-gray-600.truncate.text-xs.mt-1
                             a.text-theme-1.inline-block.truncate(href="") #{article.category}
                             span.mx-1 •
-                            |  30 minutes ago
+                            |  #{article.publishedOnStr}
                     .dropdown.relative.ml-3
                         a.dropdown-toggle.w-5.h-5.text-gray-500(href="javascript:;")
                             i.w-4.h-4(data-feather="more-vertical")
@@ -27,10 +27,10 @@ block content
                             .dropdown-box__content.box.p-2
                                 a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.bg-white.rounded-md(href=baseUrl+'/articles/'+article.id class="hover:bg-gray-200")
                                     i.w-4.h-4.mr-2(data-feather="edit-2")
-                                    |  Edit Post
+                                    |  Edit Article
                                 a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.bg-white.rounded-md(href="" class="hover:bg-gray-200")
                                     i.w-4.h-4.mr-2(data-feather="trash")
-                                    |  Delete Post
+                                    |  Delete Article
                 .p-5
                     .h-40.image-fit(class="xxl:h-56")
                         img.rounded-md(alt="Midone Tailwind HTML Admin Template" src=article.imagePath ? "/uploads/"+article.imagePath : "/images/preview-11.jpg")
@@ -53,33 +53,32 @@ block content
             // END: Blog Layout
 
         // BEGIN: Pagination
+        
         .intro-y.col-span-12.flex.flex-wrap.items-center(class="sm:flex-row sm:flex-no-wrap")
             ul.pagination
                 li
-                    a.pagination__link(href="")
+                    a.pagination__link(href=`${baseUrl}/articles?page=1&&limit=${limit}`)
                         i.w-4.h-4(data-feather="chevrons-left")
                 li
-                    a.pagination__link(href="")
+                    a.pagination__link(href= page==1 ? '#':`${baseUrl}/articles/?page=${page-1}&&limit=${limit}`)
                         i.w-4.h-4(data-feather="chevron-left")
                 li
                     a.pagination__link(href="") ...
-                li
-                    a.pagination__link(href="") 1
-                li
-                    a.pagination__link.pagination__link--active(href="") 2
-                li
-                    a.pagination__link(href="") 3
+                - var first = page <= 5 ? 1 : 1 + (page - 5);
+                - var fifth = Math.min(totalPages, first + 4);
+                while first <= fifth
+                    li
+                        a.pagination__link(href=`${baseUrl}/articles?page=${first}&&limit=${limit}` class= first===page && 'pagination__link--active') #{first}
+                    - first++
                 li
                     a.pagination__link(href="") ...
                 li
-                    a.pagination__link(href="")
+                    a.pagination__link(href= page==totalPages ? '#':`${baseUrl}/articles/?page=${page+1}&&limit=${limit}`)
                         i.w-4.h-4(data-feather="chevron-right")
                 li
-                    a.pagination__link(href="")
+                    a.pagination__link(href=`${baseUrl}/articles?page=${totalPages}&&limit=${limit}`)
                         i.w-4.h-4(data-feather="chevrons-right")
-            select.w-20.input.box.mt-3(class="sm:mt-0")
-                option 10
-                option 25
-                option 35
-                option 50
+            select.w-20.input.box.mt-3(class="sm:mt-0" onchange="location=this.value")
+                each item in [10, 25, 35, 50]
+                    option(selected= limit===item value=`${baseUrl}/articles?limit=${item}`) #{item}
         // END: Pagination
