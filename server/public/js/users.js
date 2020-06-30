@@ -1,10 +1,10 @@
 $(document).ready(() => {
     const baseUrl = "http://localhost:1337";
 
-    $.ajax(`${baseUrl}/admin/users-list`,
+    $.ajax(`${baseUrl}/admin/users/list`,
     {
         dataType: 'json',
-        success: (data, status, xhr) => { 
+        success: (data, status, xhr) => {
             let users = data.data.users;
 
             const usersList = users.map((item) => {
