@@ -8,15 +8,20 @@ module.exports = function (req, res, next) {
 
     // check if no Token
     if (!token) {
-        throw new ErrorHandler(401, "Access denied");
+        throw new ErrorHandler(401, "Access token is missing or invalid");
     }
 
     // Verify Token
     try {
-        const decoded = jwt.verify(token, config.get("jwt").secret);
-        req.user = decoded.user;
-
-        next();
+        const decoded = jwt.verify(token, config.get("jwt").secret, (err, decoded) => {
+            if(err) {
+                throw new ErrorHandler(401, err.message);
+            }
+            else {
+                req.user = decoded.user;
+                next();
+            }
+        });
     } catch (err) {
         next(err);
     }

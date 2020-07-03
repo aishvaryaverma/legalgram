@@ -11,7 +11,10 @@ const profileController = require('../../controllers/admin/profile');
 const { dashboard, logout } = profileController;
 const authenticate = require('../../middlewares/admin/auth');
 const config = require('config');
-const { route } = require('./auth/password');
+
+// parse input data
+router.use(cookieParser());
+router.use(express.urlencoded({ extended: false }));
 
 // set up some variables to be accessible everywhere and in pug templates
 router.use((req, res, next) => {

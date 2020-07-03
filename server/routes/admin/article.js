@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-var multer  = require('multer');
-var upload = multer({ dest: 'server/public/uploads' });
+const multer  = require('multer');
+const upload = multer({ dest: 'server/public/uploads' });
 const { check } = require('express-validator');
 const { create, update, list } = require('../../controllers/admin/article');
 
