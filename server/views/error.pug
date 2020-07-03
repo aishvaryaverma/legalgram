@@ -5,7 +5,7 @@ block content
         .-intro-x(class="lg:mr-20")
           img.h-48(alt="Midone Tailwind HTML Admin Template" class="lg:h-auto" src="/images/error-illustration.svg")
         .text-white.mt-10(class="lg:mt-0")
-          .intro-x.text-6xl.font-medium 404
+          .intro-x.text-6xl.font-medium #{statusCode}
           .intro-x.text-xl.font-medium(class="lg:text-3xl") OOps error occurred
-          .intro-x.text-lg.mt-3 #{error}
+          .intro-x.text-lg.mt-3 #{errorMsg}
           button.intro-x.button.button--lg.border.border-white.mt-10 Back to Home

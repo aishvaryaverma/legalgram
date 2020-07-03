@@ -1,0 +1,269 @@
+{
+	"variables": [],
+	"info": {
+		"name": "legalgram",
+		"_postman_id": "11b6bc97-70c1-f566-dd23-a855bea3b592",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "forgot-password",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:1337/api/password/recover",
+					"request": {
+						"url": "http://localhost:1337/api/users/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"pardeepr08@gmail.com\",\n\t\"password\": \"123123\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:1337/api/password/verify-otp",
+					"request": {
+						"url": "http://localhost:1337/api/password/verify-otp",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"pardeepr08@gmail.com\",\n\t\"otp\": \"044428\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:1337/api/password/reset",
+					"request": {
+						"url": "http://localhost:1337/api/password/reset",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\": \"604f0cd0d644f4e69678ac98d4d70dd1e6603315\",\n\t\"password\": \"123123\",\n\t\"confirm_password\": \"123123\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login and register",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:1337/api/users/login",
+					"request": {
+						"url": "http://localhost:1337/api/users/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"9650130572\",\n\t\"password\": \"123321\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:1337/api/users/register",
+					"request": {
+						"url": "http://localhost:1337/api/users/register",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"monu\",\n\t\"email\": \"abc@gmail.com\",\n\t\"mobile\": \"9650130545\",\n\t\"password\": \"123321\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mobile-verification",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:1337/api/mobile/send-otp",
+					"request": {
+						"url": "http://localhost:1337/api/mobile/send-otp",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVmMWYyZDdmZDQ3OTYyZTJjZWVjNzFmIn0sImlhdCI6MTU5Mzc2NDI5MywiZXhwIjoxNTk0MDIzNDkzfQ.VtV2pLyUUMLQQboF0o90VldeP4trvl6_LCrRwxGA198",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:1337/api/mobile/verify-otp",
+					"request": {
+						"url": "http://localhost:1337/api/mobile/verify-otp",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVmMWYyZDdmZDQ3OTYyZTJjZWVjNzFmIn0sImlhdCI6MTU5Mzc2NDI5MywiZXhwIjoxNTk0MDIzNDkzfQ.VtV2pLyUUMLQQboF0o90VldeP4trvl6_LCrRwxGA198",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"otp\": \"051746\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "articles",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:1337/api/articles",
+					"request": {
+						"url": "http://localhost:1337/api/articles",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVmMWYyZDdmZDQ3OTYyZTJjZWVjNzFmIn0sImlhdCI6MTU5Mzc2NDI5MywiZXhwIjoxNTk0MDIzNDkzfQ.VtV2pLyUUMLQQboF0o90VldeP4trvl6_LCrRwxGA198",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "fetch articles list\nthis api supports pagination too using two optional params in query string\ni.e. offset and limit"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:1337/api/articles",
+					"request": {
+						"url": "http://localhost:1337/api/articles",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVmMWYyZDdmZDQ3OTYyZTJjZWVjNzFmIn0sImlhdCI6MTU5Mzc2NDI5MywiZXhwIjoxNTk0MDIzNDkzfQ.VtV2pLyUUMLQQboF0o90VldeP4trvl6_LCrRwxGA198",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"title\",\n\t\"desc\": \"desc\",\n\t\"activeStatus\": \"true\",\n\t\"category\": \"PC & Laptop\"\n}"
+						},
+						"description": "creates an article"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:1337/api/articles/5eff1590f26c610e04f1c21f",
+					"request": {
+						"url": "http://localhost:1337/api/articles/5eff1590f26c610e04f1c21f",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVmMWYyZDdmZDQ3OTYyZTJjZWVjNzFmIn0sImlhdCI6MTU5Mzc2NDI5MywiZXhwIjoxNTk0MDIzNDkzfQ.VtV2pLyUUMLQQboF0o90VldeP4trvl6_LCrRwxGA198",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "fetches details of an article"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:1337/api/articles/5eff1590f26c610e04f1c21f",
+					"request": {
+						"url": "http://localhost:1337/api/articles/5eff1590f26c610e04f1c21f",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWVmMWYyZDdmZDQ3OTYyZTJjZWVjNzFmIn0sImlhdCI6MTU5Mzc2NDI5MywiZXhwIjoxNTk0MDIzNDkzfQ.VtV2pLyUUMLQQboF0o90VldeP4trvl6_LCrRwxGA198",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"desc\": \"test123\",\n\t\"title\": \"desc\",\n\t\"category\": \"PC\",\n\t\"activeStatus\": \"true\",\n\t\"imagePath\": \"0c3b4d9b84c9de37b3a7dde31dea3678\"\n}"
+						},
+						"description": "updates an article"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

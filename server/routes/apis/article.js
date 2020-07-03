@@ -1,15 +1,17 @@
 const express = require("express");
-var multer  = require('multer');
-var upload = multer({ dest: 'uploads/' });
 const router = express.Router();
-const { check } = require("express-validator");
+const { check } = require('express-validator');
 const { list, create, details, update } = require("../../controllers/apis/articles");
 
 const validate = (method) => {
     switch (method) {
-        case "verify": {
-            return [check("email", "Please enter valid email").notEmpty()];
-        }
+        case "create": {
+            return [
+                check("title", "Please enter title").notEmpty(),
+                check("desc", "Please enter desc").notEmpty(),
+                check("category", "Please enter desc").notEmpty()
+            ];
+        }                
         default:
             return null;
     }
@@ -17,7 +19,7 @@ const validate = (method) => {
 
 router
     .get('/', list)
-    .post('/', upload.single('avatar') ,create)
+    .post('/', validate('create'), create)
     .get('/:id', details)
     .put('/:id', update)
 

@@ -5,9 +5,11 @@ const recover = async (req, res, next) => {
     try {
         checkInputErrors(req);
 
-        const { email } = req.body;
-        await Password.recover(email);
-
+        let { email, userType } = req.body;
+        if (!userType) {
+            userType = 'user';
+        }
+        const token = await Password.recover(email, userType);
         res.status(200).json({
             status: "success",
             message: "otp sent successfully to registered mobile",
@@ -21,9 +23,11 @@ const verifyOtp = async (req, res, next) => {
     try {
         checkInputErrors(req);
 
-        const { email, otp } = req.body;
-
-        const token = await Password.verifyOtp(email, otp);
+        let { email, otp, userType } = req.body;
+        if (!userType) {
+            userType = 'user';
+        }
+        const token = await Password.verifyOtp(email, otp, userType);
 
         res.status(200).json({
             status: "success",

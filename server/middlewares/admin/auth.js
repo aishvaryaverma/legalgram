@@ -1,13 +1,10 @@
-const jwt = require("jsonwebtoken");
-const config = require("config");
-const { ErrorHandler } = require("../../shared/error");
+const apiClient = require('../../controllers/admin/apiClient');
 
 const clearCookieAndRedirect = (res) => {
     res.status(401).redirect('/admin');
 }
 
-
-module.exports = function (req, res, next) {
+module.exports = async function (req, res, next) {
     // read jwt token from cookie
     const { token } = req.cookies;
 
@@ -18,15 +15,16 @@ module.exports = function (req, res, next) {
 
     // Verify Token
     try {
-        const decoded = jwt.verify(token, config.get("jwt").secret);
-        const user = decoded.user;
-        req.user = user;
-
+        const result = await apiClient.get('/users/me', {
+            headers: { 'Authorization': token }
+        });
         // set up request local variables to be accessed in pug later on
-        res.locals.user = user;
+        res.locals.user = result.data.user;
 
         next();
     } catch (err) {
-        next();
+        if (err.statusCode === 401) {
+            clearCookieAndRedirect(res);
+        }
     }
 };
