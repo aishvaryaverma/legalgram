@@ -55,29 +55,85 @@ const login = async (req, res, next) => {
         
         checkInputErrors(req);
 
-        const { email, password } = req.body;
-        const user = await User.login({ email, password });
+        const { email, password, userType } = req.body;
+        const user = await User.login({ email, password, userType });
         const payload = {
             user: {
                 id: user.id
             }
         };
         const token = await getJWTToken(payload);
-        const result = { 
+
+        return res.status(200).json({ 
             status: 'success', 
             message: 'User login successfully', 
             data: { token }
-        };
-
-        return res.status(200).json({ result });
+        });
     }
     catch(err) {
-        console.log(err);
+        next(err);
+    }
+}
+
+const list = async (req, res, next) => {
+    try {
+        const users = await User.find({ userType: 'user' });
+        res.status(200).json({
+            status: 'success',
+            message: 'users list',
+            data: {
+                users
+            }
+        });
+    }
+    catch(err) {
+        next(err);
+    }
+}
+
+const update = async (req, res, next) => {
+    const id = req.params.id;
+    await User.findById(id).updateOne({  isActive: req.body.status });
+
+    res.status(200).json({
+        status: 'success',
+        message: 'user updated successfully'
+    });
+}
+
+const me = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id);
+        res.status(200).json({
+            status: 'success',
+            message: 'user details',
+            data: { user }
+        });
+    }
+    catch(err) {
+        next(err);
+    }
+}
+
+const details = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        res.status(200).json({
+            status: 'success',
+            message: 'user details',
+            data: { user }
+        });
+    }
+    catch(err) {
         next(err);
     }
 }
 
 module.exports = {
     register,
-    login
+    login,
+    list,
+    update,
+    details,
+    me
 }

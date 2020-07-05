@@ -1,16 +1,17 @@
 const User = require('./user');
 const mongoose = require('mongoose');
 
+const opts = { toJSON: { virtuals: true } };
 const articleSchema = new mongoose.Schema({
-    title: String,
-    desc: String,
-    category: String,
+    title: { type: String, required: true },
+    desc: { type: String, required: true },
+    category: { type: String, required: true },
     activeStatus: { type: Boolean, default: false },
     imagePath: String,
     author: { type: mongoose.ObjectId, ref: User },
     likes: { type: Number, default: 0 },
     publishedOn: { type: Date, default: Date.now }
-});
+}, opts);
 
 articleSchema.virtual('publishedOnStr').get(function () {
     const seconds = (Date.now() - new Date(this.publishedOn).getTime()) / 1000;
@@ -32,7 +33,7 @@ articleSchema.virtual('publishedOnStr').get(function () {
         timeElapsed = Math.floor(seconds);
         timeElapsed = timeElapsed + (timeElapsed > 1 ? ' seconds ':' second ') + ' ago';
     }
-
+console.log(timeElapsed);
     return timeElapsed;
   });
   

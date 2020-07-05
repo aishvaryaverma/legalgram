@@ -1,6 +1,5 @@
-const Password = require('../../models/forgot-password');
 const { checkInputErrors } = require("../../shared/utils");
-const e = require('express');
+const apiClient = require('./apiClient');
     
 const recoverPassword = async (req, res, next) => {
     try { 
@@ -11,7 +10,7 @@ const recoverPassword = async (req, res, next) => {
             checkInputErrors(req);
 
             const email = req.body.email;
-            await Password.recover(email, 'admin');
+            await apiClient.post('/password/recover', { email, userType: 'admin' });
     
             res.status(200).redirect(`verify-otp/${email}`);
         }
@@ -34,9 +33,9 @@ const verifyOtp = async (req, res, next) => {
             checkInputErrors(req);
 
             const { otp, email } = req.body;
-            const token = await Password.verifyOtp(email, otp, 'admin');
+            const result = await apiClient.post('/password/verify-otp', { otp, email, userType: 'admin' });
     
-            res.status(200).redirect(`/admin/password/reset/${token}`);
+            res.status(200).redirect(`/admin/password/reset/${result.data.token}`);
         }
     }
     catch(err) {
@@ -53,8 +52,8 @@ const resetPassword = async (req, res, next) => {
         else {
             checkInputErrors(req);
 
-            const { password, token } = req.body;
-            await Password.reset(token, password);
+            const { password, confirm_password, token } = req.body;
+            await apiClient.post('/password/reset', { password, confirm_password, token });
     
             res.status(200).redirect('/admin');
         }

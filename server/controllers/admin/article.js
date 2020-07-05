@@ -1,4 +1,6 @@
-const Article = require('../../models/article');
+const apiClient = require('./apiClient');
+const FormData = require('form-data');
+const fs = require('fs');
 
 const list = async (req, res, next) => {
     try {
@@ -13,11 +15,15 @@ const list = async (req, res, next) => {
         if (!limit || limit < 0) {
             limit = 10;
         }
+
         const offset = (page - 1) * limit;
-        const totalArticles = await Article.count();
+        const result = await apiClient.get(`/articles?offset=${offset}&&limit=${limit}`, {
+            headers: { 'Authorization': req.cookies.token }
+        });
+        const articles = result.data.articles;
+        const totalArticles = result.data.count;
         const totalPages = Math.ceil(totalArticles / limit);
-        const articles = await Article.find(null, null, { skip: offset, limit }).populate('author'); console.log({ articles, totalPages, limit })
-        
+
         res.status(200).render('article/list', { articles, totalPages, page, limit });
     }
     catch(err) {
@@ -34,22 +40,23 @@ const create = async (req, res, next) => {
         else {
             const file = req.file;
             const { title, desc, category, activeStatus } = req.body;
-            const author = req.user.id;
-    
-            const article = new Article({
+
+            let article = {
                 title,
                 desc,
-                author,
                 category,
                 activeStatus
-            });
+            };
     
             if (file) {
-                article.imagePath = file.filename
+                const result = await uploadImage(file.filename, req.cookies.token); console.log(result.data.filename);
+                article.imagePath = result.data.filename;
             }
-           
-            await article.save();
-    
+
+            await apiClient.post('/articles', article, {
+                headers: { 'Authorization': req.cookies.token }
+            });
+            
             res.status(200).redirect('/admin/articles')
         }
         
@@ -65,31 +72,60 @@ const update = async (req, res, next) => {
         const id = req.params.id;
 
         if (req.method === 'GET') {
-            const article = await Article.findById(id);
-            res.status(200).render('article/edit', { article });
+            const result = await apiClient.get(`/articles/${id}`, {
+                headers: { 'Authorization': req.cookies.token }
+            });
+            res.status(200).render('article/edit', { article: result.data.article });
         }
         else {
             const file = req.file;
-            const { title, desc, category, activeStatus } = req.body;
+            const { title, desc, category, activeStatus, imagePath } = req.body;
     
             const article = {
                 title,
                 desc,
                 category,
+                imagePath,
                 activeStatus
             };
-    
+
             if (file) {
-                article.imagePath = file.filename
+                const result = await uploadImage(file.filename, req.cookies.token);
+                article.imagePath = result.data.filename;
             }
-    
-            await Article.findById(id).updateOne(article);
+
+            await apiClient.put(`/articles/${id}`, article, {
+                headers: { 'Authorization': req.cookies.token }
+            });
     
             res.status(200).redirect('/admin/articles');
         }
     }
     catch(err) {
         err.page = 'article/edit';
+        next(err);
+    }
+}
+
+const uploadImage = async (filename, token) => {
+    try {
+        const file = `server/public/uploads/${filename}`;
+        const form_data = new FormData();
+        form_data.append('avatar', fs.createReadStream(file));
+    
+        const request_config = {
+            headers: {
+                ...form_data.getHeaders(),
+                'Authorization': token
+            }
+        };
+    
+        const result = await apiClient.post('/upload', form_data, request_config);
+        fs.unlinkSync(file);
+        
+        return result;
+    }
+    catch(err) {
         next(err);
     }
 }

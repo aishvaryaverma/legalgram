@@ -1,24 +1,23 @@
-const User = require('../../models/user');
+const apiClient = require('./apiClient');
 
 const usersList = async (req, res, next) => {
-    try {
-        const users = await User.find({ userType: 'user' });
-
+    try { 
+        const { data } = await apiClient.get('/users/list', {
+            headers: { 'Authorization': req.cookies.token }
+        });
         res.status(200).json({
             status: 'success',
-            data: { users },
+            data,
             message: 'users list'
         }); 
     }
     catch(err) {
-        console.log(err);
+        next(err);
     }
-    
 }
 
 const users = async (req, res, next) => {
     try {
-        const users = await User.find({ userType: 'user' });
         res.render('users/list');
     }
     catch(err) {
@@ -30,11 +29,15 @@ const updateUser = async (req, res, next) => {
     try {
         const id = req.params.id;
         if (req.method === 'GET') {
-            const user = await User.findById(id);
-            res.render('users/edit', { user });
+            const result = await apiClient.get(`/users/${id}`, {
+                headers: { 'Authorization': req.cookies.token }
+            });
+            res.render('users/edit', { user: result.data.user });
         }
         else {
-            await (await User.findById(id)).updateOne({ isActive: req.body.status });
+            await apiClient.put(`/users/${id}`, { status: req.body.status }, {
+                headers: { 'Authorization': req.cookies.token }
+            });
             res.redirect('/admin/users');
         }
     }

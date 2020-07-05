@@ -14,7 +14,7 @@ const validate = (method) => {
 };
 
 router
-    .post("/send-otp", sendOTP)
+    .get("/send-otp", sendOTP)
     .post("/verify-otp", validate("verify-otp"), verifyOTP);
 
 module.exports = router;

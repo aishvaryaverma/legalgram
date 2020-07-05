@@ -53,32 +53,34 @@ block content
             // END: Blog Layout
 
         // BEGIN: Pagination
-        
-        .intro-y.col-span-12.flex.flex-wrap.items-center(class="sm:flex-row sm:flex-no-wrap")
-            ul.pagination
-                li
-                    a.pagination__link(href=`${baseUrl}/articles?page=1&&limit=${limit}`)
-                        i.w-4.h-4(data-feather="chevrons-left")
-                li
-                    a.pagination__link(href= page==1 ? '#':`${baseUrl}/articles/?page=${page-1}&&limit=${limit}`)
-                        i.w-4.h-4(data-feather="chevron-left")
-                li
-                    a.pagination__link(href="") ...
-                - var first = page <= 5 ? 1 : 1 + (page - 5);
-                - var fifth = Math.min(totalPages, first + 4);
-                while first <= fifth
+        if totalPages
+            .intro-y.col-span-12.flex.flex-wrap.items-center(class="sm:flex-row sm:flex-no-wrap")
+                ul.pagination
                     li
-                        a.pagination__link(href=`${baseUrl}/articles?page=${first}&&limit=${limit}` class= first===page && 'pagination__link--active') #{first}
-                    - first++
-                li
-                    a.pagination__link(href="") ...
-                li
-                    a.pagination__link(href= page==totalPages ? '#':`${baseUrl}/articles/?page=${page+1}&&limit=${limit}`)
-                        i.w-4.h-4(data-feather="chevron-right")
-                li
-                    a.pagination__link(href=`${baseUrl}/articles?page=${totalPages}&&limit=${limit}`)
-                        i.w-4.h-4(data-feather="chevrons-right")
-            select.w-20.input.box.mt-3(class="sm:mt-0" onchange="location=this.value")
-                each item in [10, 25, 35, 50]
-                    option(selected= limit===item value=`${baseUrl}/articles?limit=${item}`) #{item}
+                        a.pagination__link(href=`${baseUrl}/articles?page=1&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevrons-left")
+                    li
+                        a.pagination__link(href= page==1 ? '#':`${baseUrl}/articles/?page=${page-1}&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevron-left")
+                    li
+                        a.pagination__link(href="") ...
+                    - var first = page <= 5 ? 1 : 1 + (page - 5);
+                    - var fifth = Math.min(totalPages, first + 4);
+                    while first <= fifth
+                        li
+                            a.pagination__link(href=`${baseUrl}/articles?page=${first}&&limit=${limit}` class= first===page && 'pagination__link--active') #{first}
+                        - first++
+                    li
+                        a.pagination__link(href="") ...
+                    li
+                        a.pagination__link(href= page==totalPages ? '#':`${baseUrl}/articles/?page=${page+1}&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevron-right")
+                    li
+                        a.pagination__link(href=`${baseUrl}/articles?page=${totalPages}&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevrons-right")
+                select.w-20.input.box.mt-3(class="sm:mt-0" onchange="location=this.value")
+                    each item in [10, 25, 35, 50]
+                        option(selected= limit===item value=`${baseUrl}/articles?limit=${item}`) #{item}
+        else
+            p No articles published
         // END: Pagination

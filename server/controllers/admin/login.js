@@ -1,28 +1,28 @@
-const User = require('../../models/user');
+const apiClient = require('./apiClient');
 const { checkInputErrors, getJWTToken } = require('../../shared/utils');
 
-const login = async (req, res, next) => { 
+const login = async (req, res, next) => {
     try {
         
         if (req.method === 'GET') {
+            if (req.cookies.token) {
+                res.redirect('/admin/dashboard');
+            }
             res.render('login');
         }
         else {
             checkInputErrors(req);
 
             const { email, password } = req.body;
-            const user = await User.login({ email, password, userType: 'admin' });
-            // create jwt token and save it in a cookie
-            const payload = {
-                user: {
-                    id: user.id,
-                    name: user.name
-                }
-            };
-            const token = await getJWTToken(payload);
+            
+            const result = await apiClient.post('/users/login', {
+                email,
+                password,
+                userType: 'admin'
+            });
     
             res.status(200)
-               .cookie('token', token, { httpOnly: true })
+               .cookie('token', result.data.token, { httpOnly: true })
                .redirect('dashboard');
         }
     }
