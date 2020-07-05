@@ -1,0 +1,16 @@
+extends ../base
+
+block content
+    .intro-y.datatable-wrapper.box.p-5.mt-5
+      table.table.table-report.table-report--bordered.display.datatable.w-full
+        thead
+          tr
+            th.border-b-2.whitespace-no-wrap NAME
+            th.border-b-2.text-center.whitespace-no-wrap EMAIL
+            th.border-b-2.text-center.whitespace-no-wrap MOBILE
+            th.border-b-2.text-center.whitespace-no-wrap STATUS
+            th.border-b-2.text-center.whitespace-no-wrap ACTIONS
+        tbody
+
+block pageScript
+    script(src="/admin/js/users.js")   
