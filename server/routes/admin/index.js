@@ -2,14 +2,16 @@ const express = require('express');
 const router = express.Router();
 const cookieParser = require('cookie-parser');
 
+// middlewares
 const handleError = require('../../middlewares/admin/error');
+const authenticate = require('../../middlewares/admin/auth');
+
 const loginRoute = require('./auth/login');
 const passwordRoute = require('./auth/password');
 const articleRoute = require('./article');
 const usersRoute = require('./users');
 const profileController = require('../../controllers/admin/profile');
 const { dashboard, logout } = profileController;
-const authenticate = require('../../middlewares/admin/auth');
 const config = require('config');
 
 // parse input data
