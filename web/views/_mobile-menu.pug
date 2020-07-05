@@ -1,0 +1,406 @@
+.mobile-menu(class="md:hidden")
+  .mobile-menu-bar
+    a.flex.mr-auto(href="")
+      img.w-6(alt="Midone Tailwind HTML Admin Template" src="/admin/images/logo.svg")
+    a#mobile-menu-toggler(href="javascript:;")
+      i.w-8.h-8.text-white.transform.-rotate-90(data-feather="bar-chart-2")
+  ul.border-t.border-theme-24.py-5.hidden
+    li
+      a.menu.menu--active(href="index.html")
+        .menu__icon
+          i(data-feather="home")
+        .menu__title  Dashboard 
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="box")
+        .menu__title
+          | Menu Layout 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="index.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Side Menu 
+        li
+          a.menu(href="simple-menu-dashboard.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Simple Menu 
+        li
+          a.menu(href="top-menu-dashboard.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Top Menu 
+    li
+      a.menu(href="side-menu-inbox.html")
+        .menu__icon
+          i(data-feather="inbox")
+        .menu__title  Inbox 
+    li
+      a.menu(href="side-menu-file-manager.html")
+        .menu__icon
+          i(data-feather="hard-drive")
+        .menu__title  File Manager 
+    li
+      a.menu(href="side-menu-point-of-sale.html")
+        .menu__icon
+          i(data-feather="credit-card")
+        .menu__title  Point of Sale 
+    li
+      a.menu(href="side-menu-chat.html")
+        .menu__icon
+          i(data-feather="message-square")
+        .menu__title  Chat 
+    li
+      a.menu(href="side-menu-post.html")
+        .menu__icon
+          i(data-feather="file-text")
+        .menu__title  Post 
+    li.menu__devider.my-6
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="edit")
+        .menu__title
+          | Crud 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="side-menu-crud-data-list.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Data List 
+        li
+          a.menu(href="side-menu-crud-form.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Form 
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="users")
+        .menu__title
+          | Users 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="side-menu-users-layout-1.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Layout 1 
+        li
+          a.menu(href="side-menu-users-layout-2.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Layout 2 
+        li
+          a.menu(href="side-menu-users-layout-3.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Layout 3 
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="trello")
+        .menu__title
+          | Profile 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="side-menu-profile-overview-1.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Overview 1 
+        li
+          a.menu(href="side-menu-profile-overview-2.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Overview 2 
+        li
+          a.menu(href="side-menu-profile-overview-3.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Overview 3 
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="layout")
+        .menu__title
+          | Pages 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="javascript:;")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title
+              | Wizards 
+              i.menu__sub-icon(data-feather="chevron-down")
+          ul
+            li
+              a.menu(href="side-menu-wizard-layout-1.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 1
+            li
+              a.menu(href="side-menu-wizard-layout-2.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 2
+            li
+              a.menu(href="side-menu-wizard-layout-3.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 3
+        li
+          a.menu(href="javascript:;")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title
+              | Blog 
+              i.menu__sub-icon(data-feather="chevron-down")
+          ul
+            li
+              a.menu(href="side-menu-blog-layout-1.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 1
+            li
+              a.menu(href="side-menu-blog-layout-2.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 2
+            li
+              a.menu(href="side-menu-blog-layout-3.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 3
+        li
+          a.menu(href="javascript:;")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title
+              | Pricing 
+              i.menu__sub-icon(data-feather="chevron-down")
+          ul
+            li
+              a.menu(href="side-menu-pricing-layout-1.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 1
+            li
+              a.menu(href="side-menu-pricing-layout-2.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 2
+        li
+          a.menu(href="javascript:;")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title
+              | Invoice 
+              i.menu__sub-icon(data-feather="chevron-down")
+          ul
+            li
+              a.menu(href="side-menu-invoice-layout-1.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 1
+            li
+              a.menu(href="side-menu-invoice-layout-2.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 2
+        li
+          a.menu(href="javascript:;")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title
+              | FAQ 
+              i.menu__sub-icon(data-feather="chevron-down")
+          ul
+            li
+              a.menu(href="side-menu-faq-layout-1.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 1
+            li
+              a.menu(href="side-menu-faq-layout-2.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 2
+            li
+              a.menu(href="side-menu-faq-layout-3.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Layout 3
+        li
+          a.menu(href="login-login.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Login 
+        li
+          a.menu(href="login-register.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Register 
+        li
+          a.menu(href="main-error-page.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Error Page 
+        li
+          a.menu(href="side-menu-update-profile.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Update profile 
+        li
+          a.menu(href="side-menu-change-password.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Change Password 
+    li.menu__devider.my-6
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="inbox")
+        .menu__title
+          | Components 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="javascript:;")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title
+              | Grid 
+              i.menu__sub-icon(data-feather="chevron-down")
+          ul
+            li
+              a.menu(href="side-menu-regular-table.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Regular Table
+            li
+              a.menu(href="side-menu-datatable.html")
+                .menu__icon
+                  i(data-feather="zap")
+                .menu__title Datatable
+        li
+          a.menu(href="side-menu-accordion.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Accordion 
+        li
+          a.menu(href="side-menu-button.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Button 
+        li
+          a.menu(href="side-menu-modal.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Modal 
+        li
+          a.menu(href="side-menu-alert.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Alert 
+        li
+          a.menu(href="side-menu-progress-bar.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Progress Bar 
+        li
+          a.menu(href="side-menu-tooltip.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Tooltip 
+        li
+          a.menu(href="side-menu-dropdown.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Dropdown 
+        li
+          a.menu(href="side-menu-toast.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Toast 
+        li
+          a.menu(href="side-menu-typography.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Typography 
+        li
+          a.menu(href="side-menu-icon.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Icon 
+        li
+          a.menu(href="side-menu-loading-icon.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Loading Icon 
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="sidebar")
+        .menu__title
+          | Forms 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="side-menu-regular-form.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Regular Form 
+        li
+          a.menu(href="side-menu-datepicker.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Datepicker 
+        li
+          a.menu(href="side-menu-select2.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Select2 
+        li
+          a.menu(href="side-menu-file-upload.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  File Upload 
+        li
+          a.menu(href="side-menu-wysiwyg-editor.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Wysiwyg Editor 
+        li
+          a.menu(href="side-menu-validation.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Validation 
+    li
+      a.menu(href="javascript:;")
+        .menu__icon
+          i(data-feather="hard-drive")
+        .menu__title
+          | Widgets 
+          i.menu__sub-icon(data-feather="chevron-down")
+      ul
+        li
+          a.menu(href="side-menu-chart.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Chart 
+        li
+          a.menu(href="side-menu-slider.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Slider 
+        li
+          a.menu(href="side-menu-image-zoom.html")
+            .menu__icon
+              i(data-feather="activity")
+            .menu__title  Image Zoom 

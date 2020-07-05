@@ -1,0 +1,86 @@
+extends ../base
+
+block content
+    .intro-y.flex.flex-col.items-center.mt-8(class="sm:flex-row")
+        h2.text-lg.font-medium.mr-auto
+            | Articles
+        .w-full.flex.mt-4(class="sm:w-auto sm:mt-0")
+            a.button.text-white.bg-theme-1.shadow-md.mr-2(href=baseUrl+'/articles/new') Add New Article
+            
+    .intro-y.grid.grid-cols-12.gap-6.mt-5
+        each article in articles
+            // BEGIN: Blog Layout
+            .intro-y.col-span-12.box(class="md:col-span-6 xl:col-span-4")
+                .flex.items-center.border-b.border-gray-200.px-5.py-4
+                    .w-10.h-10.flex-none.image-fit
+                        img.rounded-full(alt="Midone Tailwind HTML Admin Template" src="/admin/images/profile-10.jpg")
+                    .ml-3.mr-auto
+                        a.font-medium(href="") #{article.author.name}
+                        .flex.text-gray-600.truncate.text-xs.mt-1
+                            a.text-theme-1.inline-block.truncate(href="") #{article.category}
+                            span.mx-1 •
+                            |  #{article.publishedOnStr}
+                    .dropdown.relative.ml-3
+                        a.dropdown-toggle.w-5.h-5.text-gray-500(href="javascript:;")
+                            i.w-4.h-4(data-feather="more-vertical")
+                        .dropdown-box.mt-6.absolute.w-40.top-0.right-0.z-20
+                            .dropdown-box__content.box.p-2
+                                a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.bg-white.rounded-md(href=baseUrl+'/articles/'+article.id class="hover:bg-gray-200")
+                                    i.w-4.h-4.mr-2(data-feather="edit-2")
+                                    |  Edit Article
+                                a.flex.items-center.block.p-2.transition.duration-300.ease-in-out.bg-white.rounded-md(href="" class="hover:bg-gray-200")
+                                    i.w-4.h-4.mr-2(data-feather="trash")
+                                    |  Delete Article
+                .p-5
+                    .h-40.image-fit(class="xxl:h-56")
+                        img.rounded-md(alt="Midone Tailwind HTML Admin Template" src=article.imagePath ? "/api/uploads/"+article.imagePath : "/admin/images/preview-11.jpg")
+                    a.block.font-medium.text-base.mt-5(href="") #{article.title}
+                    .text-gray-700.mt-2
+                        | !{article.desc}
+                
+                .px-5.pt-3.pb-5.border-t.border-gray-200
+                    .w-full.flex.text-gray-600.text-xs(class="sm:text-sm")
+                        .mr-2
+                            | Comments: 
+                            span.font-medium 39
+                        .mr-2
+                            | Views: 
+                            span.font-medium 68k
+                        .ml-auto
+                            | Likes: 
+                            span.font-medium #{article.likes}
+                      
+            // END: Blog Layout
+
+        // BEGIN: Pagination
+        if totalPages
+            .intro-y.col-span-12.flex.flex-wrap.items-center(class="sm:flex-row sm:flex-no-wrap")
+                ul.pagination
+                    li
+                        a.pagination__link(href=`${baseUrl}/articles?page=1&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevrons-left")
+                    li
+                        a.pagination__link(href= page==1 ? '#':`${baseUrl}/articles/?page=${page-1}&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevron-left")
+                    li
+                        a.pagination__link(href="") ...
+                    - var first = page <= 5 ? 1 : 1 + (page - 5);
+                    - var fifth = Math.min(totalPages, first + 4);
+                    while first <= fifth
+                        li
+                            a.pagination__link(href=`${baseUrl}/articles?page=${first}&&limit=${limit}` class= first===page && 'pagination__link--active') #{first}
+                        - first++
+                    li
+                        a.pagination__link(href="") ...
+                    li
+                        a.pagination__link(href= page==totalPages ? '#':`${baseUrl}/articles/?page=${page+1}&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevron-right")
+                    li
+                        a.pagination__link(href=`${baseUrl}/articles?page=${totalPages}&&limit=${limit}`)
+                            i.w-4.h-4(data-feather="chevrons-right")
+                select.w-20.input.box.mt-3(class="sm:mt-0" onchange="location=this.value")
+                    each item in [10, 25, 35, 50]
+                        option(selected= limit===item value=`${baseUrl}/articles?limit=${item}`) #{item}
+        else
+            p No articles published
+        // END: Pagination
