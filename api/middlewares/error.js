@@ -10,7 +10,8 @@ const handleError = (err, res) => {
         status: 'error',
         statusCode,
         errorMsg: message,
-        inputErrors
+        inputErrors,
+        stack: err.stack
     });
 }
 

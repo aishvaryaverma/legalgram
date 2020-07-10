@@ -5,9 +5,6 @@ const login = async (req, res, next) => {
     try {
         
         if (req.method === 'GET') {
-            if (req.cookies.token) {
-                res.redirect('/admin/dashboard');
-            }
             res.render('login');
         }
         else {
