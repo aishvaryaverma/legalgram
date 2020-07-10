@@ -18,8 +18,11 @@ module.exports = async function (req, res, next) {
         const result = await apiClient.get('/users/me', {
             headers: { 'Authorization': token }
         });
+
         // set up request local variables to be accessed in pug later on
         res.locals.user = result.data.user;
+
+        console.log(req.path);
 
         next();
     } catch (err) {

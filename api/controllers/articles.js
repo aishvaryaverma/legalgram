@@ -4,7 +4,7 @@ const { ErrorHandler } = require('../shared/error');
 
 const details = async (req, res, next) => {
     try {
-        const article = await Article.findById(req.params.id).populate('author', 'name'); console.log(article);
+        const article = await Article.findById(req.params.id).populate('author comments.author', 'name');
         res.status(200).json({
             status: 'success',
             message: 'Artcle details',
@@ -38,7 +38,7 @@ const list = async (req, res, next) => {
         }
 
         const count = await Article.countDocuments();
-        const articles = await Article.find(null, null, pagination).populate('author','name' );
+        const articles = await Article.find(null, null, pagination).populate('author comments.author','name' );
         const result = { 
             status: 'success',
             message: 'Artcles list',
@@ -124,10 +124,73 @@ const update = async (req, res, next) => {
     }
 }
 
+const deleteArticle = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        await Article.findById(id).deleteOne();
+        
+        res.status(200).json({
+            status: 'success',
+            message: 'Article deleted successfully'
+        });
+    }
+    catch(err) {
+        next(err);
+    }
+}
+
+const comment = async (req, res, next) => {
+    try {
+        checkInputErrors(req);
+        
+        const articleId = req.params.id;
+        let article = await Article.findById(articleId).select('comments');
+        
+        article.comments.push({ comment: req.body.text, author: req.user.id});
+
+        await article.save();
+        
+        res.status(200).json({
+            status: 'success',
+            message: 'article comments added successfully'
+        });
+
+    }
+    catch(err) {
+        next(err);
+    }
+}
+
+const like = async (req, res, next) => {
+    try {
+        const articleId = req.params.id;
+        const like = parseInt(req.body.like);
+
+        if ([1, -1].indexOf(like) === -1) {
+            throw new ErrorHandler(400, 'Invalid like param, it should be +1 or -1');
+        }
+
+        const article = await Article.findById(articleId).select('likes');
+        article.likes  = Math.max(0, article.likes + like);
+        await article.save();
+
+        res.status(200).json({
+            status: 'success',
+            message: 'article like updated'
+        });
+    }
+    catch(err) {
+        next(err);
+    } 
+}
+
 
 module.exports = {
     list,
     create,
     update,
-    details
+    deleteArticle,
+    details,
+    comment,
+    like
 }

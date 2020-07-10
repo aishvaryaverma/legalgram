@@ -10,7 +10,12 @@ const articleSchema = new mongoose.Schema({
     imagePath: String,
     author: { type: mongoose.ObjectId, ref: User },
     likes: { type: Number, default: 0 },
-    publishedOn: { type: Date, default: Date.now }
+    publishedOn: { type: Date, default: Date.now },
+    comments: [{
+        comment: { type: String, required: true },
+        author: { type: mongoose.ObjectId, ref: User, required: true },
+        date: { type: Date, default: Date.now }
+    }]
 }, opts);
 
 articleSchema.virtual('publishedOnStr').get(function () {
