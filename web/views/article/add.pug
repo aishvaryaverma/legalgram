@@ -12,17 +12,19 @@ block content
                     div
                         label Title
                         input.input.w-full.border.mt-2(type="text" placeholder="Enter title" name='title')
+                        .text-theme-6.mt-2 #{ inputErrors && inputErrors.title }
                     .mt-3
                         label Description
                         .mt-2
                             textarea.summernote( name="desc")
+                            .text-theme-6.mt-2 #{ inputErrors && inputErrors.desc }
                     .mt-3
                         label Category
                         .mt-2
                             select.select2.w-full(data-placeholder="Select category" name='category')
                                 each category in ["Sport & Outdoor", "PC & Laptop", "Smartphone & Tablet", "Photography"]
                                     option(value=category) #{category}
-                    
+                            .text-theme-6.mt-2 #{ inputErrors && inputErrors.category || category }
                     .mt-3
                         label Active Status
                         .mt-2
