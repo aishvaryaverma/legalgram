@@ -8,8 +8,8 @@ const validate = (method) => {
         case "create":
             return [
                 check("title", "Please enter title").notEmpty(),
-                check("desc", "Please enter desc").notEmpty(),
-                check("category", "Please enter desc").notEmpty()
+                check("desc", "Please enter description").notEmpty(),
+                check("category", "Please select category").notEmpty()
             ];
         case "comment":
             return [
