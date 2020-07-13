@@ -14,8 +14,8 @@ const config = require('config');
 
 // set up some variables to be accessible everywhere and in pug templates
 router.use((req, res, next) => {
-    const { hostname, port} = config.get('server');
-    res.locals.baseUrl = `http://${hostname}:${port}/admin`
+    const { appHostName, port} = config.get('server');
+    res.locals.baseUrl = `http://${appHostName}:${port}/admin`
     res.locals.path = req.path;
     next();
 });

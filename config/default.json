@@ -1,6 +1,7 @@
 {
     "server": {
         "hostname": "localhost",
+        "appHostName": "localhost",
         "port": 1337
     },
     "otp_expires_in": 1,
