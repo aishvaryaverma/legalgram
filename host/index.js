@@ -22,13 +22,13 @@ module.exports = (function () {
         server.use('/admin', admin);
 
         // serving client application
-        // const root = path.dirname(require.main.filename);
-        
-        // Serving static files
-        // server.use(express.static(path.resolve(root, 'client', 'build')));
-        // server.get('*', (req, res) => {
-        //     res.sendFile(path.resolve(root, 'client', 'build', 'index.html'));
-        // });
+        if(process.env.NODE_ENV === 'production') {
+            // Serving static files
+            server.use(express.static(path.join(__dirname, '../client/build')));
+            server.get('*', (req, res) => {
+                res.sendFile(path.join(__dirname, '../client/build/index.html'));
+            });
+        }
         
         console.log("server created");
     };
