@@ -11,7 +11,7 @@ const handleError = (err, res) => {
         statusCode,
         errorMsg: message,
         inputErrors,
-        stack: err.stack
+        //stack: err.stack
     });
 }
 

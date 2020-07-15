@@ -2,6 +2,8 @@ const path = require('path');
 const express = require("express");
 const api = require('../api/app');
 const admin = require('../web/app');
+const front = require('../front/app');
+const { from } = require('form-data');
 
 module.exports = (function () {
     let server = express(),
@@ -20,15 +22,16 @@ module.exports = (function () {
         // mount sub apps
         server.use('/api', api);
         server.use('/admin', admin);
+        server.use('/', front);
 
         // serving client application
-        if(process.env.NODE_ENV === 'production') {
-            // Serving static files
-            server.use(express.static(path.join(__dirname, '../client/build')));
-            server.get('*', (req, res) => {
-                res.sendFile(path.join(__dirname, '../client/build/index.html'));
-            });
-        }
+        // if(process.env.NODE_ENV === 'production') {
+        //     // Serving static files
+        //     server.use(express.static(path.join(__dirname, '../client/build')));
+        //     server.get('*', (req, res) => {
+        //         res.sendFile(path.join(__dirname, '../client/build/index.html'));
+        //     });
+        // }
         
         console.log("server created");
     };
