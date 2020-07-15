@@ -13,10 +13,5 @@ app.use(express.static(path.join(__dirname, '../client/build')));
     });
 //}
 
-// error middleware
-app.use((err, req, res, next) => {
-    res.redirect('/');
-});
-
 
 module.exports = app;

@@ -24,14 +24,10 @@ module.exports = (function () {
         server.use('/admin', admin);
         server.use('/', front);
 
-        // serving client application
-        // if(process.env.NODE_ENV === 'production') {
-        //     // Serving static files
-        //     server.use(express.static(path.join(__dirname, '../client/build')));
-        //     server.get('*', (req, res) => {
-        //         res.sendFile(path.join(__dirname, '../client/build/index.html'));
-        //     });
-        // }
+        // catch the invalid routes
+        server.get('*', (req, res) => {
+            res.redirect('/');
+        });
         
         console.log("server created");
     };
