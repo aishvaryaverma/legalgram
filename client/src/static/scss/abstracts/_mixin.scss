@@ -1,0 +1,34 @@
+/// Adds a browser prefix to the property
+/// @param {*} $property Property
+/// @param {*} $value Value
+
+@mixin css3-prefix($property, $value) {
+	-webkit-#{$property}: #{$value};
+	 -khtml-#{$property}: #{$value};
+	   -moz-#{$property}: #{$value};
+		-ms-#{$property}: #{$value};
+		 -o-#{$property}: #{$value};
+			#{$property}: #{$value};
+}
+
+/// Keyframes
+/// @param {*} $animation-name - Animation name
+/// @content [Animation css]
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}

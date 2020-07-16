@@ -1,0 +1,32 @@
+// Sections
+.section {
+	padding: 6rem 0;
+
+	&.sm {
+		padding: 4rem 0;
+	}
+	&.md {
+		padding: 5rem 0;
+	}
+	&.xl {
+		padding: 8rem 0;
+	}
+	&.xxl {
+		padding: 10rem 0;
+	}
+	&.white {
+		background: white;
+	}
+	&.dark {
+		background: $color-dark1;
+	}
+	&.primary {
+		background: $color-primary;
+	}
+	&.secondary {
+		background: $color-secondary;
+	}
+	&.light {
+		background: $color-light1;
+	}
+}

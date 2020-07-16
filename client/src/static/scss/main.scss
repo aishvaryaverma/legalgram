@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;800&display=swap');
+@import 'abstracts/variables';
+@import 'abstracts/mixin';
+@import 'abstracts/functions';
+
+@import 'base/animations';
+@import 'base/base';
+@import 'base/fonts';
+@import 'base/helper';
+@import 'base/utilities';
+@import 'base/typography';
+
+@import 'components/button';
+@import 'components/section';
+@import 'components/headings';
+@import 'components/forms';
+@import 'components/card';
+
+@import 'layouts/header';
+@import 'layouts/menu';
+@import 'layouts/grid';
+
+@import 'pages/home';
