@@ -1,7 +1,7 @@
 {
     "name": "legalgram-frontend",
     "version": "1.0.0",
-    "homepage": "http://bizzpaahtml.in1.bytesun.io/legalgram/",
+    "homepage": "/",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^4.2.4",
