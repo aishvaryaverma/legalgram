@@ -32,8 +32,12 @@ const Home = () => {
 					<TrendingStories />
 				</div>
 			</section>
-
-			<KnowledgeBank />
+			
+			<section className="section knowledgeBank">
+				<div className="container">
+					<KnowledgeBank />
+				</div>
+			</section>
 
 			<section className="section">
 				<div className="container">
@@ -41,7 +45,7 @@ const Home = () => {
 				</div>
 			</section>
 
-			<section className="section light services">
+			<section className="section light">
 				<div className="container">
 					<Services />
 				</div>

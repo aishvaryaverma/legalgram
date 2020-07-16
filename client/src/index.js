@@ -3,8 +3,9 @@ import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import swConfig from './swConfig';
 import * as serviceWorker from './serviceWorker';
+
+// import swConfig from './swConfig';
 
 ReactDOM.render(
 	<React.StrictMode>
