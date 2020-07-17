@@ -14,8 +14,6 @@ module.exports = (function () {
         // Server settings
         const { port, hostname } = config;
 
-        
-
         server.set("port", port);
         server.set("hostname", hostname);
 
