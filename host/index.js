@@ -20,7 +20,7 @@ module.exports = (function () {
         // mount sub apps
         //server.use('/api', api);
         //server.use('/admin', admin);
-        server.use('/client', front);
+        server.use('/front', front);
 
         server.get('/test', (req, res) => {
             res.send('hello world!');

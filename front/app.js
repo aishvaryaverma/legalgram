@@ -13,5 +13,9 @@ app.use(express.static(path.join(__dirname, '../client/build')));
     });
 //}
 
+app.get('/testing', (req, res) => {
+    res.send('this is a front route');
+});
+
 
 module.exports = app;
