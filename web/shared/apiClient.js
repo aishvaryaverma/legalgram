@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const server = config.get('server');
 const axiosInstance = axios.create({
-    baseURL: `http://${server.hostname}:${server.port}/api`
+    baseURL: `http://${server.appHostName}:${server.port}/api`
 });
 
 // Add a response interceptor
