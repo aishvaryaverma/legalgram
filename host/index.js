@@ -18,18 +18,18 @@ module.exports = (function () {
         server.set("hostname", hostname);
 
         // mount sub apps
-        server.use('/api', api);
-        server.use('/admin', admin);
-        server.use('/client', front);
+        //server.use('/api', api);
+        //server.use('/admin', admin);
+        server.use('/front', front);
 
         server.get('/test', (req, res) => {
             res.send('hello world!');
         })
 
         // catch the invalid routes
-        server.get('*', (req, res) => {
-            res.redirect('/');
-        });
+        // server.get('*', (req, res) => {
+        //     res.redirect('/');
+        // });
         
         console.log("server created");
     };
