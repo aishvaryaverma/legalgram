@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1a4485b4.chunk.css",
+    "main.js": "/static/js/main.8ca21a8e.chunk.js",
+    "main.js.map": "/static/js/main.8ca21a8e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d3435342.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d3435342.js.map",
+    "static/js/2.fdf117ac.chunk.js": "/static/js/2.fdf117ac.chunk.js",
+    "static/js/2.fdf117ac.chunk.js.map": "/static/js/2.fdf117ac.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.fa8411361372ceb8cf9578e7d63e9a9e.js": "/precache-manifest.fa8411361372ceb8cf9578e7d63e9a9e.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.1a4485b4.chunk.css.map": "/static/css/main.1a4485b4.chunk.css.map",
+    "static/js/2.fdf117ac.chunk.js.LICENSE.txt": "/static/js/2.fdf117ac.chunk.js.LICENSE.txt",
+    "static/media/first-aritcle.jpg": "/static/media/first-aritcle.b21cb72a.jpg",
+    "static/media/img-td-1.jpg": "/static/media/img-td-1.2a2b2557.jpg",
+    "static/media/img-td-2.jpg": "/static/media/img-td-2.7f5145c9.jpg",
+    "static/media/img-td-3.jpg": "/static/media/img-td-3.85800798.jpg",
+    "static/media/img-td-4.jpg": "/static/media/img-td-4.7cb7fa6b.jpg",
+    "static/media/logo.png": "/static/media/logo.ea593860.png",
+    "static/media/mission.jpg": "/static/media/mission.85f074fe.jpg",
+    "static/media/objective.jpg": "/static/media/objective.74ecd331.jpg",
+    "static/media/values.jpg": "/static/media/values.4545fd43.jpg",
+    "static/media/vision.jpg": "/static/media/vision.5858e2aa.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3435342.js",
+    "static/js/2.fdf117ac.chunk.js",
+    "static/css/main.1a4485b4.chunk.css",
+    "static/js/main.8ca21a8e.chunk.js"
+  ]
+}
