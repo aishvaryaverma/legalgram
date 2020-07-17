@@ -2,7 +2,7 @@
 	"mongoURI": "mongodb+srv://vsonu9020:vsonu9020@legalgram-xe4nm.mongodb.net/legalgram-prod?retryWrites=true&w=majority",
 	"server": {
 		"appHostName": "legalgram.in1.bytesun.io",
-		"hostname": "0.0.0.0",
+		"hostname": "103.26.206.70",
 		"port": 1337
 	}
 }
