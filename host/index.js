@@ -24,6 +24,10 @@ module.exports = (function () {
         server.use('/admin', admin);
         server.use('/', front);
 
+        server.get('/test', (req, res) => {
+            res.send('hello world!');
+        })
+
         // catch the invalid routes
         server.get('*', (req, res) => {
             res.redirect('/');
