@@ -5,16 +5,16 @@ const clearCookieAndRedirect = (res) => {
 }
 
 module.exports = async function (req, res, next) {
-    // read jwt token from cookie
-    const { token } = req.cookies;
-
-    // check if no Token
-    if (!token) {
-        clearCookieAndRedirect(res);
-    }
-
     // Verify Token
     try {
+        // read jwt token from cookie
+        const { token } = req.cookies;
+
+        // check if no Token
+        if (!token) {
+            clearCookieAndRedirect(res);
+        }
+
         const result = await apiClient.get('/users/me', {
             headers: { 'Authorization': token }
         });
