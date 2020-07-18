@@ -20,5 +20,10 @@ app.use((err, req, res, next) => {
     handleError(err, res);
 });
 
+// catch the invalid routes
+app.get('*', (req, res) => {
+    res.send('Invalid route');
+});
+
 
 module.exports = app;

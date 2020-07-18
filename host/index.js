@@ -21,11 +21,6 @@ module.exports = (function () {
         server.use('/api', api);
         server.use('/admin', admin);
         server.use('/', front);
-
-        // catch the invalid routes
-        server.get('*', (req, res) => {
-            res.redirect('/');
-        });
         
         console.log("server created");
     };
