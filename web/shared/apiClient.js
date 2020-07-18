@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.response.use((res) => {
     return Promise.resolve(res.data);
 }, 
-(error) => { console.log(error);
+(error) => { //console.log(error);
     const { errorMsg, inputErrors } = error.response.data;
     const err = new ErrorHandler(error.response.status, errorMsg, inputErrors);
     return Promise.reject(err);
