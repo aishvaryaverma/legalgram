@@ -24,9 +24,9 @@ router.use((req, res, next) => {
 router.use('/', loginRoute);
 router.use('/password', passwordRoute);
 router.use('/users', authenticate, usersRoute);
-router.use('/articles', authenticate, articleRoute);
+router.use('/articles', articleRoute);
 router.get('/logout', logout);
-router.get('/dashboard', authenticate, dashboard);
+router.get('/dashboard', dashboard);
 
 
 module.exports = router;
