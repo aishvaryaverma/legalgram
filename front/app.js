@@ -6,11 +6,14 @@ const app = express();
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 // routes
-//if(process.env.NODE_ENV === 'production') {
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/build/index.html'));
-    });
-//}
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+// catch the invalid routes
+app.get('*', (req, res) => {
+    res.redirect('/');
+});
 
 
 module.exports = app;
