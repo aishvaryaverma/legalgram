@@ -102,9 +102,7 @@ const update = async (req, res, next) => {
             article.category = category;
         }
 
-        if (activeStatus) {
-            article.activeStatus = activeStatus;
-        }
+        article.activeStatus = activeStatus;
 
         if (imagePath) {
             article.imagePath = imagePath;
