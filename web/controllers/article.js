@@ -24,7 +24,7 @@ const list = async (req, res, next) => {
         const totalArticles = result.data.count;
         const totalPages = Math.ceil(totalArticles / limit);
 
-        res.status(200).render('article/list', { articles, totalPages, page, limit });
+        res.status(200).render('article/list', { articles, totalPages, page, limit, totalArticles });
     }
     catch(err) {
         next(err);
@@ -79,8 +79,9 @@ const update = async (req, res, next) => {
         }
         else {
             const file = req.file;
-            const { title, desc, category, activeStatus, imagePath } = req.body;
-    
+            const { title, desc, category, imagePath } = req.body;
+            let activeStatus = !!req.body.activeStatus;
+
             const article = {
                 title,
                 desc,
@@ -130,8 +131,18 @@ const uploadImage = async (filename, token) => {
     }
 }
 
+const deleteArticle = async (req, res) => {
+    const id = req.params.id;
+    const result = await apiClient.delete(`/articles/${id}`, {
+        headers: { 'Authorization': req.cookies.token }
+    });
+
+    res.redirect('/admin/articles');
+}
+
 module.exports = {
     list,
     create,
-    update
+    update,
+    deleteArticle
 }
