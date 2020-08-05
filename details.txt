@@ -3,3 +3,9 @@ DB user details
 -----------------
 pardeeprana
 TYgLfct5ByVYng4U
+
+-----------------
+Admin user
+-----------------
+admin@thelegalgram.com
+!legal@321

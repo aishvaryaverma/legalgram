@@ -15,7 +15,8 @@ const articleRoute = require('./article');
 
 // handle file uploads
 router.post('/upload', authenticate, upload.single('avatar'), (req, res, next) => {
-    try { console.log(req.file);
+    try {
+        // console.log(req.file);
         res.status(200).json({
             status: 'success',
             message: 'file uploaded successfully',

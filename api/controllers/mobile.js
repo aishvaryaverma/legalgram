@@ -7,7 +7,8 @@ const sendOTP = async (req, res, next) => {
         checkInputErrors(req);
         
         // create user otp token
-        const userId = req.user.id; console.log(userId);
+        const userId = req.user.id;
+        // console.log(userId);
         const user = await User.findById(userId);
         const otp = await userToken.create(userId, 'mobileVerification');
 

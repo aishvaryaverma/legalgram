@@ -15,5 +15,4 @@ app.get('*', (req, res) => {
     res.redirect('/');
 });
 
-
-module.exports = app;
+module.exports = app
