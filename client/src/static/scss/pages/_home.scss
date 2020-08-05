@@ -332,19 +332,83 @@
 	}
 }
 
-.homeServices {
-	display: flex;
-	flex-direction: column;
-	
+.homeService {
+
 	&__heading {
 		text-align: center;
+		margin-bottom: 50px;
 
-		p { margin-bottom: 0; }
+		h2 {}
+
+		p {
+			font-size: 1.8rem;
+			font-weight: 300;
+			margin: 0;
+		}
 	}
 
-	&__list {
+	&__content {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		flex-wrap: wrap;
+
+		&--box {
+			width: calc(100% / 4 - 1.875rem);
+			padding: 6rem 3rem;
+			background-color: #fff;
+			border-radius: 1rem;
+			margin-right: 2.5rem;
+			transition: all 0.5s ease;
+
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+
+			&:nth-child(4n) {
+				margin-right: 0;
+			}
+
+			&:hover {
+				box-shadow: 0 0 65px 8px rgba(#04438f, 0.07);
+			}
+
+			h3 {
+				font-size: 2rem;
+				font-weight: 400;
+				color: $color-headings;
+				margin: 0 0 2.5rem;
+			}
+
+			ul {
+				
+				&.listStyling {
+
+					li {
+						display: block;
+						position: relative;
+						padding-left: 2rem;
+						padding-bottom: 1rem;
+
+						font-size: 1.8rem;
+						font-weight: 300;
+						color: $color-headings;
+
+						&:before {
+							font-family: 'Font Awesome 5 Free';
+							content: "\f105";
+							font-weight: 900;
+							position: absolute;
+							top: 0;
+							left: 0;
+							z-index: 2;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__button {
+		text-align: center;
+		margin: 30px 0 0;
 	}
 }

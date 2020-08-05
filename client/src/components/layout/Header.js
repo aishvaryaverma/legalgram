@@ -30,8 +30,8 @@ const Header = () => {
 					<li><NavLink to="/" activeClassName="active">Accountancy</NavLink></li>
 					<li><NavLink to="/" activeClassName="active">Coporate Law</NavLink></li>
 					<li><NavLink to="/" activeClassName="active">GST</NavLink></li>
-					<li className="login"><NavLink to="/" activeClassName="active">Login</NavLink></li>
-					<li className="register"><NavLink to="/" activeClassName="active">Register</NavLink></li>
+					<li className="login"><NavLink to="/login" activeClassName="active">Login</NavLink></li>
+					<li className="register"><NavLink to="/register" activeClassName="active">Register</NavLink></li>
 				</ul>
 			</nav>
 

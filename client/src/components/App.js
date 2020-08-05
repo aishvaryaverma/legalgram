@@ -11,6 +11,8 @@ import ScrollToTop from './ScrollToTop';
 // import { loadUser } from './actions/auth';
 // components
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
 	useEffect(() => {
@@ -23,6 +25,8 @@ const App = () => {
 				<ScrollToTop>
 					<Switch>
 						<Route exact path='/' component={Home} />
+						<Route exact path='/login' component={Login} />
+						<Route exact path='/register' component={Register} />
 					</Switch>
 				</ScrollToTop>
 			</Router>
