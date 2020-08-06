@@ -1,0 +1,9 @@
+.loginRegisterBox {
+	display: flex;
+
+	&__content {
+		flex-shrink: 0;
+		flex-basis: 45%;
+		background-color: $color-primary;
+	}
+}
