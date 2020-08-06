@@ -13,6 +13,9 @@ import ScrollToTop from './ScrollToTop';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Services from './pages/Services';
+import AllQuery from './pages/AllQuery';
+import PostQuery from './pages/PostQuery';
 
 const App = () => {
 	useEffect(() => {
@@ -27,6 +30,9 @@ const App = () => {
 						<Route exact path='/' component={Home} />
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/register' component={Register} />
+						<Route exact path='/services' component={Services} />
+						<Route exact path='/all-query' component={AllQuery} />
+						<Route exact path='/add-query' component={PostQuery} />
 					</Switch>
 				</ScrollToTop>
 			</Router>
