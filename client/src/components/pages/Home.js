@@ -8,6 +8,7 @@ import TrendingStories from '../partials/home/TrendingStories';
 import KnowledgeBank from '../partials/home/KnowledgeBank';
 import AboutInfo from '../partials/home/AboutInfo';
 import Services from '../partials/home/Services';
+import OtherStories from '../partials/home/OtherStories';
 
 const Home = () => {
 	return (
@@ -48,6 +49,12 @@ const Home = () => {
 			<section className="section light">
 				<div className="container">
 					<Services />
+				</div>
+			</section>
+
+			<section className="section homeStories">
+				<div className="container">
+					<OtherStories />
 				</div>
 			</section>
 		</Layout>
