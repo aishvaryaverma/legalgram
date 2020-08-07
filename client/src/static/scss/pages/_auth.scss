@@ -1,9 +1,23 @@
 .loginRegisterBox {
 	display: flex;
+	border: 1px solid rgba(black, 0.01);
+	box-shadow: $box-shadow-bottom;
 
 	&__content {
 		flex-shrink: 0;
 		flex-basis: 45%;
+		padding: 6rem 4rem;
 		background-color: $color-primary;
+
+		h1 {
+			line-height: 1;
+		}
+	}
+
+	&__form {
+		flex-shrink: 0;
+		flex-basis: 55%;
+		padding: 6rem 4rem;
+		background-color: $color-white;
 	}
 }
