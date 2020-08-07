@@ -3,7 +3,7 @@ import OtherStories1 from '../../../static/img/otherstories-img1.jpg';
 import OtherStories2 from '../../../static/img/otherstories-img2.jpg';
 import OtherStories3 from '../../../static/img/otherstories-img3.jpg';
 
-const Services = () => {
+const OtherStories = () => {
 	return (
 		<>
 			<div className="row justify-content-center">
@@ -71,4 +71,4 @@ const Services = () => {
 	)
 }
 
-export default Services
+export default OtherStories
