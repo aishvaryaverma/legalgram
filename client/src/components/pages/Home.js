@@ -17,11 +17,11 @@ const Home = () => {
 			
 			<section className="section">
 				<div className="container">
-					<div className="row">
-						<div className="col-md-6">
+					<div className="ui grid">
+						<div className="eight wide column">
 							<Articles />
 						</div>
-						<div className="col-md-6">
+						<div className="eight wide column">
 							<NewsUpdates />
 						</div>
 					</div>
@@ -45,7 +45,7 @@ const Home = () => {
 					<AboutInfo />
 				</div>
 			</section>
-
+			
 			<section className="section light">
 				<div className="container">
 					<Services />

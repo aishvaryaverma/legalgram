@@ -6,15 +6,12 @@ import OtherStories3 from '../../../static/img/otherstories-img3.jpg';
 const OtherStories = () => {
 	return (
 		<>
-			<div className="row justify-content-center">
-				<div className="col-lg-6">
-					<div className="homeStories__heading">
-						<h2 className="size45">Other Stories</h2>
-					</div>
-				</div>
+			<div className="homeStories__heading">
+				<h2 className="size45">Other Stories</h2>
 			</div>
-			<div className="row justify-content-center">
-				<div className="col-lg-6">
+			
+			<div className="ui grid">
+				<div className="eight wide column">
 					<div className="homeStories__content">
 						<div className="homeStories__content--box">
 							<div className="homeStories__content--box-left">
@@ -48,7 +45,7 @@ const OtherStories = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-lg-6">
+				<div className="eight wide column">
 					<div className="homeStories__content">
 						<div className="homeStories__content--moreReads">
 							<h4>Most Reads</h4>

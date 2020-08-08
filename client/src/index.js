@@ -7,9 +7,7 @@ import * as serviceWorker from './serviceWorker';
 // import swConfig from './swConfig';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
+	<App />,
 	document.getElementById('root')
 );
 
