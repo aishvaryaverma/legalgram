@@ -8,11 +8,13 @@ const Services = () => {
 	return (
 		<Layout>
 
-			<section className="section mainBanner">
+			<section className="section mainBannerServices">
 				<div className="container">
-					<div className="row justify-content-center">
-						<div className="col-md-6">
-							<MainBanner />
+					<div className="ui grid">
+						<div className="row justify-content-center">
+							<div className="eight wide column">
+								<MainBanner />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -20,9 +22,11 @@ const Services = () => {
 
 			<section className="section listServices">
 				<div className="container">
-					<div className="row justify-content-center">
-						<div className="col-md-8">
-							<ListServices />
+					<div className="ui grid">
+						<div className="row justify-content-center">
+							<div className="twelve wide column">
+								<ListServices />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -30,9 +34,11 @@ const Services = () => {
 
 			<section className="section gridServices">
 				<div className="container">
-					<div className="row justify-content-center">
-						<div className="col-md-10">
-							<GridServices />
+					<div className="ui grid">
+						<div className="row justify-content-center">
+							<div className="sixteen wide column">
+								<GridServices />
+							</div>
 						</div>
 					</div>
 				</div>

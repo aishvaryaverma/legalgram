@@ -1,12 +1,12 @@
 import React from 'react';
-import gridServicesImg1 from '../../../static/img/services-page/gridsection-img1.jpg';
-import gridServicesImg2 from '../../../static/img/services-page/gridsection-img2.jpg';
-import gridServicesImg3 from '../../../static/img/services-page/gridsection-img3.jpg';
-import gridServicesImg4 from '../../../static/img/services-page/gridsection-img4.jpg';
-import gridServicesImg5 from '../../../static/img/services-page/gridsection-img5.jpg';
-import gridServicesImg6 from '../../../static/img/services-page/gridsection-img6.jpg';
-import gridServicesImg7 from '../../../static/img/services-page/gridsection-img7.jpg';
-import gridServicesImg8 from '../../../static/img/services-page/gridsection-img8.jpg';
+import gridServicesImg1 from '../../../static/img/services/gridsection-img1.jpg';
+import gridServicesImg2 from '../../../static/img/services/gridsection-img2.jpg';
+import gridServicesImg3 from '../../../static/img/services/gridsection-img3.jpg';
+import gridServicesImg4 from '../../../static/img/services/gridsection-img4.jpg';
+import gridServicesImg5 from '../../../static/img/services/gridsection-img5.jpg';
+import gridServicesImg6 from '../../../static/img/services/gridsection-img6.jpg';
+import gridServicesImg7 from '../../../static/img/services/gridsection-img7.jpg';
+import gridServicesImg8 from '../../../static/img/services/gridsection-img8.jpg';
 
 const GridServices = () => {
 	return (
@@ -16,12 +16,12 @@ const GridServices = () => {
 					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg1} alt=""></img></figure>
 				</div>
 				<div className="gridServices__boxes--box-right">
-					<h3>BUSINESS REGISTRATIONS</h3>
+					<h3>BUSINESS REGISTRATIONS</h3> 
 					<ul className="listStyling">
-						<li>Maintain your Accounts</li>
-						<li>Close Your Private Limited Company</li>
-						<li>Close Your LLP</li>
-						<li>Payroll Service NEW0 <span className="NewTag">New</span></li>
+						<li>Private Limited Company</li>
+						<li>Limited Liability Partnership</li>
+						<li>One Person Company</li>
+						<li>Partnership Firm <br />Proprietorship Firm <br />Nidhi Company <br/>Digital Signature <span className="NewTag">New</span></li>
 					</ul>
 				</div>
 			</div>
@@ -32,10 +32,7 @@ const GridServices = () => {
 				<div className="gridServices__boxes--box-right">
 					<h3>FSSAI REGISTRATION <span className="NewTag">New</span></h3>
 					<ul className="listStyling">
-						<li>Partnership to LLP</li>
-						<li>Sole Proprietorship to Private Limited Company</li>
-						<li>Private Limited to Public Limited Company</li>
-						<li>Private Limited to One Person Company</li>
+						<li>FSSAI Registration(Centre & State)</li>
 					</ul>
 				</div>
 			</div>
@@ -46,13 +43,11 @@ const GridServices = () => {
 				<div className="gridServices__boxes--box-right">
 					<h3>TAX FILINGS & REGISTRATIONS</h3>
 					<ul className="listStyling">
-						<li>Add a Director <span className="NewTag">New</span></li>
-						<li>Remove a Director <span className="NewTag">New</span></li>
-						<li>Add a Designated Partner <span className="NewTag">New</span></li>
-						<li>Change Objectives of Your Business</li>
-						<li>Change Official Address</li>
-						<li>Change Company Name</li>
-						<li>Change LLP Agreement</li>
+						<li>Goods & Service Tax Registration <span className="NewTag">New</span></li>
+						<li>GST Filings <span className="NewTag">New</span></li>
+						<li>GST Advisory <span className="NewTag">New</span></li>
+						<li>TDS Return</li>
+						<li>Income Tax Return</li>
 					</ul>
 				</div>
 			</div>
@@ -63,10 +58,12 @@ const GridServices = () => {
 				<div className="gridServices__boxes--box-right">
 					<h3>NGO REGISTRATIONS</h3>
 					<ul className="listStyling">
-						<li>Annual Compliances for PVT <span className="NewTag">New</span></li>
-						<li>Annual Filings for LLPs <span className="NewTag">New</span></li>
-						<li>Increase in Authorised Capital <span className="NewTag">New</span></li>
-						<li>Internal Audit Package for Companies NEW</li>
+						<li>NGO Registration</li>
+						<li>Section 8 Company Registration <span className="NewTag">New</span></li>
+						<li>Annual Compliances for Section 8 Companies <span className="NewTag">New</span></li>
+						<li>Society Registration <span className="NewTag">New</span></li>
+						<li>Trust Registration <span className="NewTag">New</span></li>
+						<li>FCRA Registration</li>
 					</ul>
 				</div>
 			</div>
@@ -77,10 +74,12 @@ const GridServices = () => {
 				<div className="gridServices__boxes--box-right">
 					<h3>GOVERNMENT REGISTRATIONS</h3>
 					<ul className="listStyling">
-						<li>Maintain your Accounts</li>
-						<li>Close Your Private Limited Company</li>
-						<li>Close Your LLP</li>
-						<li>Payroll Service NEW0</li>
+						<li>Shops & Establishments Registration</li>
+						<li>SSI/MSME Registration</li>
+						<li>Importer Exporter Code</li>
+						<li>ISO Certification</li>
+						<li>Trade License</li>
+						<li>NRI Legal Advice</li>
 					</ul>
 				</div>
 			</div>
@@ -91,10 +90,8 @@ const GridServices = () => {
 				<div className="gridServices__boxes--box-right">
 					<h3>LABOUR LAW REGISTRATION</h3>
 					<ul className="listStyling">
-						<li>Partnership to LLP</li>
-						<li>Sole Proprietorship to Private Limited Company</li>
-						<li>Private Limited to Public Limited Company</li>
-						<li>Private Limited to One Person Company</li>
+						<li>PF Registration</li>
+						<li>ESI Registration</li>
 					</ul>
 				</div>
 			</div>
@@ -105,13 +102,12 @@ const GridServices = () => {
 				<div className="gridServices__boxes--box-right">
 					<h3>TRADEMARK</h3>
 					<ul className="listStyling">
-						<li>Add a Director</li>
-						<li>Remove a Director</li>
-						<li>Add a Designated Partner</li>
-						<li>Change Objectives of Your Business</li>
-						<li>Change Official Address</li>
-						<li>Change Company Name</li>
-						<li>Change LLP Agreement</li>
+						<li>Trademark Registration</li>
+						<li>Trademark Objection</li>
+						<li>Trademark Assignment</li>
+						<li>Trademark Renewal</li>
+						<li>Trademark Watch</li>
+						<li>Logo Designing & Logo Registration</li>
 					</ul>
 				</div>
 			</div>
@@ -122,10 +118,10 @@ const GridServices = () => {
 				<div className="gridServices__boxes--box-right">
 					<h3>COPYRIGHT & PATENT</h3>
 					<ul className="listStyling">
-						<li>Annual Compliances for PVT</li>
-						<li>Annual Filings for LLPs</li>
-						<li>Increase in Authorised Capital</li>
-						<li>Internal Audit Package for Companies NEW</li>
+						<li>Copyright Registration</li>
+						<li>Patent Search</li>
+						<li>Provisional Patent</li>
+						<li>Patent</li>
 					</ul>
 				</div>
 			</div>

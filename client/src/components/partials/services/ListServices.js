@@ -1,8 +1,8 @@
 import React from 'react';
-import listServicesImg1 from '../../../static/img/services-page/listsection-img1.jpg';
-import listServicesImg2 from '../../../static/img/services-page/listsection-img2.jpg';
-import listServicesImg3 from '../../../static/img/services-page/listsection-img3.jpg';
-import listServicesImg4 from '../../../static/img/services-page/listsection-img4.jpg';
+import listServicesImg1 from '../../../static/img/services/listsection-img1.jpg';
+import listServicesImg2 from '../../../static/img/services/listsection-img2.jpg';
+import listServicesImg3 from '../../../static/img/services/listsection-img3.jpg';
+import listServicesImg4 from '../../../static/img/services/listsection-img4.jpg';
 
 const ListServices = () => {
 	return (
@@ -62,7 +62,7 @@ const ListServices = () => {
 						<li>Annual Compliances for PVT</li>
 						<li>Annual Filings for LLPs</li>
 						<li>Increase in Authorised Capital</li>
-						<li>Internal Audit Package for Companies NEW <span className="NewTag">New</span></li>
+						<li>Internal Audit Package for Companies <span className="NewTag">New</span></li>
 					</ul>
 				</div>
 			</div>

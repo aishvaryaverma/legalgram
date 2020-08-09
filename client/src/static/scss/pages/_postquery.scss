@@ -1,0 +1,64 @@
+.mainBannerQuery {
+	background: transparent url('../../img/postquery/banner-bg.jpg')no-repeat left top / cover;
+	padding: 8rem 0;
+
+	h1 {
+		color: $color_headings;
+		line-height: 1.2;
+		font-weight: 400;
+		margin: 0 0 1rem;
+	}
+
+	p {
+		font-size: 1.8rem;
+		font-weight: 300;
+		color: $color_headings;
+		margin: 0 0 2rem;
+	}
+
+	.btn {
+		border-radius: 3px;
+	}
+}
+
+.aboutQueries {
+
+	&__heading {
+		text-align: center;
+		margin-bottom: 1rem;
+
+		h2 {
+			font-weight: 400;
+		}
+	}
+
+	&__content {
+		background: transparent url(../../img/postquery/aboutquery-bg.png) no-repeat center center;
+		position: relative;
+		min-height: 75rem;
+
+		p {
+			font-weight: 300;
+			font-size: 1.6rem;
+			position: absolute;
+			width: 35rem;
+			margin: 0;
+
+			&.first {
+				top: 9.5rem;
+				right: 0;
+			}
+
+			&.second {
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+			}
+
+			&.third {
+				bottom: 10rem;
+				right: 0;
+			}
+		}
+	}
+}

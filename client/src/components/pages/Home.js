@@ -13,6 +13,7 @@ import OtherStories from '../partials/home/OtherStories';
 const Home = () => {
 	return (
 		<Layout>
+			
 			<Search />
 			
 			<section className="section">
