@@ -1,30 +1,5 @@
-// Buttons
-.btn {
-	font-size: $font-size-small;
-	display: inline-flex;
-	border: none;
-	outline: none;
-	line-height: 1;
-	box-shadow: none;
-	border-radius: 0;
-	color: $color-white;
-	padding: 1rem 1.5rem;
-	font-weight: $font-semi;
-	background: $color-primary;
-	transition: all 0.2s ease-out;
-	&:hover{
-		color: $color-white;
-	}
-
-	&.radius { border-radius: .4rem; }
-
-	&:focus {
-		color: white;
-		box-shadow: none;
-		transform: scale(0.94);
-	}
-	&.btn-large{
-		padding: 1.5rem 2.5rem;
-		font-size: 1.4rem;
-	}
+.ui.button {
+	font-size: 1.6rem;
+	padding: 1.5rem 3rem;
+	font-weight: $font-normal;
 }

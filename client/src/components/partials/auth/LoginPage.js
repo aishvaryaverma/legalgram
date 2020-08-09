@@ -1,40 +1,62 @@
-import React, { useRef } from "react";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import React, { useRef, useState } from "react";
+import { Button, Form } from "semantic-ui-react";
 import { ValidatorForm } from 'react-form-validator-core';
 import TextValidator from '../common/TextValidator';
 
 const LoginPage = () => {
-    const form = useRef();
+    const [state, setState] = useState({
+        email: '',
+        password: ''
+    });
+    const { email, password } = state;
+    
+    const handleChange = ({target: { name, value }}) => setState({ ...state, [name]: value });
+
+    const handleSubmit = e => e.preventDefault();
+
+    const formRef = useRef();
     return (
         <section className="section">
             <div className="container">
                 <div className="loginRegisterBox">
                     <div className="loginRegisterBox__content">
-                        <h1 className="size50 white">Login to Your Account</h1>
+                        <h1 className="size45 semi white">Login to <br/> Your Account</h1>
                         <p className="white">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic ex libero
-                            sint, earum dolorum veniam voluptas magnam explicabo deserunt veritatis!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam laborum sint animi maiores, repellat, nobis laboriosam non, sapiente cumque nostrum commodi recusandae numquam. Libero, ut perferendis? Quibusdam, architecto ab? Doloribus commodi tempora quia odit tenetur dolorum fugit reiciendis labore vero!
                         </p>
                     </div>
                     <div className="loginRegisterBox__form">
-                        
                         <ValidatorForm
-                            ref={form}
-                            // onSubmit={this.handleSubmit}
+                            ref={formRef}
+                            onSubmit={handleSubmit}
+                            className="ui form"
                         >
                             <Form.Field>
-                                <label>First Name</label>
-                                <TextValidator placeholder="First Name" 
-                                validators={['required', 'isEmail']} />
+                                <label>Username</label>
+                                <TextValidator
+                                    onChange={handleChange}
+                                    name="email"
+                                    value={email}
+                                    placeholder="i.e. registered email or mobile"
+                                    validators={['required', 'isEmail']}
+                                    errorMessages={['Email/Mobile is required.', 'Email is not valid']}
+                                />
                             </Form.Field>
                             <Form.Field>
-                                <label>Last Name</label>
-                                <TextValidator placeholder="Last Name" />
+                                <label>Enter Password</label>
+                                <TextValidator
+                                    icon="eye"
+                                    type="password"
+                                    onChange={handleChange}
+                                    name="password"
+                                    value={password}
+                                    placeholder="Enter Password"
+                                    validators={['required']}
+                                    errorMessages={['Password is required.']}
+                                />
                             </Form.Field>
-                            <Form.Field>
-                                <Checkbox label="I agree to the Terms and Conditions" />
-                            </Form.Field>
-                            <Button type="submit">Submit</Button>
+                            
+                            <Button type="submit" fluid primary>Login to My Account</Button>
                         </ValidatorForm>
                     </div>
                 </div>

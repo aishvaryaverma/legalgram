@@ -17,7 +17,7 @@ class SelectValidator extends ValidatorComponent {
         );
     }
  
-    render() {
+    renderValidatorComponent() {
         const { errorMessages, validators, requiredError, validatorListener, ...rest } = this.props;
  
         return (

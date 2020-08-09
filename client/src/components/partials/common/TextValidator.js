@@ -1,5 +1,6 @@
 import React from 'react';
 import { ValidatorComponent } from 'react-form-validator-core';
+import { Input } from "semantic-ui-react";
 
 class TextValidator extends ValidatorComponent {
     errorText() {
@@ -10,18 +11,19 @@ class TextValidator extends ValidatorComponent {
         }
  
         return (
-            <span className="error">
+            <div className="ui pointing top prompt label" role="alert" aria-atomic="true">
                 {this.getErrorMessage()}
-            </span>
+            </div>
         );
     }
  
-    render() {
+    renderValidatorComponent() {
         const { errorMessages, validators, requiredError, validatorListener, ...rest } = this.props;
  
         return (
             <>
-                <input
+                <Input
+                    className="input"
                     {...rest}
                     ref={(r) => { this.input = r; }}
                 />

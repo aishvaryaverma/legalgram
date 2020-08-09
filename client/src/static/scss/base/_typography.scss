@@ -13,9 +13,10 @@ h1, h2, h3, h4, h5, h6 {
 
 	&.white { color: $color-white; }
 
-	&.light { font-family: $font-family-primary; }
-	&.normal { font-family: $font-family-primary; }
-	&.semi { font-family: $font-family-primary; }
+	&.light { font-weight: $font-light; }
+	&.normal { font-weight: $font-normal; }
+	&.semi { font-weight: $font-semi; }
+	&.black { font-weight: $font-black; }
 
 	&.capitalize { text-transform: capitalize; }
 }
@@ -25,6 +26,7 @@ p {
 	font-size: $font-size-default;
 	color: #525252;
 	margin-bottom: 2rem;
+	font-weight: $font-light;
 	line-height: $line-height-default;
 
 	&.white { color: $color-white; }

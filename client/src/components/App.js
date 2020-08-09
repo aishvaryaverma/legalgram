@@ -16,6 +16,8 @@ import Register from './pages/Register';
 import Services from './pages/Services';
 import AllQuery from './pages/AllQuery';
 import PostQuery from './pages/PostQuery';
+import SearchResult from './pages/SearchResult';
+import SearchDetails from './pages/SearchDetails';
 
 const App = () => {
 	useEffect(() => {
@@ -33,6 +35,8 @@ const App = () => {
 						<Route exact path='/services' component={Services} />
 						<Route exact path='/all-query' component={AllQuery} />
 						<Route exact path='/add-query' component={PostQuery} />
+						<Route exact path='/search-result' component={SearchResult} />
+						<Route exact path='/search-details' component={SearchDetails} />
 					</Switch>
 				</ScrollToTop>
 			</Router>
