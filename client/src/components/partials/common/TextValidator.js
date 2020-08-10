@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ValidatorComponent } from 'react-form-validator-core';
 import { Input } from "semantic-ui-react";
 
@@ -21,14 +21,14 @@ class TextValidator extends ValidatorComponent {
         const { errorMessages, validators, requiredError, validatorListener, ...rest } = this.props;
  
         return (
-            <>
-                <Input
-                    className="input"
+            <Fragment>
+                <input
                     {...rest}
                     ref={(r) => { this.input = r; }}
+                    className="input"
                 />
                 {this.errorText()}
-            </>
+            </Fragment>
         );
     }
 }

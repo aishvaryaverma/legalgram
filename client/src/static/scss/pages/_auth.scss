@@ -1,13 +1,22 @@
 .loginRegisterBox {
 	display: flex;
-	border: 1px solid rgba(black, 0.01);
+	margin: 0 auto;
+	width: 80%;
+	overflow: hidden;
+	border-radius: 1rem;
 	box-shadow: $box-shadow-bottom;
+	border: 1px solid rgba(black, 0.01);
 
 	&__content {
 		flex-shrink: 0;
 		flex-basis: 45%;
-		padding: 8rem 4rem;
+		padding: 4rem;
+		min-height: 50rem;
 		background-color: $color-primary;
+		display: flex;
+		// align-items: center;
+		flex-direction: column;
+		justify-content: center;
 
 		h1 {
 			line-height: 1;
@@ -17,7 +26,47 @@
 	&__form {
 		flex-shrink: 0;
 		flex-basis: 55%;
-		padding: 6rem 10rem;
+		padding: 6rem 8rem;
 		background-color: $color-white;
+		display: flex;
+		// align-items: center;
+		flex-direction: column;
+		justify-content: center;
+
+		.forgotPassword {
+			display: flex;
+			justify-content: flex-end;
+			font-size: $font-size-small;
+			margin-bottom: 2rem;
+			padding-right: 1rem;
+			
+			a {
+				color: $color-black;
+
+				&:hover { color: $color-primary; }
+			}
+		}
+
+		.buttonBox {
+			padding: 2rem 0;
+		}
+
+		.switchPage {
+			text-align: center;
+			color: $color-dark1;
+
+			a {
+				position: relative;
+				z-index: 1;
+				margin-left: .5rem;
+				color: $color-tertiary;
+				border-bottom: 1px solid $color-tertiary;
+
+				&:hover {
+					color: $color-black;
+					border-color: $color-black;
+				}
+			}
+		}
 	}
 }

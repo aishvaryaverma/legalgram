@@ -4,7 +4,7 @@ import { ValidatorForm } from 'react-form-validator-core';
 import TextValidator from '../common/TextValidator';
 import { Link } from 'react-router-dom';
 
-const LoginPage = () => {
+const RegisterPage = () => {
     const [state, setState] = useState({
         email: '',
         password: ''
@@ -76,4 +76,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default RegisterPage

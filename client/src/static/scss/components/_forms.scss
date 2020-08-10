@@ -4,19 +4,25 @@
 	.field {
 		position: relative;
 		z-index: 1;
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 
 		label {
-			font-size: $font-size-default;
+			font-size: $font-size-tiny;
 			font-weight: $font-semi;
 		}
 
 		.prompt {
-			position: absolute;
-			top: 100%;
-			right: 0;
+			// position: absolute;
+			// top: 100%;
+			// left: 0;
+			margin-top: -4px;
 			font-size: 1.2rem;
 			font-weight: $font-semi;
+		}
+		.input {
+			font-size: $font-size-small;
+			padding: 1.2rem 2rem;
+			line-height: 1.4;
 		}
 	}
 }
