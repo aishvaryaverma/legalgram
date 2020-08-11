@@ -164,9 +164,11 @@
 						padding-left: 2rem;
 						padding-bottom: 2rem;
 
-						font-size: 1.8rem;
-						font-weight: 400;
-						color: $color-headings;
+						a {
+							font-size: 1.8rem;
+							font-weight: 400;
+							color: $color-headings;
+						}
 
 						&:before {
 							font-family: 'Font Awesome 5 Free';

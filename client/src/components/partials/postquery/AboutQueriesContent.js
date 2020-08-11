@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutQueries = () => {
+const AboutQueriesContent = () => {
 	return (
 		<div className="aboutQueries__content">
 			<p className="paragraph first">As you enquire for any services, our customer service executive gets intimated and he/she comes in contact with you in a while to give you brief description about the service and provide you with checklist of Documents/Information required to execute the service.</p>
@@ -10,4 +10,4 @@ const AboutQueries = () => {
 	)
 }
 
-export default AboutQueries
+export default AboutQueriesContent

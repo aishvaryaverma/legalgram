@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutQueries = () => {
+const AboutQueriesHeading = () => {
 	return (
 		<div className="aboutQueries__heading">
 			<h2 className="size45">About Queries</h2>
@@ -9,4 +9,4 @@ const AboutQueries = () => {
 	)
 }
 
-export default AboutQueries
+export default AboutQueriesHeading
