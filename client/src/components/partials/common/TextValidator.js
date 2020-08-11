@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { ValidatorComponent } from 'react-form-validator-core';
-import { Input } from "semantic-ui-react";
 
 class TextValidator extends ValidatorComponent {
     errorText() {

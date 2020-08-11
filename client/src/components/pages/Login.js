@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '../layout/Layout';
-import LoginPage from '../partials/auth/LoginPage';
+import LoginView from '../views/LoginView';
 
 const Login = () => {
 	return (
 		<Layout>
-			<LoginPage />
+			<LoginView />
 		</Layout>
 	)
 }

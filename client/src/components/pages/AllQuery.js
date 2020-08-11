@@ -8,7 +8,6 @@ import Sidebar from '../partials/allquery/Sidebar';
 const AllQuery = () => {
 	return (
 		<Layout>
-
 			<Search />
 
 			<section className="section queriessection">
@@ -25,7 +24,6 @@ const AllQuery = () => {
 					</div>
 				</div>
 			</section>
-
 		</Layout>
 	)
 }

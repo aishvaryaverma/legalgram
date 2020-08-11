@@ -7,7 +7,6 @@ import GridServices from '../partials/services/GridServices';
 const Services = () => {
 	return (
 		<Layout>
-
 			<section className="section mainBannerServices">
 				<div className="container">
 					<div className="ui grid">
@@ -43,7 +42,6 @@ const Services = () => {
 					</div>
 				</div>
 			</section>
-
 		</Layout>
 	)
 }

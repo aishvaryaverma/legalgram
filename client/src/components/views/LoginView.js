@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { ValidatorForm } from 'react-form-validator-core';
 import { Link } from 'react-router-dom';
-import TextValidator from '../common/TextValidator';
+import TextValidator from '../partials/common/TextValidator';
 
-const LoginPage = () => {
+const LoginView = () => {
     const [state, setState] = useState({
         email: '',
         password: ''
@@ -76,4 +76,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default LoginView

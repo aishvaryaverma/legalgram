@@ -8,7 +8,6 @@ import AboutQueriesContent from '../partials/postquery/AboutQueriesContent';
 const PostQuery = () => {
 	return (
 		<Layout>
-
 			<section className="section mainBannerQuery">
 				<div className="container">
 					<div className="ui grid">
@@ -35,7 +34,6 @@ const PostQuery = () => {
 					</div>
 				</div>
 			</section>
-
 		</Layout>
 	)
 }
