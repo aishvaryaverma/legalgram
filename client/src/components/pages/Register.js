@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '../layout/Layout';
-import RegisterPage from '../partials/auth/RegisterPage';
+import RegisterView from '../views/auth/RegisterView';
 
 const Register = () => {
 	return (
 		<Layout>
-			<RegisterPage />
+			<RegisterView />
 		</Layout>
 	)
 }

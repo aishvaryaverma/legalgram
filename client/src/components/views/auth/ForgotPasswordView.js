@@ -2,14 +2,13 @@ import React, { useRef, useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { ValidatorForm } from 'react-form-validator-core';
 import { Link } from 'react-router-dom';
-import TextValidator from '../partials/common/TextValidator';
+import TextValidator from '../../partials/common/TextValidator';
 
-const LoginView = () => {
-    const [state, setState] = useState({
-        email: '',
-        password: ''
+const ForgotPasswordView = () => {
+	const [state, setState] = useState({
+        email: ''
     });
-    const { email, password } = state;
+    const { email } = state;
     
     const handleChange = ({target: { name, value }}) => setState({ ...state, [name]: value });
 
@@ -21,9 +20,9 @@ const LoginView = () => {
             <div className="container">
                 <div className="loginRegisterBox">
                     <div className="loginRegisterBox__content">
-                        <h1 className="size40 white">Login to <br/> Your Account</h1>
+                        <h1 className="size40 white">Forgot Password</h1>
                         <p className="white">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam laborum sint animi maiores, repellat, nobis laboriosam non, sapiente cumque nostrum commodi recusandae numquam. Libero, ut perferendis? Quibusdam, architecto ab? Doloribus commodi tempora quia odit tenetur dolorum fugit reiciendis labore vero!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         </p>
                     </div>
                     <div className="loginRegisterBox__form">
@@ -33,35 +32,19 @@ const LoginView = () => {
                             className="ui form"
                         >
                             <Form.Field>
-                                <label>Username</label>
+                                <label>Registered Email or Mobile</label>
                                 <TextValidator
                                     onChange={handleChange}
                                     name="email"
                                     value={email}
-                                    placeholder="i.e. registered email or mobile"
+                                    placeholder="Registered email or mobile"
                                     validators={['required', 'isEmail']}
                                     errorMessages={['Email/Mobile is required.', 'Email is not valid']}
                                 />
                             </Form.Field>
-                            <Form.Field>
-                                <label>Enter Password</label>
-                                <TextValidator
-                                    icon="eye"
-                                    type="password"
-                                    onChange={handleChange}
-                                    name="password"
-                                    value={password}
-                                    placeholder="Enter Password"
-                                    validators={['required']}
-                                    errorMessages={['Password is required.']}
-                                />
-                            </Form.Field>
-                            <div className="forgotPassword">
-                                <Link to="/forgot-password">Forgot Password??</Link>
-                            </div>
-                            
+
                             <div className="buttonBox">
-                                <Button type="submit" fluid primary>Login to My Account</Button>
+                                <Button type="submit" fluid primary>Change Password</Button>
                             </div>
 
                             <div className="switchPage">
@@ -76,4 +59,4 @@ const LoginView = () => {
     )
 }
 
-export default LoginView
+export default ForgotPasswordView
