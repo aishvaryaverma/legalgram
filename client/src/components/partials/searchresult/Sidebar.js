@@ -20,7 +20,7 @@ const Sidebar = () => {
 				<ul>
 					<li>
 						<figure>
-							<a href="#!"><img src={RecentlyViewedImg} /></a>
+							<a href="#!"><img src={RecentlyViewedImg} alt="" /></a>
 						</figure>
 						<div>
 							<h2><a href="#!">NI being eased 'back to  normality step by step</a></h2>
@@ -29,7 +29,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<figure>
-							<a href="#!"><img src={RecentlyViewedImg} /></a>
+							<a href="#!"><img src={RecentlyViewedImg} alt="" /></a>
 						</figure>
 						<div>
 							<h2><a href="#!">NI being eased 'back to  normality step by step</a></h2>
@@ -38,7 +38,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<figure>
-							<a href="#!"><img src={RecentlyViewedImg} /></a>
+							<a href="#!"><img src={RecentlyViewedImg} alt="" /></a>
 						</figure>
 						<div>
 							<h2><a href="#!">NI being eased 'back to  normality step by step</a></h2>
@@ -47,7 +47,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<figure>
-							<a href="#!"><img src={RecentlyViewedImg} /></a>
+							<a href="#!"><img src={RecentlyViewedImg} alt="" /></a>
 						</figure>
 						<div>
 							<h2><a href="#!">NI being eased 'back to  normality step by step</a></h2>
@@ -56,7 +56,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<figure>
-							<a href="#!"><img src={RecentlyViewedImg} /></a>
+							<a href="#!"><img src={RecentlyViewedImg} alt="" /></a>
 						</figure>
 						<div>
 							<h2><a href="#!">NI being eased 'back to  normality step by step</a></h2>
@@ -65,7 +65,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<figure>
-							<a href="#!"><img src={RecentlyViewedImg} /></a>
+							<a href="#!"><img src={RecentlyViewedImg} alt="" /></a>
 						</figure>
 						<div>
 							<h2><a href="#!">NI being eased 'back to  normality step by step</a></h2>
@@ -74,7 +74,7 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<figure>
-							<a href="#!"><img src={RecentlyViewedImg} /></a>
+							<a href="#!"><img src={RecentlyViewedImg} alt="" /></a>
 						</figure>
 						<div>
 							<h2><a href="#!">NI being eased 'back to  normality step by step</a></h2>
