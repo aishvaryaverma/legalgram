@@ -45,7 +45,7 @@
 		box-shadow: 0 0 4.3rem .8rem rgba(#2c026b, 0.10);
 		padding: 2rem;
 
-		&--box {
+		.card {
 			padding: 40px 20px;
 			border-bottom: 1px solid #e1e1e1;
 			
@@ -142,7 +142,7 @@
 	&__sidebar {
 		margin-top: 8rem;
 
-		&--box {
+		.card {
 			box-shadow: 0 0 4.3rem .8rem rgba(#2c026b, 0.10);
 			background-color: $color-white;
 			padding: 20px;

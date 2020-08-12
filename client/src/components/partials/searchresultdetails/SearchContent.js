@@ -11,10 +11,10 @@ const SearchContent = () => {
 				<h2 className="size30">Analysis of Direct Tax changes introduced by the FM -CCI Talk</h2>
 			</div>
 			<div className="searchContent__content">
-				<div className="searchContent__content--img">
+				<div className="searchContent__searchimg">
 					<img src={SearchContentContentImg} alt="" />
 				</div>
-				<div className="searchContent__content--details">
+				<div className="searchContent__searchdetails">
 					<ul>
 						<li><a href="#!" className="publishedBy">Published By: CCI Team</a></li>
 						<li><a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a></li>

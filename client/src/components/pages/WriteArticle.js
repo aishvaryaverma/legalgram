@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '../layout/Layout';
-import WriteArticlesView from '../views/dashboard/WriteArticlesView';
+import WriteArticleView from '../views/dashboard/WriteArticleView';
 
 const WriteArticles = () => {
 	return (
 		<Layout>
-			<WriteArticlesView />
+			<WriteArticleView />
 		</Layout>
 	)
 }

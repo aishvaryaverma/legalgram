@@ -10,12 +10,12 @@ import gridServicesImg8 from '../../../static/img/services/gridsection-img8.jpg'
 
 const GridServices = () => {
 	return (
-		<div className="gridServices__boxes">
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg1} alt=""></img></figure>
+		<div className="gridServices__sercivecards">
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg1} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>BUSINESS REGISTRATIONS</h3> 
 					<ul className="listStyling">
 						<li>Private Limited Company</li>
@@ -25,22 +25,22 @@ const GridServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg2} alt=""></img></figure>
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg2} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>FSSAI REGISTRATION <span className="NewTag">New</span></h3>
 					<ul className="listStyling">
 						<li>FSSAI Registration(Centre & State)</li>
 					</ul>
 				</div>
 			</div>
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg3} alt=""></img></figure>
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg3} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>TAX FILINGS & REGISTRATIONS</h3>
 					<ul className="listStyling">
 						<li>Goods & Service Tax Registration <span className="NewTag">New</span></li>
@@ -51,11 +51,11 @@ const GridServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg4} alt=""></img></figure>
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg4} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>NGO REGISTRATIONS</h3>
 					<ul className="listStyling">
 						<li>NGO Registration</li>
@@ -67,11 +67,11 @@ const GridServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg5} alt=""></img></figure>
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg5} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>GOVERNMENT REGISTRATIONS</h3>
 					<ul className="listStyling">
 						<li>Shops & Establishments Registration</li>
@@ -83,11 +83,11 @@ const GridServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg6} alt=""></img></figure>
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg6} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>LABOUR LAW REGISTRATION</h3>
 					<ul className="listStyling">
 						<li>PF Registration</li>
@@ -95,11 +95,11 @@ const GridServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg7} alt=""></img></figure>
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg7} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>TRADEMARK</h3>
 					<ul className="listStyling">
 						<li>Trademark Registration</li>
@@ -111,11 +111,11 @@ const GridServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="gridServices__boxes--box">
-				<div className="gridServices__boxes--box-left">
-					<figure className="gridServices__boxes--box-left_img"><img src={gridServicesImg8} alt=""></img></figure>
+			<div className="gridServices__sercivecard">
+				<div className="gridServices__sercivecardLeft">
+					<figure className="gridServices__sercivecardLeft_img"><img src={gridServicesImg8} alt=""></img></figure>
 				</div>
-				<div className="gridServices__boxes--box-right">
+				<div className="gridServices__sercivecardRight">
 					<h3>COPYRIGHT & PATENT</h3>
 					<ul className="listStyling">
 						<li>Copyright Registration</li>

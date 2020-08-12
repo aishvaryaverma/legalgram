@@ -13,31 +13,31 @@ const OtherStories = () => {
 			<div className="ui grid">
 				<div className="eight wide column">
 					<div className="homeStories__content">
-						<div className="homeStories__content--box">
-							<div className="homeStories__content--box-left">
+						<div className="card">
+							<div className="card-left">
 								<img src={OtherStories1} alt=""/>
 							</div>
-							<div className="homeStories__content--box-right">
+							<div className="card-right">
 								<h3>NI being eased 'back to normality step by step</h3>
 								<p>The executive is working to ease Northern Ireland "back to normality step by step", Diane Dodds has said.</p>
 								<a href="#!" className="btn btn-primary">Read More <i className="fas fa-chevron-right"></i></a>
 							</div>
 						</div>
-						<div className="homeStories__content--box">
-							<div className="homeStories__content--box-left">
+						<div className="card">
+							<div className="card-left">
 								<img src={OtherStories2} alt="" />
 							</div>
-							<div className="homeStories__content--box-right">
+							<div className="card-right">
 								<h3>Coronavirus pushes German  economy into recession</h3>
 								<p>Germany's economy shrank by 2.2% in the first three months of this year as the coronavirus pandemic pushed it into recession, official figures indicate.</p>
 								<a href="#!" className="btn btn-primary">Read More <i className="fas fa-chevron-right"></i></a>
 							</div>
 						</div>
-						<div className="homeStories__content--box">
-							<div className="homeStories__content--box-left">
+						<div className="card">
+							<div className="card-left">
 								<img src={OtherStories3} alt="" />
 							</div>
-							<div className="homeStories__content--box-right">
+							<div className="card-right">
 								<h3>WTO head quits early as global downturn looms</h3>
 								<p>Roberto Azevedo's surprise departure comes as the WTO faces the impact of the coronavirus pandemic and criticism from US President Donald Trump.</p>
 								<a href="#!" className="btn btn-primary">Read More <i className="fas fa-chevron-right"></i></a>

@@ -3,7 +3,7 @@ import React from 'react';
 const Sidebar = () => {
 	return (
 		<div className="queriessection__sidebar">
-			<div className="queriessection__sidebar--box">
+			<div className="card">
 				<h4>Hot Topics</h4>
 				<ul className="listStyling">
 					<li><a href="#!">Finance</a></li>
@@ -13,7 +13,7 @@ const Sidebar = () => {
 					<li><a href="#!">Corporate Law</a></li>
 				</ul>
 			</div>
-			<div className="queriessection__sidebar--box">
+			<div className="card">
 				<h4>Most Reads</h4>
 				<ul className="listStyling">
 					<li><a href="#!">TDS on Salary for F.Y.2020-21</a></li>

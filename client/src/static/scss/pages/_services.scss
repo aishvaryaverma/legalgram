@@ -20,16 +20,16 @@
 .listServices {
 	padding: 8rem 0;
 
-	&__boxes {
+	&__sercivecards {
 
-		&--box {
+		.listServices__sercivecard {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			flex-wrap: wrap;
 			padding: 7.5rem 0;
 
-			&-left {
+			&Left {
 				width: 50%;
 
 				&_img {
@@ -63,7 +63,7 @@
 				}
 			}
 
-			&-right {
+			&Right {
 				width: 40%;
 
 				h3 {
@@ -118,7 +118,7 @@
 			&:nth-child(odd) {
 				flex-direction: row;
 
-				.listServices__boxes--box-left {
+				.listServices__sercivecardLeft {
 
 					&_img {
 
@@ -140,7 +140,7 @@
 			&:nth-child(even) {
 				flex-direction: row-reverse;
 
-				.listServices__boxes--box-left {
+				.listServices__sercivecardLeft {
 
 					&_img {
 
@@ -165,13 +165,13 @@
 .gridServices {
 	padding: 0 0 4rem;
 
-	&__boxes {
+	.gridServices__sercivecards {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
 		flex-wrap: wrap;
 
-		&--box {
+		.gridServices__sercivecard {
 			width: calc((100% / 3) - 2.222222%);
 			display: flex;
 			align-items: center;
@@ -184,7 +184,7 @@
 				margin-right: 0;
 			}
 
-			&-left {
+			&Left {
 				width: 100%;
 				margin-bottom: 5rem;
 
@@ -222,7 +222,7 @@
 				}
 			}
 
-			&-right {
+			&Right {
 				width: 100%;
 
 				.NewTag {

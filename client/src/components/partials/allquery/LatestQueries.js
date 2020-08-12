@@ -21,7 +21,7 @@ const LatestQueries = () => {
 			</div>
 
 			<div className="queriessection__content">
-				<div className="queriessection__content--box">
+				<div className="card">
 					<p>
 						<a href="#!" className="comment-topic">Finance</a>
 						<a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a>
@@ -36,7 +36,7 @@ const LatestQueries = () => {
 						<li><a href="#!" className="comment-btn"><img src={shareIcon} alt="" /> Share</a></li>
 					</ul>
 				</div>
-				<div className="queriessection__content--box">
+				<div className="card">
 					<p>
 						<a href="#!" className="comment-topic">Finance</a>
 						<a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a>
@@ -51,7 +51,7 @@ const LatestQueries = () => {
 						<li><a href="#!" className="comment-btn"><img src={shareIcon} alt="" /> Share</a></li>
 					</ul>
 				</div>
-				<div className="queriessection__content--box">
+				<div className="card">
 					<p>
 						<a href="#!" className="comment-topic">Finance</a>
 						<a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a>
@@ -66,7 +66,7 @@ const LatestQueries = () => {
 						<li><a href="#!" className="comment-btn"><img src={shareIcon} alt="" /> Share</a></li>
 					</ul>
 				</div>
-				<div className="queriessection__content--box">
+				<div className="card">
 					<p>
 						<a href="#!" className="comment-topic">Finance</a>
 						<a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a>
@@ -81,7 +81,7 @@ const LatestQueries = () => {
 						<li><a href="#!" className="comment-btn"><img src={shareIcon} alt="" /> Share</a></li>
 					</ul>
 				</div>
-				<div className="queriessection__content--box">
+				<div className="card">
 					<p>
 						<a href="#!" className="comment-topic">Finance</a>
 						<a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a>
@@ -96,7 +96,7 @@ const LatestQueries = () => {
 						<li><a href="#!" className="comment-btn"><img src={shareIcon} alt="" /> Share</a></li>
 					</ul>
 				</div>
-				<div className="queriessection__content--box">
+				<div className="card">
 					<p>
 						<a href="#!" className="comment-topic">Finance</a>
 						<a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a>
@@ -111,7 +111,7 @@ const LatestQueries = () => {
 						<li><a href="#!" className="comment-btn"><img src={shareIcon} alt="" /> Share</a></li>
 					</ul>
 				</div>
-				<div className="queriessection__content--box">
+				<div className="card">
 					<p>
 						<a href="#!" className="comment-topic">Finance</a>
 						<a href="#!" className="comment-time"><img src={clockIcon} alt="" />JANUARY 25, 2020</a>

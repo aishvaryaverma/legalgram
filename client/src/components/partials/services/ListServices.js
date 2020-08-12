@@ -6,12 +6,12 @@ import listServicesImg4 from '../../../static/img/services/listsection-img4.jpg'
 
 const ListServices = () => {
 	return (
-		<div className="listServices__boxes">
-			<div className="listServices__boxes--box">
-				<div className="listServices__boxes--box-left">
-					<figure className="listServices__boxes--box-left_img"><img src={listServicesImg1} alt=""></img></figure>
+		<div className="listServices__sercivecards">
+			<div className="listServices__sercivecard">
+				<div className="listServices__sercivecardLeft">
+					<figure className="listServices__sercivecardLeft_img"><img src={listServicesImg1} alt=""></img></figure>
 				</div>
-				<div className="listServices__boxes--box-right">
+				<div className="listServices__sercivecardRight">
 					<h3>ACCOUNTS &amp; CLOSURE</h3>
 					<ul className="listStyling">
 						<li>Maintain your Accounts</li>
@@ -21,11 +21,11 @@ const ListServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="listServices__boxes--box">
-				<div className="listServices__boxes--box-left">
-					<figure className="listServices__boxes--box-left_img"><img src={listServicesImg2} alt=""></img></figure>
+			<div className="listServices__sercivecard">
+				<div className="listServices__sercivecardLeft">
+					<figure className="listServices__sercivecardLeft_img"><img src={listServicesImg2} alt=""></img></figure>
 				</div>
-				<div className="listServices__boxes--box-right">
+				<div className="listServices__sercivecardRight">
 					<h3>CONVERSION</h3>
 					<ul className="listStyling">
 						<li>Partnership to LLP</li>
@@ -35,11 +35,11 @@ const ListServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="listServices__boxes--box">
-				<div className="listServices__boxes--box-left">
-					<figure className="listServices__boxes--box-left_img"><img src={listServicesImg3} alt=""></img></figure>
+			<div className="listServices__sercivecard">
+				<div className="listServices__sercivecardLeft">
+					<figure className="listServices__sercivecardLeft_img"><img src={listServicesImg3} alt=""></img></figure>
 				</div>
-				<div className="listServices__boxes--box-right">
+				<div className="listServices__sercivecardRight">
 					<h3>CHANGES IN BUSINESS</h3>
 					<ul className="listStyling">
 						<li>Add a Director</li>
@@ -52,11 +52,11 @@ const ListServices = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="listServices__boxes--box">
-				<div className="listServices__boxes--box-left">
-					<figure className="listServices__boxes--box-left_img"><img src={listServicesImg4} alt=""></img></figure>
+			<div className="listServices__sercivecard">
+				<div className="listServices__sercivecardLeft">
+					<figure className="listServices__sercivecardLeft_img"><img src={listServicesImg4} alt=""></img></figure>
 				</div>
-				<div className="listServices__boxes--box-right">
+				<div className="listServices__sercivecardRight">
 					<h3>SECRETARIAL COMPLIANCES</h3>
 					<ul className="listStyling">
 						<li>Annual Compliances for PVT</li>

@@ -20,6 +20,10 @@ import AllQuery from './pages/AllQuery';
 import PostQuery from './pages/PostQuery';
 import SearchResult from './pages/SearchResult';
 import SearchDetails from './pages/SearchDetails';
+import MyAccount from './pages/MyAccount';
+import MyArticles from './pages/MyArticles';
+import MyProfile from './pages/MyProfile';
+import WriteArticle from './pages/WriteArticle';
 
 const App = () => {
 	useEffect(() => {
@@ -41,6 +45,10 @@ const App = () => {
 						<Route exact path='/add-query' component={PostQuery} />
 						<Route exact path='/search-result' component={SearchResult} />
 						<Route exact path='/search-details' component={SearchDetails} />
+						<Route exact path='/myaccount' component={MyAccount} />
+						<Route exact path='/myarticles' component={MyArticles} />
+						<Route exact path='/myprofile' component={MyProfile} />
+						<Route exact path='/writearticle' component={WriteArticle} />
 					</Switch>
 				</ScrollToTop>
 			</Router>

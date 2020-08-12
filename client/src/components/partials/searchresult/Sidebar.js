@@ -5,7 +5,7 @@ import RecentlyViewedImg from '../../../static/img/searchresult/recentlyviewed-i
 const Sidebar = () => {
 	return (
 		<div className="searchContent__sidebar">
-			<div className="searchContent__sidebar--box">
+			<div className="card">
 				<h4>Popular Articles</h4>
 				<ul className="listStyling">
 					<li><a href="#!">Finance</a></li>
@@ -15,7 +15,7 @@ const Sidebar = () => {
 					<li><a href="#!">Corporate Law</a></li>
 				</ul>
 			</div>
-			<div className="searchContent__sidebar--box">
+			<div className="card">
 				<h4>Recently Viewed</h4>
 				<ul>
 					<li>

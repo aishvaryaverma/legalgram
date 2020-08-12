@@ -12,7 +12,7 @@ const Services = () => {
 				</div>
 				<div className="sixteen wide column">
 					<div className="homeService__content">
-						<div className="homeService__content--box">
+						<div className="card">
 							<h3>ACCOUNTS & CLOSURE</h3>
 							<ul className="listStyling">
 								<li>Maintain your Accounts</li>
@@ -21,7 +21,7 @@ const Services = () => {
 								<li>Payroll Service NEW0</li>
 							</ul>
 						</div>
-						<div className="homeService__content--box">
+						<div className="card">
 							<h3>CONVERSION</h3>
 							<ul className="listStyling">
 								<li>Partnership to LLP</li>
@@ -30,7 +30,7 @@ const Services = () => {
 								<li>Private Limited to One Person Company</li>
 							</ul>
 						</div>
-						<div className="homeService__content--box">
+						<div className="card">
 							<h3>CHANGES IN BUSINESS</h3>
 							<ul className="listStyling">
 								<li>Add a Director</li>
@@ -42,7 +42,7 @@ const Services = () => {
 								<li>Change LLP Agreement</li>
 							</ul>
 						</div>
-						<div className="homeService__content--box">
+						<div className="card">
 							<h3>SECRETARIAL COMPLIANCES</h3>
 							<ul className="listStyling">
 								<li>Annual Compliances for PVT</li>

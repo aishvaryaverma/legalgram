@@ -357,7 +357,7 @@
 		display: flex;
 		flex-wrap: wrap;
 
-		&--box {
+		.card {
 			width: calc(100% / 4 - 1.875rem);
 			padding: 6rem 3rem;
 			background-color: #fff;
@@ -433,7 +433,7 @@
 
 	&__content {
 
-		&--box {
+		.card {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
