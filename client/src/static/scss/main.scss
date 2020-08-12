@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
 @import 'abstracts/variables';
 @import 'abstracts/mixin';
 @import 'abstracts/functions';
@@ -19,5 +20,13 @@
 @import 'layouts/header';
 @import 'layouts/menu';
 @import 'layouts/grid';
+@import 'layouts/footer';
 
+@import 'pages/auth';
 @import 'pages/home';
+@import 'pages/services';
+@import 'pages/allquery';
+@import 'pages/postquery';
+@import 'pages/searchresult';
+@import 'pages/searchresultdetails';
+@import 'pages/dashboard';

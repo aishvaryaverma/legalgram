@@ -9,7 +9,7 @@ const recover = async (email, type) => {
 
         // create a user verification token
         const token = await UserToken.create(user.id, 'passwordReset');
-        console.log(token);
+        // console.log(token);
         // sms verfication token to user mobile
         sendSMS(user.mobile, token);
     

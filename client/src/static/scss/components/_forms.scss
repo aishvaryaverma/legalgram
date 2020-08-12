@@ -1,33 +1,28 @@
-.custom-form {
-	padding: 0;
+.ui.form {
+	font-size: 1.5rem;
 
 	.field {
+		position: relative;
+		z-index: 1;
 		margin-bottom: 2rem;
 
 		label {
-			font-weight: 600;
+			font-size: $font-size-tiny;
+			font-weight: $font-semi;
 		}
-		.input input,
-		.selection {
-			font-size: $font-size-default;
-			line-height: 2.6rem;
-			padding: 1rem 2rem;
-			border-color: #cccccc;
-			border-radius: 0 !important;
 
-			.icon {
-				top: 1.3rem;
-			}
-		}
-		.prompt.label {
-			font-weight: 700;
+		.prompt {
+			// position: absolute;
+			// top: 100%;
+			// left: 0;
+			margin-top: -4px;
 			font-size: 1.2rem;
+			font-weight: $font-semi;
 		}
-		.errorMsg {
-			display: block;
-			font-size: 1.3rem;
-			color: red;
-			text-align: right;
+		.input {
+			font-size: $font-size-small;
+			padding: 1.2rem 2rem;
+			line-height: 1.4;
 		}
 	}
 }

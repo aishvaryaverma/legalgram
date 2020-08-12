@@ -25,5 +25,4 @@ app.get('*', (req, res) => {
     res.send('Invalid route');
 });
 
-
-module.exports = app;
+module.exports = app

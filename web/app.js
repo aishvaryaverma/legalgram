@@ -25,4 +25,4 @@ app.use((err, req, res, next) => {
     handleError(err, res);
 });
 
-module.exports = app;
+module.exports = app

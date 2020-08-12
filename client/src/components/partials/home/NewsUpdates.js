@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NewsUpdates = () => {
 	return (
 		<div className="homeNewsArticles">
-			<h2 className="size36 homeNewsArticles__title">News & Updates</h2>
+			<h2 className="size36 homeNewsArticles__title">Open Queries</h2>
 			<div className="homeNewsArticles__posts">
 				<article>
 					<h4>ICAI allows completion of MCS and Advanced IT through virtual mode</h4>
@@ -35,7 +35,7 @@ const NewsUpdates = () => {
 					<div className="date"><i className="far fa-clock"></i> <span>JANUARY 25, 2020</span></div>
 				</article>
 			</div>
-			<Link to="/">View All Articles</Link>
+			<Link to="/all-query">View All Querries</Link>
 		</div>
 	)
 }
