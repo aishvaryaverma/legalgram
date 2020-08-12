@@ -45,10 +45,10 @@ const App = () => {
 						<Route exact path='/add-query' component={PostQuery} />
 						<Route exact path='/search-result' component={SearchResult} />
 						<Route exact path='/search-details' component={SearchDetails} />
-						<Route exact path='/myaccount' component={MyAccount} />
-						<Route exact path='/myarticles' component={MyArticles} />
-						<Route exact path='/myprofile' component={MyProfile} />
-						<Route exact path='/writearticle' component={WriteArticle} />
+						<Route exact path='/my-account' component={MyAccount} />
+						<Route exact path='/my-articles' component={MyArticles} />
+						<Route exact path='/my-profile' component={MyProfile} />
+						<Route exact path='/write-article' component={WriteArticle} />
 					</Switch>
 				</ScrollToTop>
 			</Router>
