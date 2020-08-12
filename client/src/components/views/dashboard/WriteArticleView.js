@@ -1,18 +1,15 @@
-import React from 'react';
-
-import LeftSidebar from './common/LeftSidebar';
-import WriteArticleContent from '../../partials/dashboard/WriteArticleContent';
+import React from "react";
+import LeftSidebar from "./common/LeftSidebar";
+import WriteArticleContent from "../../partials/dashboard/WriteArticleContent";
 
 const WriteArticlesView = () => {
-	return (
-		<div className="dashboardSection">
+    return (
+        <div className="dashboardSection">
+            <LeftSidebar />
 
-			<LeftSidebar />
-
-			<WriteArticleContent />
-
-		</div>
-	)
+            <WriteArticleContent />
+        </div>
+    )
 }
 
 export default WriteArticlesView

@@ -1,18 +1,15 @@
-import React from 'react';
-
-import LeftSidebar from './common/LeftSidebar';
-import ProfileContent from '../../partials/dashboard/ProfileContent';
+import React from "react";
+import LeftSidebar from "./common/LeftSidebar";
+import ProfileContent from "../../partials/dashboard/ProfileContent";
 
 const MyProfileView = () => {
-	return (
-		<div className="dashboardSection">
-			
-			<LeftSidebar />
+    return (
+        <div className="dashboardSection">
+            <LeftSidebar />
 
-			<ProfileContent />
-
-		</div>
-	)
+            <ProfileContent />
+        </div>
+    )
 }
 
 export default MyProfileView
