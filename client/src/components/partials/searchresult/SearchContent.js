@@ -45,7 +45,7 @@ const SearchContent = () => {
 					</div>
 				</div>
 				<div className="searchContent__searchviewmore">
-					<a href="#!"><span>Load More</span> <i class="fas fa-sync-alt"></i></a>
+					<a href="#!"><span>Load More</span> <i className="fas fa-sync-alt"></i></a>
 				</div>
 			</div>
 		</>

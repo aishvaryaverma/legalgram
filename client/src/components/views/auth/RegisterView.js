@@ -1,27 +1,58 @@
 import React, { useRef, useState } from "react";
-import { Button, Form, Grid } from "semantic-ui-react";
-import { ValidatorForm } from 'react-form-validator-core';
+// redux
+import { connect } from 'react-redux';
+import { register } from '../../../actions/auth';
+import { paswordPattern } from '../../../utils/functions';
+// libs
+import { Button, Form, Grid, Message } from "semantic-ui-react";
+import { ToastContainer, toast } from 'react-toastify';
+// components
+import Alert from '../../layout/Alert';
 import { Link } from 'react-router-dom';
 import TextValidator from '../../partials/common/TextValidator';
+import { ValidatorForm } from 'react-form-validator-core';
 
-const RegisterView = () => {
+const RegisterView = ({ register, history: { push } }) => {
+	const formRef = useRef();
+
 	const [state, setState] = useState({
-		fname: '',
-		lname: '',
-		email: '',
-		mobile: '',
-		password: '',
-		cpassword: ''
+		fname: 'Aashu',
+		lname: 'Verma',
+		email: 'vsonu9020@gmail.com',
+		mobile: '9958535242',
+		password: 'Verma@123',
+		cpassword: 'Verma@123',
+		showPassNotMatch: false
     });
-    const { fname, lname, email, mobile, password, cpassword } = state;
+    const { fname, lname, email, mobile, password, cpassword, showPassNotMatch } = state;
     
-    const handleChange = ({target: { name, value }}) => setState({ ...state, [name]: value });
+    const handleChange = ({target: { name, value }}) => {
+		setState({ ...state, [name]: value });
+	};
 
-    const handleSubmit = e => e.preventDefault();
+    const handleSubmit = e => {
+		e.preventDefault();
 
-    const formRef = useRef();
+		if(password !== cpassword) {
+			setState({ ...state, showPassNotMatch: true })
+		} else {
+			setState({ ...state, showPassNotMatch: false })
+		}
+
+		const formData = {
+			name: `${fname} ${lname}`,
+			mobile,
+			email,
+			password
+		}
+		// register user
+		register(formData, push, toast);
+	};
+
     return (
         <section className="section">
+			<ToastContainer className="toastifyCustom" />
+
             <div className="container">
                 <div className="loginRegisterBox loginRegisterBox--style2">
                     <div className="loginRegisterBox__content">
@@ -31,10 +62,21 @@ const RegisterView = () => {
                         </p>
                     </div>
                     <div className="loginRegisterBox__form">
+						{showPassNotMatch && (
+							<Message
+								error
+								header='There was some errors with your submission'
+								list={[ 'Password not matched' ]}
+							/>
+						)}
+						
+						<Alert />
+						
                         <ValidatorForm
                             ref={formRef}
                             onSubmit={handleSubmit}
-                            className="ui form"
+							className="ui form"
+							autoComplete="off"
                         >
 							<Grid columns={2}>
 								<Grid.Row>
@@ -88,8 +130,8 @@ const RegisterView = () => {
 												name="mobile"
 												value={mobile}
 												placeholder="Mobile"
-												validators={['required']}
-												errorMessages={['Please enter your mobile']}
+												validators={['required', 'minStringLength:10']}
+												errorMessages={['Please enter your mobile', 'Please enter valid mobile']}
 											/>
 										</Form.Field>
 									</Grid.Column>
@@ -100,27 +142,41 @@ const RegisterView = () => {
 											<label>Password</label>
 											<TextValidator
 												onChange={handleChange}
+												type="password"
 												name="password"
 												value={password}
-												placeholder="****"
-												validators={['required']}
-												errorMessages={['Please choose your password']}
+												placeholder="Enter password"
+                                    			validators={[
+													'required',
+													'matchRegexp:^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$'
+												]}
+												errorMessages={['Password is required.', 'Pattern not matched']}
+												onKeyUp={e => paswordPattern(e.target.value, '#hintsRegister')}
 											/>
 										</Form.Field>
 									</Grid.Column>
 									<Grid.Column>
 										<Form.Field>
-											<label>Last Name</label>
+											<label>Confirm Password</label>
 											<TextValidator
 												onChange={handleChange}
+												type="password"
 												name="cpassword"
 												value={cpassword}
-												placeholder="****"
+												placeholder="Confirm password"
 												validators={['required']}
 												errorMessages={['Please confirm your password']}
 											/>
 										</Form.Field>
 									</Grid.Column>
+								</Grid.Row>
+								<Grid.Row>
+									<div className="passHints" id="hintsRegister">
+										<span>6 Characters</span>
+										<span>1 Special</span>
+										<span>1 Uppercase</span>
+										<span>1 Numeric</span>
+									</div>
 								</Grid.Row>
 							</Grid>
                             
@@ -140,4 +196,4 @@ const RegisterView = () => {
     )
 }
 
-export default RegisterView
+export default connect(null, { register })(RegisterView)

@@ -1,0 +1,9 @@
+.ui.message {
+	font-size: 1.3rem;
+
+	&.message-custom {
+		display: flex;
+		margin-bottom: 2rem;
+		justify-content: space-between;
+	}
+}

@@ -8,10 +8,14 @@ $color-light2: #eee;
 $color-dark1: #999;
 $color-dark2: #666;
 $color-dark3: #333;
-$color-green1: #63af65;
-$color-green: #00a900;
-$color-red1: #f05555;
+
 $color-red: #ff0000;
+$color-green: #00a900;
+$color-yellow: #ddc700;
+
+$color-red-light: #f05555;
+$color-green-light: #63af65;
+
 $color-white: #fff;
 $color-black: #000;
 $color-headings: #282828;
@@ -42,13 +46,10 @@ $mobile-small: 375px;
 $mobile-extra-small: 320px;
 
 // Customs
-$box-shadow-default: 0 0 10px 2px rgba(black, 0.07);
-$box-shadow-bottom: 0 5px 10px 2px rgba(black, 0.07);
-$box-shadow-right: 5px 0 10px 2px rgba(black, 0.07);
 $line-height-default: 1.4;
-
-
-
+$box-shadow-default: 0 0 10px 2px rgba(black, 0.07);
+$box-shadow-right: 5px 0 10px 2px rgba(black, 0.07);
+$box-shadow-bottom: 0 5px 15px 2px rgba(black, 0.1);
 
 .justify-content-center {
     justify-content: center !important;

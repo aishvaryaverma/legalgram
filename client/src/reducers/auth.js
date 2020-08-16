@@ -14,7 +14,6 @@ export default (state = initialState, action) => {
 	switch(type) {
 		case SET_TOKEN:
 			localStorage.setItem('token', payload);
-			// localStorage.setItem('tokenValid', new Date().getTime() + (259200 * 1000));
 			return {
 				...state,
 				tokenLoading: false,
@@ -28,7 +27,6 @@ export default (state = initialState, action) => {
 			}
 		case AUTH_ERROR:
 			localStorage.removeItem('token');
-			// localStorage.removeItem('tokenValid');
 			return {
 				...state,
 				authError: true,

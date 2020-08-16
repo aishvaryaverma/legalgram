@@ -52,8 +52,8 @@ const LoginView = () => {
                                     name="password"
                                     value={password}
                                     placeholder="Enter Password"
-                                    validators={['required']}
-                                    errorMessages={['Password is required.']}
+                                    validators={['required', 'matchRegexp:^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$']}
+                                    errorMessages={['Password is required.', 'Pattern not matched']}
                                 />
                             </Form.Field>
                             <div className="forgotPassword">
