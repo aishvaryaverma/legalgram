@@ -1,0 +1,45 @@
+.toastifyCustom {
+	padding: inherit;
+
+	.Toastify__toast {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		font-family: $font-family-primary;
+		min-height: 0;
+		padding: 1.5rem;
+		background: $color-white;
+		color: $color-headings;
+
+		box-shadow: $box-shadow-default;
+		border: 1px solid #f1f1f1;
+		border-left: 4px solid $color-tertiary;
+		border-radius: .2rem;
+		
+		.Toastify__toast-body {
+			font-size: 1.4rem;
+			margin: 0;
+			padding: .2rem 0;
+			font-weight: $font-semi;
+			color: #777;
+		}
+		.Toastify__close-button {
+			align-self: center;
+			color: $color-headings;
+		}
+
+		&--info {
+			border-left-color: $color-tertiary;
+		}
+		&--success {
+			border-left-color: $color-green;
+		}
+		&--warning {
+			border-left-color: $color-yellow;
+		}
+		&--error {
+			border-left-color: $color-red;
+		}
+	}
+}

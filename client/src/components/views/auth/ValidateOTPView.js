@@ -1,9 +1,19 @@
 import React, { useRef, useState } from "react";
+// redux
+import { connect } from 'react-redux';
+import { verifyOTP } from '../../../actions/auth';
+// libs
 import { Button, Form } from "semantic-ui-react";
-import { ValidatorForm } from 'react-form-validator-core';
+// import { ToastContainer, toast } from 'react-toastify';
+// components
+import { Redirect } from 'react-router-dom';
+import Alert from '../../layout/Alert';
 import TextValidator from '../../partials/common/TextValidator';
+import { ValidatorForm } from 'react-form-validator-core';
 
-const ValidateOTPView = () => {
+const ValidateOTPView = ({ history, verifyOTP, token, tokenLoading }) => {
+    const formRef = useRef();
+
 	const [state, setState] = useState({
         otp: '',
     });
@@ -11,9 +21,14 @@ const ValidateOTPView = () => {
     
     const handleChange = ({target: { name, value }}) => setState({ ...state, [name]: value });
 
-    const handleSubmit = e => e.preventDefault();
+    const handleSubmit = e => {
+        e.preventDefault();
 
-    const formRef = useRef();
+        if(!tokenLoading) verifyOTP(token, otp, history);
+    }
+
+    if(tokenLoading) return <Redirect to="/" />;
+    const mobile = sessionStorage.getItem('mobile');
     return (
         <section className="section">
             <div className="container">
@@ -25,12 +40,13 @@ const ValidateOTPView = () => {
                         </p>
                     </div>
                     <div className="loginRegisterBox__form">
+                        <Alert />
                         <ValidatorForm
                             ref={formRef}
                             onSubmit={handleSubmit}
                             className="ui form"
                         >
-                            <h4 className="size21 semi">OTP sent to your register mobile number 99****5242</h4>
+                            <h4 className="size21 semi">OTP sent to your register mobile number {mobile}</h4>
                             <Form.Field>
                                 <label>Enter OTP</label>
                                 <TextValidator
@@ -43,7 +59,7 @@ const ValidateOTPView = () => {
                                     errorMessages={['OTP is required']}
                                 />
                             </Form.Field>
-                            <p>Valid for 15 mins only.</p>
+                            <p className="small">Valid for 15 mins only.</p>
 
                             <div className="buttonBox">
                                 <Button type="submit" fluid primary>Verify OTP</Button>
@@ -56,4 +72,9 @@ const ValidateOTPView = () => {
     )
 }
 
-export default ValidateOTPView
+const mapStateToProps = state => ({
+    token: state.auth.token,
+    tokenLoading: state.auth.tokenLoading
+});
+
+export default connect(mapStateToProps, { verifyOTP })(ValidateOTPView)

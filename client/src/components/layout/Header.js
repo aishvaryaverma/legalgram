@@ -5,12 +5,12 @@ import logo from '../../static/img/logo.png';
 
 const Header = () => {
 	return (
-		<header className="header">
-			<div className="header__logo">
+		<header className="headerMain">
+			<div className="headerMain__logo">
 				<Link to="/"><img src={logo} alt="legalgram"/></Link>
 			</div>
 
-			<nav className="header__nav">
+			<nav className="headerMain__nav">
 				<ul className="nav">
 					<li>
 						<NavLink to="/services" activeClassName="active">Services</NavLink>
@@ -35,7 +35,7 @@ const Header = () => {
 				</ul>
 			</nav>
 
-			<Link to="/add-query" className="header__postQueryBtn">
+			<Link to="/add-query" className="headerMain__postQueryBtn">
 				<i className="far fa-comment-dots"></i>
 				<span>Post Query</span>
 			</Link>

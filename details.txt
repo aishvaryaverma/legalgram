@@ -9,3 +9,12 @@ Admin user
 -----------------
 admin@thelegalgram.com
 !legal@321
+
+
+----------------------
+Call discussion 15-08
+
+1. Save draft articles feature
+2. Edit my articles and likes count show
+3. Password format (1 Alphabet, 1 Uppercase, 1 special chrt, Min 6 length, max 15 length)
+4. 

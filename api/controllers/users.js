@@ -21,7 +21,7 @@ const register = async (req, res, next) => {
 			mobile,
 			password
         });
-       
+        
         // encrpt password
         user.password = await encryptPassword(password);
 
@@ -101,7 +101,8 @@ const update = async (req, res, next) => {
 
 const me = async (req, res, next) => {
     try {
-        const user = await User.findById(req.user.id);
+        const user = await User.findById(req.user.id).populate('-password');
+
         res.status(200).json({
             status: 'success',
             message: 'user details',

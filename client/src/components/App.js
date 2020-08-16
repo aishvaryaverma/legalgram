@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // styles
+import 'react-toastify/dist/ReactToastify.css';
 import '../static/scss/main.scss';
 // redux store
 import store from '../store';
@@ -8,7 +9,7 @@ import { Provider } from 'react-redux';
 // HOC
 import ScrollToTop from './ScrollToTop';
 // actions
-// import { loadUser } from './actions/auth';
+import { loadUser } from '../actions/auth';
 // components
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -20,14 +21,13 @@ import AllQuery from './pages/AllQuery';
 import PostQuery from './pages/PostQuery';
 import SearchResult from './pages/SearchResult';
 import SearchDetails from './pages/SearchDetails';
-import MyAccount from './pages/MyAccount';
 import MyArticles from './pages/MyArticles';
 import MyProfile from './pages/MyProfile';
 import WriteArticle from './pages/WriteArticle';
 
 const App = () => {
 	useEffect(() => {
-		// store.dispatch(loadUser());
+		store.dispatch(loadUser());
 	}, []);
 	
 	return (
@@ -45,9 +45,10 @@ const App = () => {
 						<Route exact path='/add-query' component={PostQuery} />
 						<Route exact path='/search-result' component={SearchResult} />
 						<Route exact path='/search-details' component={SearchDetails} />
-						<Route exact path='/my-account' component={MyAccount} />
-						<Route exact path='/my-articles' component={MyArticles} />
+						
+						{/* dashboard pages */}
 						<Route exact path='/my-profile' component={MyProfile} />
+						<Route exact path='/my-articles' component={MyArticles} />
 						<Route exact path='/write-article' component={WriteArticle} />
 					</Switch>
 				</ScrollToTop>

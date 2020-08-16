@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '../layout/Layout';
 import ValidateOTPView from '../views/auth/ValidateOTPView';
 
-const ValidateOTP = () => {
+const ValidateOTP = ({ history }) => {
 	return (
 		<Layout>
-			<ValidateOTPView />
+			<ValidateOTPView history={history} />
 		</Layout>
 	)
 }
