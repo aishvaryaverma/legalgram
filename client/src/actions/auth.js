@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import setAuthToken from '../utils/setAuthToken';
 import { isTokenExpired } from '../utils/functions';
 // redux
 import { setAlert } from './alert';
@@ -39,7 +40,7 @@ export const register = (formData, push) => async dispatch => {
 		const res = await axios.post('/api/users/register', body, configs);
 		const { token } = res.data.data;
 		
-		const otpRes = await dispatch(sentOTP(token));
+		await dispatch(sentOTP(token));
 		
 		sessionStorage.setItem('otpToken', token);
 		sessionStorage.setItem('mobile', formData.mobile);
@@ -58,8 +59,7 @@ export const register = (formData, push) => async dispatch => {
 		const invalid = err.response.data.inputErrors;
 		if(invalid) {
 			Object.keys(invalid).forEach(key => {
-				const toastId = toast.error(invalid[key]);
-				console.log(toastId)
+				toast.error(invalid[key]);
 			});	
 		}
 	}
@@ -67,8 +67,8 @@ export const register = (formData, push) => async dispatch => {
 
 export const sentOTP = token => async dispatch => {
 	try {
-		const configs = {headers: {'Authorization': token}};
-		const res = await axios.get('/api/mobile/send-otp', configs);
+		setAuthToken(token);
+		const res = await axios.get('/api/mobile/send-otp');
 		const { message } = res.data;
 		return new Promise(resolve => {
 			resolve(message);
@@ -85,18 +85,15 @@ export const sentOTP = token => async dispatch => {
 
 export const verifyOTP = (token, otp, history) => async dispatch => {
 	try {
-		const configs = {
-			headers: {
-				'Authorization': token,
-				'Content-Type': 'application/json'
-			}
-		};
+		setAuthToken(token);
+		const configs = { headers: { 'Content-Type': 'application/json'}};
 		const body = JSON.stringify({otp});
 		const res = await axios.post('/api/mobile/verify-otp', body, configs);
 		const { message } = res.data;
 		
 		history.push('/my-profile');
-		alert(message);
+		toast.success(message);
+
 	} catch (err) {
 		console.log(err.response.data);
 		const message = err.response.data.errorMsg;
