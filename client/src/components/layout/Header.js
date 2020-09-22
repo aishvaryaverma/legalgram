@@ -1,9 +1,12 @@
 import React from 'react';
+// redux
+import { connect } from 'react-redux';
+// components
 import { Link, NavLink } from 'react-router-dom';
 // statics
 import logo from '../../static/img/logo.png';
 
-const Header = () => {
+const Header = ({ auth }) => {
 	return (
 		<header className="headerMain">
 			<div className="headerMain__logo">
@@ -12,21 +15,8 @@ const Header = () => {
 
 			<nav className="headerMain__nav">
 				<ul className="nav">
-					<li>
-						<NavLink to="/services" activeClassName="active">Services</NavLink>
-					</li>
-					<li>
-						<NavLink to="/search-result" activeClassName="active">
-							<span>Income Tax</span>
-							<i className="fas fa-caret-down"></i>
-						</NavLink>
-						<ul className="dropdown-custom">
-							<li><NavLink to="/search-result" activeClassName="active">dropdown</NavLink></li>
-							<li><NavLink to="/search-result" activeClassName="active">dropdown</NavLink></li>
-							<li><NavLink to="/search-result" activeClassName="active">dropdown</NavLink></li>
-							<li><NavLink to="/search-result" activeClassName="active">dropdown</NavLink></li>
-						</ul>
-					</li>
+					<li><NavLink to="/services" activeClassName="active">Services</NavLink></li>
+					<li><NavLink to="/search-result" activeClassName="active"><span>Income Tax</span></NavLink></li>
 					<li><NavLink to="/search-result" activeClassName="active">Accountancy</NavLink></li>
 					<li><NavLink to="/search-result" activeClassName="active">Coporate Law</NavLink></li>
 					<li><NavLink to="/search-result" activeClassName="active">GST</NavLink></li>
@@ -43,4 +33,8 @@ const Header = () => {
 	)
 }
 
-export default Header
+const mapStateToProps = state => ({
+	auth: state.auth
+})
+
+export default connect(mapStateToProps)(Header)

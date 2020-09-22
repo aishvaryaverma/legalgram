@@ -3,25 +3,23 @@ import React, { useRef, useState } from "react";
 import { connect } from 'react-redux';
 import { register } from '../../../actions/auth';
 import { paswordPattern } from '../../../utils/functions';
-// libs
-import { Button, Form, Grid, Message } from "semantic-ui-react";
-import { ToastContainer, toast } from 'react-toastify';
 // components
 import Alert from '../../layout/Alert';
 import { Link } from 'react-router-dom';
-import TextValidator from '../../partials/common/TextValidator';
 import { ValidatorForm } from 'react-form-validator-core';
+import TextValidator from '../../partials/common/TextValidator';
+import { Button, Form, Grid, Message } from "semantic-ui-react";
 
 const RegisterView = ({ register, history: { push } }) => {
 	const formRef = useRef();
 
 	const [state, setState] = useState({
-		fname: 'Aashu',
-		lname: 'Verma',
-		email: 'vsonu9020@gmail.com',
-		mobile: '9958535242',
-		password: 'Verma@123',
-		cpassword: 'Verma@123',
+		fname: '',
+		lname: '',
+		email: '',
+		mobile: '',
+		password: '',
+		cpassword: '',
 		showPassNotMatch: false
     });
     const { fname, lname, email, mobile, password, cpassword, showPassNotMatch } = state;
@@ -46,13 +44,11 @@ const RegisterView = ({ register, history: { push } }) => {
 			password
 		}
 		// register user
-		register(formData, push, toast);
+		register(formData, push);
 	};
 
     return (
         <section className="section">
-			<ToastContainer className="toastifyCustom" />
-
             <div className="container">
                 <div className="loginRegisterBox loginRegisterBox--style2">
                     <div className="loginRegisterBox__content">

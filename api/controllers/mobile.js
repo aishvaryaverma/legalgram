@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const userToken = require('../shared/userToken');
-const { sendSMS, checkInputErrors } = require('../shared/utils');
+const { sendSMS, checkInputErrors, getJWTToken } = require('../shared/utils');
 
 const sendOTP = async (req, res, next) => {
     try {
@@ -17,7 +17,7 @@ const sendOTP = async (req, res, next) => {
 
         res.status(200).json({
             status: 'success',
-            message: 'otp sent successfully'
+            message: 'OTP sent successfully.'
         });
     }
     catch(err) {
@@ -37,9 +37,17 @@ const verifyOTP = async (req, res, next) => {
         // update the user mobile verification flag
         await User.findById(userId).update({ isMobileVerified: true });
         
+        const payload = {
+            user: {
+                id: userId
+            }
+        };
+        const token = await getJWTToken(payload);
+
         res.status(200).json({
             status: 'success',
-            message: 'otp verifed successfully'
+            message: 'OTP verifed successfully',
+            data: { token }
         });
     }
     catch(err) {

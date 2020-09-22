@@ -1,11 +1,11 @@
 import { SET_TOKEN, LOAD_USER, AUTH_ERROR } from '../actions/types';
 
 const initialState = {
-	authError: false,
+	isAuthenticated: null,
 	user: null,
+	token: null,
 	userLoading: true,
-	tokenLoading: true,
-	token: null
+	tokenLoading: true
 };
 
 export default (state = initialState, action) => {
@@ -29,11 +29,11 @@ export default (state = initialState, action) => {
 			localStorage.removeItem('token');
 			return {
 				...state,
-				authError: true,
+				isAuthenticated: false,
 				user: null,
+				token: null,
 				userLoading: true,
-				tokenLoading: true,
-				token: null
+				tokenLoading: true
 			}
 		default:
 			return state

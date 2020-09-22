@@ -1,17 +1,24 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import { ToastContainer, toast } from 'react-toastify';
 
-const Layout = ({ goBack, screenName, children }) => {
+const Layout = ({ children }) => {
 	return (
 		<>
-			<Header goBack={goBack} screenName={screenName} />
+			<ToastContainer
+				className="toastifyCustom"
+				autoClose={true}
+				position={toast.POSITION.BOTTOM_RIGHT}
+			/>
+
+			<Header />
 
 			<section className="screenContent">{children}</section>
 
 			<Footer />
 		</>
-	);
-};
+	)
+}
 
-export default Layout;
+export default Layout
