@@ -2,11 +2,10 @@ const User = require('./user');
 const UserToken = require('../shared/userToken');
 const { sendSMS } = require('../shared/utils');
 
-
 const recover = async (email, type) => {
     try {
         const user = await User.getDetails(email, type);
-
+        
         // create a user verification token
         const token = await UserToken.create(user.id, 'passwordReset');
         // console.log(token);

@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '../layout/Layout';
 import ForgotPasswordView from '../views/auth/ForgotPasswordView';
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ history }) => {
 	return (
 		<Layout>
-			<ForgotPasswordView />
+			<ForgotPasswordView history={history} />
 		</Layout>
 	)
 }

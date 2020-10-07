@@ -1,4 +1,4 @@
-import { SET_TOKEN, LOAD_USER, AUTH_ERROR } from '../actions/types';
+import { SET_TOKEN, LOAD_USER, AUTH_ERROR, LOGOUT } from '../actions/types';
 
 const initialState = {
 	isAuthenticated: null,
@@ -22,10 +22,12 @@ export default (state = initialState, action) => {
 		case LOAD_USER:
 			return {
 				...state,
+				isAuthenticated: true,
 				userLoading: false,
 				user: payload
 			}
 		case AUTH_ERROR:
+		case LOGOUT:
 			localStorage.removeItem('token');
 			return {
 				...state,

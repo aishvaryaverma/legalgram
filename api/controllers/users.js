@@ -133,6 +133,6 @@ module.exports = {
     login,
     list,
     update,
-    details,
-    me
+    me,
+    details
 }

@@ -1,19 +1,27 @@
 import React, { useRef, useState } from "react";
+import { connect } from 'react-redux';
+import { login } from '../../../actions/auth';
 import { Button, Form } from "semantic-ui-react";
 import { ValidatorForm } from 'react-form-validator-core';
 import { Link } from 'react-router-dom';
 import TextValidator from '../../partials/common/TextValidator';
 
-const LoginView = () => {
+const LoginView = ({
+    login,
+    history
+}) => {
     const [state, setState] = useState({
         email: '',
         password: ''
     });
     const { email, password } = state;
     
-    const handleChange = ({target: { name, value }}) => setState({ ...state, [name]: value });
+    const handleChange = ({target: { name, value }}) => setState({ ...state, [name]: value })
 
-    const handleSubmit = e => e.preventDefault();
+    const handleSubmit = e => {
+        e.preventDefault();
+        login({email, password}, history.push)
+    }
 
     const formRef = useRef();
     return (
@@ -28,9 +36,9 @@ const LoginView = () => {
                     </div>
                     <div className="loginRegisterBox__form">
                         <ValidatorForm
+                            className="ui form"
                             ref={formRef}
                             onSubmit={handleSubmit}
-                            className="ui form"
                         >
                             <Form.Field>
                                 <label>Username</label>
@@ -76,4 +84,4 @@ const LoginView = () => {
     )
 }
 
-export default LoginView
+export default connect(null, { login })(LoginView)

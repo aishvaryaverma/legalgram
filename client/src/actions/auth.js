@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import setAuthToken from '../utils/setAuthToken';
 import { isTokenExpired } from '../utils/functions';
 // redux
 import { setAlert } from './alert';
-import { SET_TOKEN, LOAD_USER, AUTH_ERROR } from './types';
+import { SET_TOKEN, LOAD_USER, AUTH_ERROR, LOGOUT } from './types';
 
 export const setToken = token => dispatch => {
 	dispatch({
@@ -32,6 +33,37 @@ export const loadUser = () => async dispatch => {
 	}
 };
 
+export const login = (formData, push) => async dispatch => {
+	try {
+		const body = JSON.stringify(formData);
+		const configs = { headers: {'Content-Type': 'application/json'} };
+		const res = await axios.post('/api/users/login', body, configs);
+		const { token } = res.data.data;
+		
+		// update state
+		dispatch({
+			type: SET_TOKEN,
+			payload: token
+		});
+		dispatch(loadUser());
+		setTimeout(() => push('/my-profile'), 100);
+	} catch (err) {
+		const message = err.response.data.errorMsg;
+		dispatch(setAlert(message, 'error'));
+
+		const invalid = err.response.data.inputErrors;
+		if(invalid) {
+			Object.keys(invalid).forEach(key => {
+				toast.error(invalid[key]);
+			});	
+		}
+	}
+};
+
+export const logout = () => async dispatch => {
+	dispatch({ type: LOGOUT });
+};
+
 export const register = (formData, push) => async dispatch => {
 	try {
 		const body = JSON.stringify(formData);
@@ -39,7 +71,7 @@ export const register = (formData, push) => async dispatch => {
 		const res = await axios.post('/api/users/register', body, configs);
 		const { token } = res.data.data;
 		
-		const otpRes = await dispatch(sentOTP(token));
+		await dispatch(sentOTP(token));
 		
 		sessionStorage.setItem('otpToken', token);
 		sessionStorage.setItem('mobile', formData.mobile);
@@ -58,17 +90,48 @@ export const register = (formData, push) => async dispatch => {
 		const invalid = err.response.data.inputErrors;
 		if(invalid) {
 			Object.keys(invalid).forEach(key => {
-				const toastId = toast.error(invalid[key]);
-				console.log(toastId)
+				toast.error(invalid[key]);
 			});	
 		}
 	}
 };
 
+export const recoverPassword = (email, push) => async dispatch => {
+	try {
+		const body = JSON.stringify({ email });
+		const configs = { headers: {'Content-Type': 'application/json'} };
+		const res = await axios.post('/api/password/recover', body, configs);
+		const { token } = res.data.data;
+		
+		sessionStorage.setItem('otpToken', token);
+		sessionStorage.setItem('mobile', email);
+
+		// update state
+		dispatch({
+			type: SET_TOKEN,
+			payload: token
+		});
+
+		setTimeout(() => push('/verify-otp'), 100);
+	} catch (err) {
+		const message = err.response.data.errorMsg;
+		dispatch(setAlert(message, 'error'));
+
+		const invalid = err.response.data.inputErrors;
+		if(invalid) {
+			Object.keys(invalid).forEach(key => {
+				toast.error(invalid[key]);
+			});	
+		}
+	}
+};
+
+
+
 export const sentOTP = token => async dispatch => {
 	try {
-		const configs = {headers: {'Authorization': token}};
-		const res = await axios.get('/api/mobile/send-otp', configs);
+		setAuthToken(token);
+		const res = await axios.get('/api/mobile/send-otp');
 		const { message } = res.data;
 		return new Promise(resolve => {
 			resolve(message);
@@ -85,18 +148,15 @@ export const sentOTP = token => async dispatch => {
 
 export const verifyOTP = (token, otp, history) => async dispatch => {
 	try {
-		const configs = {
-			headers: {
-				'Authorization': token,
-				'Content-Type': 'application/json'
-			}
-		};
+		setAuthToken(token);
+		const configs = { headers: { 'Content-Type': 'application/json'}};
 		const body = JSON.stringify({otp});
 		const res = await axios.post('/api/mobile/verify-otp', body, configs);
 		const { message } = res.data;
 		
 		history.push('/my-profile');
-		alert(message);
+		toast.success(message);
+
 	} catch (err) {
 		console.log(err.response.data);
 		const message = err.response.data.errorMsg;
