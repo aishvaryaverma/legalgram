@@ -47,7 +47,7 @@ const verify = async (req, res, next) => {
             status: 'success',
             data: { token: emailVerificationToken, userId: user.id },
             message: 'verification email sent successfully'
-        }); 
+        });
 
     }
     catch(err) {

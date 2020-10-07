@@ -32,19 +32,18 @@ const RegisterView = ({ register, history: { push } }) => {
 		e.preventDefault();
 
 		if(password !== cpassword) {
-			setState({ ...state, showPassNotMatch: true })
+			return setState({ ...state, showPassNotMatch: true })
 		} else {
 			setState({ ...state, showPassNotMatch: false })
+			const formData = {
+				name: `${fname} ${lname}`,
+				mobile,
+				email,
+				password
+			}
+			// register user
+			register(formData, push);
 		}
-
-		const formData = {
-			name: `${fname} ${lname}`,
-			mobile,
-			email,
-			password
-		}
-		// register user
-		register(formData, push);
 	};
 
     return (

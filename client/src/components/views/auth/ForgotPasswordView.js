@@ -1,10 +1,13 @@
 import React, { useRef, useState } from "react";
+// redux
+import { connect } from 'react-redux';
+import { recoverPassword } from '../../../actions/auth';
 import { Button, Form } from "semantic-ui-react";
 import { ValidatorForm } from 'react-form-validator-core';
 import { Link } from 'react-router-dom';
 import TextValidator from '../../partials/common/TextValidator';
 
-const ForgotPasswordView = () => {
+const ForgotPasswordView = ({ history, recoverPassword }) => {
 	const [state, setState] = useState({
         email: ''
     });
@@ -12,7 +15,10 @@ const ForgotPasswordView = () => {
     
     const handleChange = ({target: { name, value }}) => setState({ ...state, [name]: value });
 
-    const handleSubmit = e => e.preventDefault();
+    const handleSubmit = e => {
+        e.preventDefault();
+        recoverPassword(email, history.push);
+    }
 
     const formRef = useRef();
     return (
@@ -38,13 +44,13 @@ const ForgotPasswordView = () => {
                                     name="email"
                                     value={email}
                                     placeholder="Registered email or mobile"
-                                    validators={['required', 'isEmail']}
-                                    errorMessages={['Email/Mobile is required.', 'Email is not valid']}
+                                    validators={['required']}
+                                    errorMessages={['Email/Mobile is required.']}
                                 />
                             </Form.Field>
 
                             <div className="buttonBox">
-                                <Button type="submit" fluid primary>Change Password</Button>
+                                <Button type="submit" fluid primary>Recover Password</Button>
                             </div>
 
                             <div className="switchPage">
@@ -59,4 +65,4 @@ const ForgotPasswordView = () => {
     )
 }
 
-export default ForgotPasswordView
+export default connect(null, { recoverPassword })(ForgotPasswordView)

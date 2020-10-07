@@ -12,7 +12,7 @@ const recover = async (req, res, next) => {
         const token = await Password.recover(email, userType);
         res.status(200).json({
             status: "success",
-            message: "otp sent successfully to registered mobile",
+            message: "OTP sent successfully to registered mobile"
         });
     } catch (err) {
         next(err);
@@ -28,10 +28,9 @@ const verifyOtp = async (req, res, next) => {
             userType = 'user';
         }
         const token = await Password.verifyOtp(email, otp, userType);
-
         res.status(200).json({
             status: "success",
-            message: "Reset password otp verified successfully",
+            message: "OTP verified successfully",
             data: { token }
         });
     } catch (err) {
@@ -48,7 +47,7 @@ const reset = async (req, res, next) => {
 
         res.status(200).json({
             status: "success",
-            message: "password updated successfully",
+            message: "Password updated successfully"
         });
     } catch (err) {
         next(err);
@@ -56,7 +55,7 @@ const reset = async (req, res, next) => {
 };
 
 module.exports = {
-    recover,
-    verifyOtp,
     reset,
+    recover,
+    verifyOtp
 };

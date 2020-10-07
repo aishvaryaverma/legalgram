@@ -4,7 +4,7 @@ import setAuthToken from '../utils/setAuthToken';
 import { isTokenExpired } from '../utils/functions';
 // redux
 import { setAlert } from './alert';
-import { SET_TOKEN, LOAD_USER, AUTH_ERROR } from './types';
+import { SET_TOKEN, LOAD_USER, AUTH_ERROR, LOGOUT } from './types';
 
 export const setToken = token => dispatch => {
 	dispatch({
@@ -31,6 +31,37 @@ export const loadUser = () => async dispatch => {
 	} else {
 		dispatch({ type: AUTH_ERROR });
 	}
+};
+
+export const login = (formData, push) => async dispatch => {
+	try {
+		const body = JSON.stringify(formData);
+		const configs = { headers: {'Content-Type': 'application/json'} };
+		const res = await axios.post('/api/users/login', body, configs);
+		const { token } = res.data.data;
+		
+		// update state
+		dispatch({
+			type: SET_TOKEN,
+			payload: token
+		});
+		dispatch(loadUser());
+		setTimeout(() => push('/my-profile'), 100);
+	} catch (err) {
+		const message = err.response.data.errorMsg;
+		dispatch(setAlert(message, 'error'));
+
+		const invalid = err.response.data.inputErrors;
+		if(invalid) {
+			Object.keys(invalid).forEach(key => {
+				toast.error(invalid[key]);
+			});	
+		}
+	}
+};
+
+export const logout = () => async dispatch => {
+	dispatch({ type: LOGOUT });
 };
 
 export const register = (formData, push) => async dispatch => {
@@ -64,6 +95,38 @@ export const register = (formData, push) => async dispatch => {
 		}
 	}
 };
+
+export const recoverPassword = (email, push) => async dispatch => {
+	try {
+		const body = JSON.stringify({ email });
+		const configs = { headers: {'Content-Type': 'application/json'} };
+		const res = await axios.post('/api/password/recover', body, configs);
+		const { token } = res.data.data;
+		
+		sessionStorage.setItem('otpToken', token);
+		sessionStorage.setItem('mobile', email);
+
+		// update state
+		dispatch({
+			type: SET_TOKEN,
+			payload: token
+		});
+
+		setTimeout(() => push('/verify-otp'), 100);
+	} catch (err) {
+		const message = err.response.data.errorMsg;
+		dispatch(setAlert(message, 'error'));
+
+		const invalid = err.response.data.inputErrors;
+		if(invalid) {
+			Object.keys(invalid).forEach(key => {
+				toast.error(invalid[key]);
+			});	
+		}
+	}
+};
+
+
 
 export const sentOTP = token => async dispatch => {
 	try {

@@ -84,7 +84,7 @@ async function getDetails(email, userType) {
         userType = userType || 'user';
         const user = await this.findOne({ 
             $or: [{ email }, { mobile: email}],
-            userType 
+            userType
         });
     
         if(!user) {

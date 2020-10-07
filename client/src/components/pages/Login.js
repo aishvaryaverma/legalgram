@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '../layout/Layout';
 import LoginView from '../views/auth/LoginView';
 
-const Login = () => {
+const Login = ({ history }) => {
 	return (
 		<Layout>
-			<LoginView />
+			<LoginView history={history} />
 		</Layout>
 	)
 }

@@ -1,0 +1,10 @@
+.ui.dropdown {
+	font-size: $font-size-default;
+
+	.menu {
+		.item {
+			font-size: $font-size-small;
+			padding: 1.2rem 2rem !important;
+		}
+	}
+}
