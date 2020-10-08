@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { ToastContainer, toast } from 'react-toastify';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, footer }) => {
 	return (
 		<>
 			<ToastContainer
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
 
 			<section className="screenContent">{children}</section>
 
-			<Footer />
+			{footer !== false && <Footer />}
 		</>
 	)
 }

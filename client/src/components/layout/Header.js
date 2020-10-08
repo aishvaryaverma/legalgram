@@ -9,8 +9,10 @@ import { Dropdown } from 'semantic-ui-react';
 import logo from '../../static/img/logo.png';
 
 const Header = ({ user, isAuthenticated, logout }) => {
-
 	const authLinks = isAuth => {
+		if(isAuth === null) return (
+			<li className="login"><a href="#!">...</a></li>
+		);
 		if(isAuth) {
 			return (
 				<Dropdown
@@ -19,7 +21,7 @@ const Header = ({ user, isAuthenticated, logout }) => {
 					pointing
 				>
 					<Dropdown.Menu>
-						<Dropdown.Item as={Link} to="/my-profile" text='My Profile' />
+						<Dropdown.Item as={Link} to="/my-account" text='My Account' />
 						<Dropdown.Item as={Link} to="/my-articles" text='My Articles' />
 						<Dropdown.Item as={Link} to="/write-article" text='Write Articles' />
 						<Dropdown.Divider />
@@ -36,6 +38,7 @@ const Header = ({ user, isAuthenticated, logout }) => {
 			)
 		}
 	}
+	
 	return (
 		<header className="headerMain">
 			<div className="headerMain__logo">

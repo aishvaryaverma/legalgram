@@ -46,7 +46,7 @@ export const login = (formData, push) => async dispatch => {
 			payload: token
 		});
 		dispatch(loadUser());
-		setTimeout(() => push('/my-profile'), 100);
+		setTimeout(() => push('/my-account'), 100);
 	} catch (err) {
 		const message = err.response.data.errorMsg;
 		dispatch(setAlert(message, 'error'));

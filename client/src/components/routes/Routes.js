@@ -13,9 +13,9 @@ import AllQuery from '../pages/AllQuery';
 import PostQuery from '../pages/PostQuery';
 import SearchResult from '../pages/SearchResult';
 import SearchDetails from '../pages/SearchDetails';
-import MyArticles from '../pages/MyArticles';
-import MyProfile from '../pages/MyProfile';
-import WriteArticle from '../pages/WriteArticle';
+import MyAccount from '../pages/dashboard/MyAccount';
+import MyArticles from '../pages/dashboard/MyArticles';
+import WriteArticle from '../pages/dashboard/WriteArticle';
 // not found page
 import NotFound from '../pages/NotFound';
 
@@ -33,7 +33,7 @@ const Routes = () => {
 			<Route exact path='/search-details' component={SearchDetails} />
 			
 			{/* dashboard pages */}
-			<AuthRoute exact path='/my-profile' component={MyProfile} />
+			<AuthRoute exact path='/my-account' component={MyAccount} />
 			<AuthRoute exact path='/my-articles' component={MyArticles} />
 			<AuthRoute exact path='/write-article' component={WriteArticle} />
 			{/* not found route: only at last always */}
