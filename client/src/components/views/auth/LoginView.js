@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
+// redux
 import { connect } from 'react-redux';
 import { login } from '../../../actions/auth';
+// components
+import Alert from '../../layout/Alert';
+import { Link } from 'react-router-dom';
 import { Button, Form } from "semantic-ui-react";
 import { ValidatorForm } from 'react-form-validator-core';
-import { Link } from 'react-router-dom';
 import TextValidator from '../../partials/common/TextValidator';
 
 const LoginView = ({
@@ -34,7 +37,10 @@ const LoginView = ({
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam laborum sint animi maiores, repellat, nobis laboriosam non, sapiente cumque nostrum commodi recusandae numquam. Libero, ut perferendis? Quibusdam, architecto ab? Doloribus commodi tempora quia odit tenetur dolorum fugit reiciendis labore vero!
                         </p>
                     </div>
+                    
                     <div className="loginRegisterBox__form">
+                        <Alert />
+
                         <ValidatorForm
                             className="ui form"
                             ref={formRef}

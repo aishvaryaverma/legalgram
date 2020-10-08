@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const MyAccountView = () => {
+const MyAccountContent = ({ user, userLoading }) => {
+	const [state, setState] = useState({
+		name: '',
+		email: '',
+		mobile: ''
+	});
+	const { name, email, mobile } = state;
+
+	useEffect(() => {
+		if(!userLoading) {
+			setState(user);
+		}
+	}, [user, userLoading]);
+
+	const onChange = ({ target: { name, value } }) => setState({ ...state, [name]: value });
+
+	console.log(state)
 	return (
 		<div className="dashboardContent">
 			<div className="dashboardContent__heading">
-				<h1>My Profile</h1>
+				<h1>My Account</h1>
 			</div>
 			<div className="dashboardContent__cards">
 				<div className="dashboardContent__card">
@@ -13,34 +29,46 @@ const MyAccountView = () => {
 							<div className="row">
 								<div className="eight wide column">
 									<div className="form-group">
-										<label>First Name</label>
-										<input type="text" className="form-control" value="Antonio"/>
+										<label>Name</label>
+										<input
+											className="form-control"
+											type="text"
+											name="name"
+											value={name}
+											onChange={e => onChange(e)}
+										/>
 									</div>
 								</div>
 								<div className="eight wide column">
 									<div className="form-group">
-										<label>Last Name</label>
-										<input type="text" className="form-control" value="Murray" />
+										<label>Email</label>
+										<input
+											className="form-control"
+											type="text"
+											name="email"
+											value={email}
+											onChange={e => onChange(e)}
+										/>
 									</div>
 								</div>
 								<div className="eight wide column">
 									<div className="form-group">
-										<label>Email Address</label>
-										<input type="text" className="form-control" placeholder="Email Address" />
+										<label>Mobile</label>
+										<input
+											className="form-control"
+											type="text"
+											name="mobile"
+											value={mobile}
+											onChange={e => onChange(e)}
+										/>
 									</div>
 								</div>
-								<div className="eight wide column">
-									<div className="form-group">
-										<label>Mobile Number</label>
-										<input type="text" className="form-control" placeholder="Mobile Number" />
-									</div>
-								</div>
-								<div className="sixteen wide column">
+								{/* <div className="sixteen wide column">
 									<div className="form-group">
 										<label>About Yourself</label>
 										<textarea cols="4" rows="5" className="form-control" placeholder="Message"></textarea>
 									</div>
-								</div>
+								</div> */}
 								<div className="sixteen wide column">
 									<button type="submit" className="btn-primary">Update</button>
 								</div>
@@ -77,4 +105,4 @@ const MyAccountView = () => {
 	)
 }
 
-export default MyAccountView
+export default MyAccountContent
